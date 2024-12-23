@@ -5,11 +5,17 @@
 }
 
 .head {
+  height: 70px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   height: 70px;
   align-items: center;
+  background-color: #ffffff;
 }
 
 #pandamarket_logo {
@@ -37,6 +43,10 @@
 }
 
 /* 여기까지 판다로고,로그인 버튼 */
+
+main {
+  margin-top: 70px;
+}
 
 .background_color {
   background-color: #cfe5ff;
