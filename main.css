@@ -38,7 +38,7 @@
 
 /* 여기까지 판다로고,로그인 버튼 */
 
-.background-color {
+.background_color {
   background-color: #cfe5ff;
   width: 100%;
   height: 540px;
@@ -71,7 +71,7 @@
   color: #374151;
 }
 
-#itemsButton {
+#items_Button {
   width: 357px;
   height: 56px;
   cursor: pointer;
@@ -92,7 +92,7 @@
 
 /* 여기까지 첫번째 섹션 (더보러가기 )부분 */
 
-.menu-img {
+.menu_img {
   width: 998px;
   margin: 138px auto;
 }
