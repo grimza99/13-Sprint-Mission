@@ -11,8 +11,25 @@
   --blue: #3692ff;
 }
 
+/* 컬러파레트 -mdn문서 참고 */
+
 * {
   box-sizing: border-box;
+  margin: 0 auto;
+}
+
+body {
+  width: 640px;
+  margin: 231px auto;
+  text-align: center;
+}
+
+header {
+  width: 369px;
+  height: 132px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .panda_logo_img {
@@ -29,4 +46,19 @@
   line-height: 89.56px;
   text-decoration: none;
   color: var(--blue);
+}
+/* 여기까지 header 영역  */
+
+.form_area {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+}
+
+.label_text {
+  font-family: Pretendard;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700px;
+  color: var(--gray800);
 }
