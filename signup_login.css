@@ -1,0 +1,32 @@
+:root {
+  --gray900: #111827;
+  --gray800: #1f2937;
+  --gray700: #374151;
+  --gray600: #4b5563;
+  --gray500: #6b7280;
+  --gray400: #9ca3af;
+  --gray200: #e5e7eb;
+  --gray100: #f3f4f6;
+  --gray50: #f9fafb;
+  --blue: #3692ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.panda_logo_img {
+  width: 103.53px;
+  height: 103.88px;
+}
+
+.pandamarket_logo {
+  width: 266px;
+  height: 90px;
+  font-family: "ROKAF Sans";
+  font-weight: 700;
+  font-size: 66.34px;
+  line-height: 89.56px;
+  text-decoration: none;
+  color: var(--blue);
+}
