@@ -172,7 +172,7 @@ main {
   height: 112px;
   padding-bottom: 60px;
   color: #374151;
-  font-size: 39px;
+  font-size: 40px;
   font-weight: 700px;
   line-height: 56px;
   text-align: left;
@@ -226,9 +226,15 @@ footer {
   cursor: pointer;
 }
 
+/*-----------------------------------------------*/
 /* 화면 너비기준 1199px ~768px 타블렛 */
 
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
+  body {
+    width: 100%;
+    margin: 0 auto;
+  }
+
   #pandamarket_logo {
     margin-left: 24px;
   }
@@ -237,45 +243,109 @@ footer {
     margin-right: 24px;
   }
 
-  /* 여기까지nav부분 */
-
   .background_color {
-    height: 771px;
+    height: auto;
   }
+
   .contents_top {
-    display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 84 auto;
-    padding-top: 0;
+    height: 100%;
+    padding-top: 84px;
     gap: 211px;
   }
-  .top_text {
-    width: 512px;
-    height: 136px;
-    gap: 24px;
-  }
-  /* 여기까지 top부분 */
 
-  .content_area {
-    height: 708px;
-    margin: 24px auto 52px;
-    width: 100%;
+  .top_text {
+    width: auto;
+    height: auto;
+    padding-bottom: 0px;
     gap: 24px;
-    flex-direction: column;
   }
+  .top_text > p {
+    text-align: center;
+    margin: 0px;
+  }
+
+  .pandaimg_top,
+  .footer_content,
   .content_img {
     width: 100%;
-    height: 100%;
   }
 
-  .content_area.text_right {
+  section {
     display: flex;
+    flex-direction: column;
+    gap: 52px;
+    margin: 24px 24px 56px 24px;
+  }
+
+  .content_area {
+    margin: 0px;
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .content_text {
+    padding-right: 0px;
+    width: 100%;
+  }
+
+  .content_text > p {
+    margin: 0px;
+    font-size: 18px;
+  }
+
+  .content_text .content_text_title {
+    font-size: 32px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+
+  .text_right > p,
+  .text_right > span {
+    text-align: right;
+  }
+
+  #reverse_column {
     flex-direction: column-reverse;
+  }
+
+  .content_bottom_area {
+    padding-top: 201px;
+  }
+  .contents_bottom {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 217px;
+  }
+
+  .bottom_text {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 0px;
+  }
+
+  footer {
+    padding-left: 108px;
+    padding-right: 108px;
+  }
+
+  .footer_content > span,
+  .sns_icon {
+    flex-shrink: 1;
+  }
+  .footer_content_policy {
+    flex-shrink: 1;
+    width: 181px;
+    font-family: Abel;
   }
 }
 
+/*----------------------------------*/
 /* 화면 너비기준 375~ 767모바일 */
 @media (min-width: 375px) and (max-width: 767px) {
   #pandamarket_logo {
