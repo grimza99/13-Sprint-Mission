@@ -108,7 +108,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 138px auto;
   width: 998px;
   margin: 138px auto;
   gap: 64px;
@@ -229,8 +228,61 @@ footer {
 
 /* 화면 너비기준 1199px ~768px 타블렛 */
 
-@media (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 1199px) {
+  #pandamarket_logo {
+    margin-left: 24px;
+  }
+
+  #login_button {
+    margin-right: 24px;
+  }
+
+  /* 여기까지nav부분 */
+
+  .background_color {
+    height: 771px;
+  }
+  .contents_top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 84 auto;
+    padding-top: 0;
+    gap: 211px;
+  }
+  .top_text {
+    width: 512px;
+    height: 136px;
+    gap: 24px;
+  }
+  /* 여기까지 top부분 */
+
+  .content_area {
+    height: 708px;
+    margin: 24px auto 52px;
+    width: 100%;
+    gap: 24px;
+    flex-direction: column;
+  }
+  .content_img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .content_area.text_right {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
+
 /* 화면 너비기준 375~ 767모바일 */
-@media (min-width: 375px) and(max-width: 767px) {
+@media (min-width: 375px) and (max-width: 767px) {
+  #pandamarket_logo {
+    margin-left: 16px;
+  }
+
+  #login_button {
+    margin-right: 16px;
+  }
 }
