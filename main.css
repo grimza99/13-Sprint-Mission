@@ -1,3 +1,5 @@
+@import url(./color.css);
+
 * {
   box-sizing: border-box;
   text-align: center;
@@ -15,7 +17,7 @@
   flex-direction: row;
   height: 70px;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 #pandamarket_logo {
@@ -32,11 +34,11 @@
   border-radius: 8px;
   border: 0 none;
   cursor: pointer;
-  background-color: #3692ff;
+  background-color: var(--blue);
   width: 128px;
   height: 48px;
   padding: 12px 23px 12px 23px;
-  color: #f3f4f6;
+  color: var(--gray100);
   font-size: 16px;
   font-weight: 600px;
   line-height: 26px;
@@ -49,7 +51,7 @@ main {
 }
 
 .background_color {
-  background-color: #cfe5ff;
+  background-color: var(--backgroundLightBlue);
   width: 100%;
   height: 540px;
 }
@@ -78,7 +80,7 @@ main {
   line-height: 56px;
   font-weight: 700;
   text-align: left;
-  color: #374151;
+  color: var(--gray700);
 }
 
 #items_Button {
@@ -91,8 +93,8 @@ main {
   font-size: 20px;
   font-weight: 600;
   line-height: 32px;
-  color: #f9fafb;
-  background-color: #3692ff;
+  color: var(--gray50);
+  background-color: var(--blue);
 }
 
 .pandaimg_top {
@@ -111,7 +113,7 @@ main {
   width: 998px;
   margin: 138px auto;
   gap: 64px;
-  background-color: #fcfcfc;
+  background-color: var(--backgroundLightGray);
 }
 
 .content_text {
@@ -122,14 +124,14 @@ main {
 }
 
 .content_text > span {
-  color: #3692ff;
+  color: var(--blue);
   font-size: 18px;
   font-weight: 700;
   line-height: 26px;
   text-align: left;
 }
 .content_text > p {
-  color: #374151;
+  color: var(--gray700);
   font-size: 22px;
   line-height: 32px;
   font-weight: 500px;
@@ -169,7 +171,7 @@ main {
   width: 295px;
   height: 112px;
   padding-bottom: 60px;
-  color: #374151;
+  color: var(--gray700);
   font-size: 40px;
   font-weight: 700px;
   line-height: 56px;
@@ -183,7 +185,7 @@ main {
 /* 여기부터 하단영역  */
 
 footer {
-  background-color: #111827;
+  background-color: var(--gray900);
   width: 100%;
   height: 160px;
   padding: 32px 40px 108px 40px;
@@ -191,7 +193,7 @@ footer {
 
 .footer_content {
   display: flex;
-  color: #9ca3af;
+  color: var(--gray400);
   gap: 366.5px;
   justify-content: space-between;
   width: 1120px;
@@ -220,7 +222,7 @@ footer {
 
 .footer_content_policy > a {
   text-decoration: none;
-  color: #e5e7eb;
+  color: var(--gray200);
   cursor: pointer;
 }
 .sns_icon {
