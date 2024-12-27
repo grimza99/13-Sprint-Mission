@@ -14,15 +14,15 @@ function Email_focus_out(e) {
   }
 }
 
-function Password_focus_out(e, message) {
-  if (e.target.value == "" || e.target.value.lenght < 8) {
-    if (e.target.value == "") {
-      message.prepend("비밀번호를 입력해주세요.");
-    } else {
-      message.prepend("비밀번호를 8자 이상 입력해주세요.");
-    }
-  }
-}
+// function Password_focus_out(e, message) {
+//   if (e.target.value == "" || e.target.value.lenght < 8) {
+//     if (e.target.value == "") {
+//       message.prepend("비밀번호를 입력해주세요.");
+//     } else {
+//       message.prepend("비밀번호를 8자 이상 입력해주세요.");
+//     }
+//   }
+// }
 
 function Button_inactive(e) {
   if (e) {
@@ -51,7 +51,7 @@ function Password_correct(e) {
 
 export {
   Email_focus_out,
-  Password_focus_out,
+  // Password_focus_out,
   Button_inactive,
   Nickname_focus_out,
   Password_correct,
