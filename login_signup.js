@@ -1,13 +1,33 @@
 /*공통 함수*/
 
-// 이메일 input에서 focus out 할 때, 값이 없을 경우 input에 빨강색 테두리와 아래에 “이메일을 입력해주세요.” 빨강색 에러 메세지를 보입니다.
-// 이메일 input에서 focus out 할 때, 이메일 형식에 맞지 않는 경우 input에 빨강색 테두리와 아래에 “잘못된 이메일 형식입니다” 빨강색 에러 메세지를 보입니다.
+function Email_focus_out(e) {
+  //여기서 e는 focusout임.
+  if (e.target == false || e) {
+    //값이 없거나 이메일 유효성 검사
+    //빨간테두리 의 css로 class네임 변경
+    if (e.target == false) {
+      //error.message class에 메시지 추가
+    } else {
+      //유효성 검사 x
+      //error.message class에 “잘못된 이메일 형식입니다”  메시지 추가
+    }
+  }
+}
 
-//이메일 관련 함수 작성, 이메일 input에서 focusout 될때 핸들러 작동
+function Password_focus_out(e) {
+  if (e.target == false || e.target.value.lenght < 8) {
+    if (e.target == false) {
+      //“비밀번호를 입력해주세요.” 에러 메세지
+    } else {
+      ///“비밀번호를 8자 이상 입력해주세요.
+    }
+  }
+}
 
-// 비밀번호 input에서 focus out 할 때, 값이 없을 경우 아래에 “비밀번호를 입력해주세요.” 에러 메세지를 보입니다
-// 비밀번호 input에서 focus out 할 때, 값이 8자 미만일 경우 아래에 “비밀번호를 8자 이상 입력해주세요.” 에러 메세지를 보입니다.
-
+function Button_inactive(e) {
+  if (e) {
+  }
+}
 // input 에 빈 값이 있거나 에러 메세지가 있으면  ‘로그인,회원가입’ 버튼은 비활성화 됩니다.
 // Input 에 유효한 값을 입력하면  ‘로그인,회원가입' 버튼이 활성화 됩니다.
 
@@ -16,8 +36,23 @@
 // 활성화된 ‘로그인,회원가입’ 버튼을 누르면  “/items”,signin 로 이동
 
 /*signup 함수 */
-// 닉네임 input에서 focus out 할 때, 값이 없을 경우 input에 빨강색 테두리와 아래에 “닉네임을 입력해주세요.” 빨강색 에러 메세지를 보입니다.
+function Nickname_focus_out(e) {
+  if (e.target.value == false) {
+    //input에 빨강색 테두리와 아래에 “닉네임을 입력해주세요.”
+  }
+}
 
-//닉네임  관련 함수 작성, 닉네임 input에서 focusout 될때 (값이 없을경우) 핸들러 작동
+function Password_correct(e) {
+  if (e) {
+    // 비밀번호 input과 비밀번호 확인 input의 값이 다른 경우,
+    //비밀번호 확인 input 아래에 “비밀번호가 일치하지 않습니다..” 에러 메세지를 보입니다.
+  }
+}
 
-// 비밀번호 input과 비밀번호 확인 input의 값이 다른 경우, 비밀번호 확인 input 아래에 “비밀번호가 일치하지 않습니다..” 에러 메세지를 보입니다.
+export {
+  Email_focus_out,
+  Password_focus_out,
+  Button_inactive,
+  Nickname_focus_out,
+  Password_correct,
+};
