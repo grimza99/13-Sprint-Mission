@@ -35,6 +35,11 @@ function Button_inactive(e) {
 //로그인 버튼 함수 (위의 input 요소에 에러메시지가 없고, 유효한 값일때 로그인 버튼 활성화 되게 )
 // 활성화된 ‘로그인,회원가입’ 버튼을 누르면  “/items”,signin 로 이동
 
+//
+//
+//
+//
+
 /*signup 함수 */
 function Nickname_focus_out(e) {
   if (e.target.value == false) {
