@@ -3,18 +3,22 @@ import // Email_focus_out,
 // Button_inactive,
 "./login_signup.js";
 
-const Email = document.querySelector("#user_email"); //input 태그 선택
-const password = document.querySelector("#password"); //input 태그 선택
-const Error_message = document.querySelectorAll(".error_message"); //에러메시지 뜰곳 선택
+const Email = document.querySelector("#user_email");
+const password = document.querySelector("#password");
+const Error_message = document.querySelectorAll(".error_message");
 const Btn = document.querySelector("#login_button");
 const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 초기 버튼 상태 설정
+  Button_inactive();
+});
 
 Btn.addEventListener("click", () => {
   if (!Btn.disabled) {
     location.href = "./items.html";
   }
 });
-// Btn.disabled = false;
 
 //이메일 유효성 검사 함수
 function email_check(email) {
@@ -83,6 +87,7 @@ function Button_inactive(e) {
       break;
   }
   console.log(Btn.disabled);
+  console.log("Disabled state after update:", Btn.disabled);
 }
 
 //이벤트 핸들러 등록

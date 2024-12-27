@@ -17,10 +17,9 @@ const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
 
 Btn.addEventListener("click", () => {
   if (!Btn.disabled) {
-    location.href = "./items.html";
+    location.href = "./signin.html";
   }
 });
-// Btn.disabled = false;
 
 //이메일 유효성 검사 함수
 function email_check(email) {
