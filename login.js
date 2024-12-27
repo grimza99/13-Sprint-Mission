@@ -10,9 +10,8 @@ const Btn = document.querySelector("#login_button");
 const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 초기 버튼 상태 설정
   Button_inactive();
-});
+}); //초기 Button 상태 설정
 
 Btn.addEventListener("click", () => {
   if (!Btn.disabled) {
@@ -29,47 +28,47 @@ function password_checked(password) {
   return password.length > 7;
 }
 
-//이메일 함수
+//a태그 존재시 삭제
+function tag_delete(i) {
+  let isTag = Error_message[i].querySelector("a");
+  if (isTag) {
+    Error_message[i].lastChild.remove();
+  }
+}
+
 function Email_focus_out(e) {
-  const text = document.createElement("a");
-  if (e.target.value == "") {
-    e.target.classList.toggle("input_red_border");
-    if (Error_message[0].textContent) {
-      Error_message[0].remove();
+  let input = e.target.value;
+  tag_delete(0);
+  if (!email_check(input)) {
+    e.target.classList.add("input_red_border");
+    const text = document.createElement("a");
+    if (input == "") {
+      text.textContent = "이메일을 입력해주세요";
+      Error_message[0].prepend(text);
+    } else {
+      text.textContent = "잘못된 이메일 형식 입니다.";
+      Error_message[0].prepend(text);
     }
-    text.textContent = "이메일을 입력해주세요.";
-    Error_message[0].prepend(text);
-  } else if (email_check(e.target.value) == false) {
-    e.target.classList.toggle("input_red_border");
-    if (Error_message[0].textContent) {
-      Error_message[0].remove();
-    }
-    Error_message[0].prepend("잘못된 이메일 형식입니다.");
   } else {
-    Error_message[0].remove();
     e.target.classList.remove("input_red_border");
   }
 }
 
 //비밀번호 함수
 function Password_focus_out(e) {
-  //중복 코드 정리필요, boder 가끔 사라지는 부분 수정 필요
-  const text = document.createElement("a");
-  if (e.target.value == "") {
-    e.target.classList.toggle("input_red_border");
-    if (Error_message[1].textContent) {
-      Error_message[1].remove();
+  let input = e.target.value;
+  tag_delete(1);
+  if (input.length < 8) {
+    e.target.classList.add("input_red_border");
+    const text = document.createElement("a");
+    if (input == "") {
+      text.textContent = "비밀번호를 입력해주세요";
+      Error_message[1].prepend(text);
+    } else {
+      text.textContent = "비밀번호를 8자 이상 입력해주세요";
+      Error_message[1].prepend(text);
     }
-    text.textContent = "비밀번호를 입력해주세요.";
-    Error_message[1].prepend(text);
-  } else if (e.target.value.length < 8) {
-    e.target.classList.toggle("input_red_border");
-    if (Error_message[1].textContent) {
-      Error_message[1].remove();
-    }
-    Error_message[1].prepend("비밀번호를 8자 이상 입력해주세요.");
   } else {
-    Error_message[1].remove();
     e.target.classList.remove("input_red_border");
   }
 }
@@ -86,8 +85,6 @@ function Button_inactive(e) {
 
       break;
   }
-  console.log(Btn.disabled);
-  console.log("Disabled state after update:", Btn.disabled);
 }
 
 //이벤트 핸들러 등록
