@@ -156,6 +156,12 @@ i {
   color: var(--blue);
 }
 
+/*------------------------------------------------------*/
+/*js 기능 css*/
+.input_red_border {
+  border: 1px solid red;
+}
+
 /* 화면 너비기준 1199px ~768px 타블렛 */
 
 @media (max-width: 1199px) {

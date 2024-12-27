@@ -14,12 +14,12 @@ function Email_focus_out(e) {
   }
 }
 
-function Password_focus_out(e) {
-  if (e.target == false || e.target.value.lenght < 8) {
-    if (e.target == false) {
-      //“비밀번호를 입력해주세요.” 에러 메세지
+function Password_focus_out(e, message) {
+  if (e.target.value == "" || e.target.value.lenght < 8) {
+    if (e.target.value == "") {
+      message.prepend("비밀번호를 입력해주세요.");
     } else {
-      ///“비밀번호를 8자 이상 입력해주세요.
+      message.prepend("비밀번호를 8자 이상 입력해주세요.");
     }
   }
 }
