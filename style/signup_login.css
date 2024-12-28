@@ -60,7 +60,6 @@ main {
   font-size: 18px;
   font-weight: 700px;
   color: var(--gray800);
-  position: relative;
 }
 
 .input_area {
@@ -91,10 +90,14 @@ main {
 
 /* 여기까지 form 기본 영역 */
 
+.i_tag_position {
+  margin: 0;
+  position: relative;
+}
 i {
   position: absolute;
   right: 5%;
-  bottom: 20%;
+  bottom: 30%;
 }
 /* 눈모양 i태그  */
 

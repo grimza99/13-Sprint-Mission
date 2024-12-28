@@ -1,5 +1,24 @@
 /*공통 함수*/
 
+const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+
+//이메일 유효성 검사 함수
+function email_check(email) {
+  return pattern.test(email);
+}
+//비밀번호 8자리 이상 체크  함수
+function password_checked(password) {
+  return password.length > 7;
+}
+
+//a태그 존재시 삭제
+function tag_delete(i) {
+  let isTag = Error_message[i].querySelector("a");
+  if (isTag) {
+    Error_message[i].lastChild.remove();
+  }
+}
+
 function Email_focus_out(e) {
   //여기서 e는 focusout임.
   if (e.target == false || e) {
@@ -54,10 +73,4 @@ function Password_correct(e) {
   }
 }
 
-export {
-  Email_focus_out,
-  // Password_focus_out,
-  Button_inactive,
-  Nickname_focus_out,
-  Password_correct,
-};
+export { email_check, password_checked, tag_delete };

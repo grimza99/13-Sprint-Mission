@@ -1,12 +1,9 @@
-import // Email_focus_out,
-// Password_focus_out,
-// Button_inactive,
-"./login_signup.js";
-
 const Email = document.querySelector("#user_email");
 const password = document.querySelector("#password");
 const Error_message = document.querySelectorAll(".error_message");
 const Btn = document.querySelector("#login_button");
+const eyes = document.querySelector("i");
+
 const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -86,9 +83,21 @@ function Button_inactive(e) {
       break;
   }
 }
-
+//패스워드 숨김 핸들러 함수
+function Password_hide(e) {
+  if (password.type == "password") {
+    password.type = "text";
+    e.target.classList.remove("fa-eye-slash");
+    e.target.classList.add("fa-eye");
+  } else {
+    password.type = "password";
+    e.target.classList.remove("fa-eye");
+    e.target.classList.add("fa-eye-slash");
+  }
+}
 //이벤트 핸들러 등록
 password.addEventListener("focusout", Password_focus_out);
 Email.addEventListener("focusout", Email_focus_out);
 Email.addEventListener("keyup", Button_inactive);
 password.addEventListener("keyup", Button_inactive);
+eyes.addEventListener("click", Password_hide);
