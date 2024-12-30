@@ -1,17 +1,4 @@
-:root {
-  --gray900: #111827;
-  --gray800: #1f2937;
-  --gray700: #374151;
-  --gray600: #4b5563;
-  --gray500: #6b7280;
-  --gray400: #9ca3af;
-  --gray200: #e5e7eb;
-  --gray100: #f3f4f6;
-  --gray50: #f9fafb;
-  --blue: #3692ff;
-}
-/* 컬러파레트 -mdn문서 참고 */
-
+@import url(./color.css);
 * {
   box-sizing: border-box;
   margin: 0 auto;
@@ -167,4 +154,64 @@ i {
 
 .signup_or_login_link {
   color: var(--blue);
+}
+
+/* 화면 너비기준 1199px ~768px 타블렛 */
+
+@media (max-width: 1199px) {
+  #body {
+    margin: 190px auto;
+  }
+}
+
+/*------------------------------------------------------*/
+/* 화면 너비기준 375~ 767모바일 */
+
+@media (max-width: 767px) {
+  #body {
+    width: 100%;
+    max-width: 400px;
+    margin: 80px auto;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  header {
+    width: 50%;
+    height: 50%;
+  }
+
+  .panda_logo_img {
+    width: 25%;
+  }
+
+  .pandamarket_logo {
+    width: 70%;
+    font-size: 200%;
+  }
+
+  main {
+    margin-top: 24px;
+  }
+
+  .form_area {
+    gap: 16px;
+  }
+
+  .label_text {
+    gap: 8px;
+    font-size: 87.5%;
+    margin: 0;
+  }
+  main,
+  .form_area,
+  .input_area,
+  .active_blue_button,
+  .sns_login_area {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 375px) {
 }

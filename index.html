@@ -6,8 +6,19 @@
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale, user-scalable=no"
     />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
+    <meta property="og:image" content="./img/OG_img.svg" />
+    <meta property="og:title" content="판다 마켓" />
+    <meta
+      property="og:description"
+      content="일상의 모든 물건을 거래해보세요!"
+    />
+    <meta
+      property="og:url"
+      content="https://fastidious-tiramisu-8831ce.netlify.app/"
+    />
 
     <link rel="stylesheet" href="./main.css" />
   </head>
@@ -17,7 +28,7 @@
         <a href="./">
           <img
             id="pandamarket_logo"
-            src="./img/root_img/Property 1=md.svg"
+            src="./img/root_img/판다마켓텍스트로고.svg"
             alt="판다로고"
           />
         </a>
@@ -30,37 +41,65 @@
       <div class="background_color">
         <div class="contents_top">
           <div class="top_text">
-            <p>
-              일상의 모든 물건을<br />
-              거래해 보세요
-            </p>
+            <p>일상의 모든 물건을 거래해 보세요</p>
             <a href="./items.html">
               <button id="items_Button">구경하러가기</button>
             </a>
           </div>
           <img
             class="pandaimg_top"
-            src="./img/root_img/Img_home_top.svg"
+            src="./img/root_img/home_top_img.svg"
             alt="판다마켓 이미지 "
           />
         </div>
       </div>
-      <section class="menu_img">
-        <img
-          class="content_img"
-          src="./img/root_img/desktop_02.svg"
-          alt="인기상품보러가기"
-        />
-        <img
-          class="content_img"
-          src="./img/root_img/desktop_03.svg"
-          alt="상품검색하기"
-        />
-        <img
-          class="content_img"
-          src="./img/root_img/desktop_04.svg"
-          alt="상품 등록하기"
-        />
+      <section>
+        <div class="content_area">
+          <img
+            class="content_img"
+            src="./img/root_img/Img_home_01.svg"
+            alt="인기상품보러가기"
+          />
+
+          <div class="content_text">
+            <span>Hot item</span>
+            <p class="content_text_title">인기 상품을 확인해 보세요</p>
+            <p>
+              가장 HOT한 중고거래 물품을<br />
+              판다 마켓에서 확인해 보세요
+            </p>
+          </div>
+        </div>
+        <div id="reverse_column" class="content_area text_right">
+          <div class="content_text text_right">
+            <span> Search </span>
+            <p class="content_text_title">구매를 원하는 상품을 검색하세요</p>
+            <p>
+              구매하고 싶은 물품은 검색해서<br />
+              쉽게 찾아보세요
+            </p>
+          </div>
+          <img
+            class="content_img"
+            src="./img/root_img/Img_home_02.svg"
+            alt="상품검색하기"
+          />
+        </div>
+        <div class="content_area">
+          <img
+            class="content_img"
+            src="./img/root_img/Img_home_03.svg"
+            alt="상품 등록하기"
+          />
+          <div class="content_text">
+            <span>Register</span>
+            <p class="content_text_title">판매를 원하는 상품을 등록하세요</p>
+            <p>
+              어떤 물건이든 판매하고 싶은 상품을 <br />
+              쉽게 등록하세요
+            </p>
+          </div>
+        </div>
       </section>
       <div class="background_color">
         <div class="content_bottom_area">
@@ -71,7 +110,7 @@
             </div>
             <img
               class="pandaimg_bottom"
-              src="./img/root_img/Img_home_bottom.svg"
+              src="./img/root_img/home_bottom_img.svg"
               alt="판다마켓 하단 이미지"
             />
           </div>
@@ -80,10 +119,12 @@
     </main>
     <footer>
       <div class="footer_content">
-        @codeit - 2024
-        <div class="footer_content_policy">
-          <a href="./privacy.html">Privacy Policy</a>
-          <a href="./faq.html" name="faq">FAQ</a>
+        <div class="footer_content_text">
+          <span>@codeit - 2024</span>
+          <div class="footer_content_policy">
+            <a href="./privacy.html">Privacy Policy</a>
+            <a href="./faq.html" name="faq">FAQ</a>
+          </div>
         </div>
         <div class="sns_icon">
           <a href="https://www.facebook.com/?locale=ko_KR" target="_blank">
