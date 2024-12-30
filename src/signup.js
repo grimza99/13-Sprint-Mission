@@ -69,33 +69,31 @@ function Nickname_focus_out(e) {
 }
 
 //비밀번호 함수
-function Password_focus_out(e) {
+function Password_focus_out(e, x) {
   let input = e.target.value;
-  tag_delete(2);
-  if (input.length < 8) {
+  tag_delete(x);
+  if (!password_checked(input)) {
     e.target.classList.add("input_red_border");
     const text = document.createElement("a");
-    if (input == "") {
-      text.textContent = "비밀번호를 입력해주세요";
-      Error_message[2].prepend(text);
-    } else {
-      text.textContent = "비밀번호를 8자 이상 입력해주세요";
-      Error_message[2].prepend(text);
-    }
+    text.textContent =
+      input === ""
+        ? "비밀번호를 입력해주세요"
+        : "비밀번호를 8자 이상 입력해주세요";
+    Error_message[x].prepend(text);
   } else {
     e.target.classList.remove("input_red_border");
   }
 }
 
 //비밀번호 확인 함수
-function Password_correct(e) {
+function Password_correct(e, x) {
   let input = e.target.value;
-  tag_delete(3);
+  tag_delete(x);
   if (input !== password.value) {
     const text = document.createElement("a");
     e.target.classList.add("input_red_border");
     text.textContent = "비밀번호가 일치하지 않습니다..";
-    Error_message[3].append(text);
+    Error_message[x].append(text);
   } else {
     e.target.classList.remove("input_red_border");
   }
@@ -163,8 +161,8 @@ function Button_inactive(e) {
 //이벤트 핸들러 등록
 Email.addEventListener("focusout", Email_focus_out);
 nickname.addEventListener("focusout", Nickname_focus_out);
-password.addEventListener("focusout", Password_focus_out);
-check_pass.addEventListener("keyup", Password_correct);
+password.addEventListener("focusout", (e) => Password_focus_out(e, 2));
+check_pass.addEventListener("keyup", (e) => Password_correct(e, 3));
 eyes[0].addEventListener("click", Password_hide);
 eyes[1].addEventListener("click", check_pass_hide);
 

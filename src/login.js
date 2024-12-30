@@ -1,8 +1,9 @@
 const Email = document.querySelector("#user_email");
-const password = document.querySelector("#password");
+const password = document.querySelector("#login_password");
 const Error_message = document.querySelectorAll(".error_message");
-const Btn = document.querySelector("#login_button");
+const Btn = document.querySelector("#Btn");
 const eyes = document.querySelector("i");
+const Input = document.querySelectorAll(".input_area");
 
 const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
 
@@ -52,19 +53,17 @@ function Email_focus_out(e) {
 }
 
 //비밀번호 함수
-function Password_focus_out(e) {
+function Password_focus_out(e, x) {
   let input = e.target.value;
-  tag_delete(1);
-  if (input.length < 8) {
+  tag_delete(x);
+  if (!password_checked(input)) {
     e.target.classList.add("input_red_border");
     const text = document.createElement("a");
-    if (input == "") {
-      text.textContent = "비밀번호를 입력해주세요";
-      Error_message[1].prepend(text);
-    } else {
-      text.textContent = "비밀번호를 8자 이상 입력해주세요";
-      Error_message[1].prepend(text);
-    }
+    text.textContent =
+      input === ""
+        ? "비밀번호를 입력해주세요"
+        : "비밀번호를 8자 이상 입력해주세요";
+    Error_message[x].prepend(text);
   } else {
     e.target.classList.remove("input_red_border");
   }
@@ -98,6 +97,9 @@ function Password_hide(e) {
 //이벤트 핸들러 등록
 password.addEventListener("focusout", Password_focus_out);
 Email.addEventListener("focusout", Email_focus_out);
-Email.addEventListener("keyup", Button_inactive);
-password.addEventListener("keyup", Button_inactive);
+password.addEventListener("focusout", (e) => Password_focus_out(e, 1));
 eyes.addEventListener("click", Password_hide);
+
+Input.forEach((input) => {
+  input.addEventListener("change", Button_inactive);
+});
