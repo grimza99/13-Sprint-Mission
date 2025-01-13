@@ -1,21 +1,33 @@
+function formatDate(value) {
+  const date = new Date(value);
+  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}.`;
+}
 function ListItem({ items }) {
   return (
     <div>
-      <div>{items.name}</div>
+      <img src={items.images[0]} alt="이미지" />
+      <div>이름:{items.name}</div>
+      <div>가격: {items.price}</div>
+      <div>좋아요: {items.favoriteCount}</div>
+      <div>날짜: {formatDate(items.createdAt)}</div>
     </div>
   );
 }
 function ItemsList({ items }) {
   return (
-    <ul>
-      {items.map((item) => {
-        return (
-          <li>
-            <ListItem items={item} />
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      <div>
+        <ul>
+          {items.map((item) => {
+            return (
+              <li key={item.id}>
+                <ListItem items={item} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
   );
 }
 
