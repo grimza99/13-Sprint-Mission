@@ -13,14 +13,14 @@ function ListItem({ items }) {
     </div>
   );
 }
-function ItemsList({ items }) {
+function ItemsList({ items, className }) {
   return (
     <div>
       <div>
         <ul>
           {items.map((item) => {
             return (
-              <li key={item.id}>
+              <li className={className} key={item.id}>
                 <ListItem items={item} />
               </li>
             );
