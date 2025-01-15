@@ -2,16 +2,14 @@ import { useEffect, useState } from "react";
 import ItemsList from "../components/ItemsList";
 import { getProducts, bestProducts } from "../api";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import PageCount from "../components/pageCount";
 //
-const ListGrid = styled(ItemsList)`
-  display: grid;
-`;
 
 function HomePage() {
   const [items, setItems] = useState([]);
   const [order, setOrder] = useState("recent");
   const [bestItems, setBestItems] = useState([]);
+  const [page, setPage] = useState(1);
   const handleChangeSort = (e) => {
     setOrder(e.target.value);
   };
@@ -24,9 +22,14 @@ function HomePage() {
     setBestItems(bestItems);
   };
 
+  const handleClickPageChange = (e) => {
+    let pageNumber = e.target.value;
+    setPage(Number(pageNumber));
+  };
+
   useEffect(() => {
-    handleLoad({ order });
-  }, [order]);
+    handleLoad({ order, page });
+  }, [order, page]);
 
   return (
     <div>
@@ -49,6 +52,7 @@ function HomePage() {
 
         <ItemsList items={items} />
       </div>
+      <PageCount onClick={handleClickPageChange} />
     </div>
   );
 }
