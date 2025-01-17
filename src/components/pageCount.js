@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const PageBtn = styled.div`
@@ -7,6 +8,7 @@ const PageBtn = styled.div`
   text-align: center;
   width: 304px;
 `;
+
 const Btn = styled.button`
   width: 40px;
   height: 40px;
@@ -19,30 +21,48 @@ const Btn = styled.button`
   font-weight: 600;
   line-height: 26px;
   background-color: #ffffff;
+
+  &:active {
+    background-color: #2f80ed;
+    color: #f9fafb;
+  }
 `;
 
-function PageCount({ onClick }) {
+const SelectBtn = styled.button`
+  background-color: #2f80ed;
+  color: #f9fafb;
+`;
+
+function PageCount({ value, onClick }) {
+  const [className, setClassName] = useState(Btn);
+
+  const handleClickBtn = (e) => {
+    const currentPage = e.target.value;
+    setClassName(SelectBtn);
+    onClick(currentPage);
+  };
+
   return (
     <PageBtn>
-      <Btn value="previous" onClick={onClick}>
+      <Btn value="previous" onClick={handleClickBtn}>
         전
       </Btn>
-      <Btn value="1" onClick={onClick}>
+      <Btn value="1" onClick={handleClickBtn}>
         1
       </Btn>
-      <Btn value="2" onClick={onClick}>
+      <button className={className} value="2" onClick={handleClickBtn}>
         2
-      </Btn>
-      <Btn value="3" onClick={onClick}>
+      </button>
+      <Btn value="3" onClick={handleClickBtn}>
         3
       </Btn>
-      <Btn value="4" onClick={onClick}>
+      <Btn value="4" onClick={handleClickBtn}>
         4
       </Btn>
-      <Btn value="5" onClick={onClick}>
+      <Btn value="5" onClick={handleClickBtn}>
         5
       </Btn>
-      <Btn value="next" onClick={onClick}>
+      <Btn value="next" onClick={handleClickBtn}>
         후
       </Btn>
     </PageBtn>

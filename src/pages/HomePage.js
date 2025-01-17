@@ -44,31 +44,51 @@ const SortSelect = styled.select`
   border: 1px solid #e5e7eb;
 `;
 //
-function HomePage() {
+function HomePage({ device }) {
   const [items, setItems] = useState([]);
   const [order, setOrder] = useState("recent");
   const [bestItems, setBestItems] = useState([]);
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [bestPageSize, setBestPageSize] = useState(4);
   const handleChangeSort = (e) => {
     setOrder(e.target.value);
   };
 
+  useEffect(() => {
+    switch (device) {
+      case "desktop":
+        setPageSize(10);
+        setBestPageSize(4);
+        break;
+      case "tablet":
+        setPageSize(6);
+        setBestPageSize(2);
+        break;
+      case "mobile":
+        setPageSize(4);
+        setBestPageSize(1);
+        break;
+      default:
+        break;
+    }
+  }, [device]);
+
   //정렬된 데이터 받아오는 핸들러
   const handleLoad = async (options) => {
-    const { list: bestItems } = await bestProducts();
+    const { list: bestItems } = await bestProducts(options);
     const { list } = await getProducts(options);
     setItems(list);
     setBestItems(bestItems);
   };
 
-  const handleClickPageChange = (e) => {
-    let pageNumber = e.target.value;
-    setPage(Number(pageNumber));
+  const handleClickPageChange = (value) => {
+    setPage(Number(value));
   };
 
   useEffect(() => {
-    handleLoad({ order, page });
-  }, [order, page]);
+    handleLoad({ order, bestPageSize, pageSize, page });
+  }, [order, page, bestPageSize, pageSize]);
 
   return (
     <div>
