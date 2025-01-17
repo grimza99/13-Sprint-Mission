@@ -1,6 +1,47 @@
 import favoriteImg from "../assets/favoriteLogo.svg";
 import styled from "styled-components";
 //
+
+const ByDevice = {
+  best: {
+    mobile: {
+      gap: "none",
+      gridTemplate: "repeat(1, 343px)",
+      gridRow: "434px",
+      height: "343px",
+    },
+    tablet: {
+      gap: "10px",
+      gridTemplate: "repeat(3, 343px)",
+      gridRow: "434px",
+      height: "343px",
+    },
+    desktop: {
+      gap: "24px",
+      gridTemplate: "repeat(4, 282px)",
+      gridRow: "378px",
+      height: "282px",
+    },
+  },
+  products: {
+    mobile: {
+      gap: "32px 8px",
+      gridTemplate: "repeat(2, 168px)",
+      gridRow: "343px",
+      height: "168px",
+    },
+    tablet: {
+      gap: "40px 24px",
+      gridTemplate: "repeat(3, 221px)",
+      height: "221px",
+    },
+    desktop: {
+      gap: "40px 24px",
+      gridTemplate: "repeat(5, 221px)",
+      height: "221px",
+    },
+  },
+};
 const Title = styled.h4`
   font-family: Pretendard;
   font-size: 14px;
@@ -32,8 +73,9 @@ const FavoriteCount = styled.span`
 `;
 
 const ProductImg = styled.img`
-  width: 221px;
-  height: 221px;
+  width: 100%;
+  height: ${({ $device, $value }) =>
+    ByDevice[$value][$device].height || "auto"};
   border-radius: 16px;
 `;
 
@@ -41,11 +83,12 @@ const ItemListStyle = styled.ul`
   margin: 24px auto;
   padding: 0px;
   width: 100%;
-  gap: 40px 24px;
   display: grid;
-  grid-template-columns: repeat(5, 221px);
-  grid-auto-rows: 317px;
   list-style: none;
+  gap: ${({ device, value }) => ByDevice[value][device].gap};
+  grid-template-columns: ${({ device, value }) =>
+    ByDevice[value][device].gridTemplate};
+  grid-auto-rows: ${({ value, device }) => ByDevice[value][device].gridRow};
 `;
 
 const Item = styled.div`
@@ -54,12 +97,19 @@ const Item = styled.div`
   flex-direction: column;
   gap: 16px;
 `;
+
 //
 
-function ListItem({ items }) {
+function ListItem({ value, items, device }) {
   return (
     <Item>
-      <ProductImg src={items.images[0]} alt="이미지" />
+      <ProductImg
+        $value={value}
+        $device={device}
+        src={items.images[0]}
+        alt="이미지"
+      />
+
       <div>
         <Title>{items.name}</Title>
         <Price>{items.price} 원</Price>
@@ -71,15 +121,15 @@ function ListItem({ items }) {
     </Item>
   );
 }
-function ItemsList({ items }) {
+function ItemsList({ value, items, device }) {
   return (
     <div>
       <div>
-        <ItemListStyle>
+        <ItemListStyle value={value} items={items} device={device}>
           {items.map((item) => {
             return (
               <li key={item.id}>
-                <ListItem items={item} />
+                <ListItem value={value} device={device} items={item} />
               </li>
             );
           })}

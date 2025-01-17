@@ -94,7 +94,7 @@ function HomePage({ device }) {
     <div>
       <div>
         <h3>베스트 상품</h3>
-        <ItemsList items={bestItems} />
+        <ItemsList value="best" device={device} items={bestItems} />
       </div>
       <InputDiv>
         <h3> 전체 상품</h3>
@@ -112,7 +112,7 @@ function HomePage({ device }) {
           </SortSelect>
         </div>
       </InputDiv>
-      <ItemsList items={items} />
+      <ItemsList value="products" device={device} items={items} />
       <PageCount onClick={handleClickPageChange} />
     </div>
   );
