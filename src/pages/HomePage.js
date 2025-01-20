@@ -7,12 +7,17 @@ import styled from "styled-components";
 import useWindowSize from "../Hooks/useWindowSize";
 //
 
+const Contents = styled.div`
+  width: ${({ device }) =>
+    device === "desktop" ? "1200px" : device === "tablet" ? "696px" : "344px"};
+  margin: 70px auto;
+`;
 const InputDiv = styled.div`
   display: flex;
   width: 100%;
   margin: 0 auto;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 12px;
 `;
 
 const SearchBtn = styled.button`
@@ -22,7 +27,6 @@ const SearchBtn = styled.button`
   color: #f3f4f6;
   background-color: #3692ff;
   border: none;
-  font-family: Pretendard;
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
@@ -38,12 +42,13 @@ const InputForm = styled.input`
   border: none;
   background-color: #f3f4f6;
   color: #9ca3af;
-  font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
   text-align: left;
   order: ${({ device }) => (device === "mobile" ? 2 : "auto")};
+  margin-left: ${({ device }) =>
+    device === "desktop" ? "500px" : device === "tablet" ? "80px" : "0px"};
 `;
 
 const SortSelect = styled.select`
@@ -82,12 +87,12 @@ function HomePage() {
   }, [order, page, device]);
 
   return (
-    <div>
+    <Contents device={device}>
       <div>
         <h3>베스트 상품</h3>
         <ItemsList value="best" device={device} items={bestItems} />
       </div>
-      <InputDiv>
+      <InputDiv device={device}>
         <h3> 전체 상품</h3>
         <InputForm
           type="text"
@@ -104,7 +109,7 @@ function HomePage() {
       </InputDiv>
       <ItemsList value="products" device={device} items={items} />
       <PageCount page={page} onClick={handleClickPageChange} />
-    </div>
+    </Contents>
   );
 }
 

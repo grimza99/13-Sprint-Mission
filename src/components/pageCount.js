@@ -14,13 +14,13 @@ const Btn = styled.button`
   border-radius: 40px;
   border: 1px solid #e5e7eb;
   opacity: 0px;
-  color: #6b7280;
-  font-family: Pretendard;
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
   background-color: ${({ page, value }) =>
     page === value ? "#2f80ed" : "#ffffff"};
+  color: ${({ page, value }) => (page === value ? "#f9fafb" : "#6b7280")};
+
   &:active {
     background-color: #2f80ed;
     color: #f9fafb;
@@ -39,7 +39,7 @@ export function PageButton({ page, value, onClick }) {
     </Btn>
   );
 }
-function PageCount({ page, value, onClick }) {
+function PageCount({ page, onClick }) {
   const BtnArray = [1, 2, 3, 4, 5];
   const handleClickBtn = (e) => {
     const currentPage = e.target.value;

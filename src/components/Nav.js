@@ -21,11 +21,9 @@ const MobilePandaMarketLogo = styled.img`
 const Button = styled.button`
   width: 108 px;
   padding: 21px 15px 21px 15px;
-  font-family: Pretendard;
   font-size: 18px;
   font-weight: 700;  gap: ${({ device }) =>
     device === "mobile" ? "8px" : "21px"}
-
   line-height: 26px;
   text-align: center;
   border: none;

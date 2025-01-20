@@ -49,7 +49,6 @@ const ByDevice = {
   },
 };
 const Title = styled.h4`
-  font-family: Pretendard;
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
@@ -58,7 +57,6 @@ const Title = styled.h4`
   margin: 0px;
 `;
 const Price = styled.div`
-  font-family: Pretendard;
   font-size: 16px;
   font-weight: 700;
   line-height: 26px;
@@ -70,7 +68,6 @@ const Price = styled.div`
 
 const FavoriteCount = styled.span`
   color: #4b5563;'
-  font-family: Pretendard;
   font-size: 12px;
   font-weight: 500;
   line-height: 18px;
@@ -82,7 +79,6 @@ const ProductImg = styled.img`
   width: 100%;
   height: ${({ $device, $value }) =>
     ByDevice[$value][$device].height || "auto"};
-  border-radius: 16px;
 `;
 
 const ItemListStyle = styled.ul`
