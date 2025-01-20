@@ -4,11 +4,17 @@ import { getProducts, bestProducts } from "../api";
 import { Link } from "react-router-dom";
 import PageCount from "../components/pageCount";
 import styled from "styled-components";
+import useWindowSize from "../Hooks/useWindowSize";
 //
+
 const InputDiv = styled.div`
   display: flex;
+  width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
+
 const SearchBtn = styled.button`
   height: 42px;
   padding: 12px 23px;
@@ -20,9 +26,12 @@ const SearchBtn = styled.button`
   font-size: 16px;
   font-weight: 600;
   line-height: 26px;
+  order: ${({ device }) => (device === "mobile" ? 1 : "auto")};
 `;
+
 const InputForm = styled.input`
-  width: 325px;
+  width: ${({ device }) =>
+    device === "desktop" ? "325px" : device === "tablet" ? "242px" : "288px"};
   height: 42px;
   padding: 9px 20px 9px 16px;
   border-radius: 12px;
@@ -34,6 +43,7 @@ const InputForm = styled.input`
   font-weight: 400;
   line-height: 26px;
   text-align: left;
+  order: ${({ device }) => (device === "mobile" ? 2 : "auto")};
 `;
 
 const SortSelect = styled.select`
@@ -42,39 +52,20 @@ const SortSelect = styled.select`
   padding: 12px 20px 12px 20px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
+  order: ${({ device }) => (device === "mobile" ? 3 : "auto")};
 `;
 //
-function HomePage({ device }) {
+function HomePage() {
   const [items, setItems] = useState([]);
   const [order, setOrder] = useState("recent");
   const [bestItems, setBestItems] = useState([]);
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
-  const [bestPageSize, setBestPageSize] = useState(4);
+  const device = useWindowSize();
+  //
   const handleChangeSort = (e) => {
     setOrder(e.target.value);
   };
 
-  useEffect(() => {
-    switch (device) {
-      case "desktop":
-        setPageSize(10);
-        setBestPageSize(4);
-        break;
-      case "tablet":
-        setPageSize(6);
-        setBestPageSize(2);
-        break;
-      case "mobile":
-        setPageSize(4);
-        setBestPageSize(1);
-        break;
-      default:
-        break;
-    }
-  }, [device]);
-
-  //정렬된 데이터 받아오는 핸들러
   const handleLoad = async (options) => {
     const { list: bestItems } = await bestProducts(options);
     const { list } = await getProducts(options);
@@ -87,8 +78,8 @@ function HomePage({ device }) {
   };
 
   useEffect(() => {
-    handleLoad({ order, bestPageSize, pageSize, page });
-  }, [order, page, bestPageSize, pageSize]);
+    handleLoad({ order, device, page });
+  }, [order, page, device]);
 
   return (
     <div>
@@ -98,22 +89,21 @@ function HomePage({ device }) {
       </div>
       <InputDiv>
         <h3> 전체 상품</h3>
-        <div>
-          <InputForm
-            type="text"
-            placeholder="검색할 상품을 입력해주세요"
-          ></InputForm>
-          <Link to="/additem">
-            <SearchBtn type="submit">상품 등록하기</SearchBtn>
-          </Link>
-          <SortSelect value={order} onChange={handleChangeSort}>
-            <option value="recent">최신순</option>
-            <option value="favorite">좋아요 순</option>
-          </SortSelect>
-        </div>
+        <InputForm
+          type="text"
+          placeholder="검색할 상품을 입력해주세요"
+          device={device}
+        ></InputForm>
+        <SearchBtn device={device} type="submit">
+          <Link to="/additem">상품 등록하기</Link>
+        </SearchBtn>
+        <SortSelect device={device} value={order} onChange={handleChangeSort}>
+          <option value="recent">최신순</option>
+          <option value="favorite">좋아요 순</option>
+        </SortSelect>
       </InputDiv>
       <ItemsList value="products" device={device} items={items} />
-      <PageCount onClick={handleClickPageChange} />
+      <PageCount page={page} onClick={handleClickPageChange} />
     </div>
   );
 }

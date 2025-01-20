@@ -2,33 +2,40 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/root_img/textLogo.svg";
 import myLogo from "../assets/myLogo.svg";
 import styled from "styled-components";
-
+import useWindowSize from "../Hooks/useWindowSize";
+import textLogo from "../assets/textLogo.svg";
 const PandaMarketLogo = styled.img`
   width: 153px;
   height: 51px;
   margin-left: 200px;
   cursor: pointer;
   margin-left: 200px;
+  margin-left: ${({ device }) => (device === "desktop" ? "200px" : "15px")};
 `;
 
+const MobilePandaMarketLogo = styled.img`
+  width: 81px;
+  height: 27px;
+  margin-left: 15px;
+`;
 const Button = styled.button`
-  display: flex
   width: 108 px;
   padding: 21px 15px 21px 15px;
-  gap: 10px;
   font-family: Pretendard;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 700;  gap: ${({ device }) =>
+    device === "mobile" ? "8px" : "21px"}
+
   line-height: 26px;
   text-align: center;
   border: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 `;
 
 const MyLogoButton = styled.img`
   width: 40px;
   height: 40px;
-  margin-right: 200px;
+  margin-right: ${({ device }) => (device === "desktop" ? "200px" : "15px")};
 `;
 
 const NavArea = styled.div`
@@ -46,22 +53,28 @@ const NavArea = styled.div`
 
 const NavButtonLeft = styled.div`
   display: flex;
-  gap: 32px;
   align-items: center;
+  gap: ${({ device }) => (device === "mobile" ? "8px" : "21px")};
 `;
 function Nav() {
+  const device = useWindowSize();
   return (
     <div>
       <NavArea>
-        <NavButtonLeft>
-          <PandaMarketLogo src={Logo} alt="판다마켓" />
+        <NavButtonLeft device={device}>
+          {device === "mobile" && (
+            <MobilePandaMarketLogo src={textLogo} alt="판다마켓" />
+          )}
+          {device !== "mobile" && (
+            <PandaMarketLogo device={device} src={Logo} alt="판다마켓" />
+          )}
           <div>
             <Button>자유게시판</Button>
             <Button>중고마켓</Button>
           </div>
         </NavButtonLeft>
         <Link>
-          <MyLogoButton src={myLogo} />
+          <MyLogoButton device={device} src={myLogo} />
         </Link>
       </NavArea>
     </div>

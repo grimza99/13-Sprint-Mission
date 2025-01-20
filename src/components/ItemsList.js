@@ -9,18 +9,21 @@ const ByDevice = {
       gridTemplate: "repeat(1, 343px)",
       gridRow: "434px",
       height: "343px",
+      ulWidth: "343px",
     },
     tablet: {
       gap: "10px",
       gridTemplate: "repeat(3, 343px)",
       gridRow: "434px",
       height: "343px",
+      ulWidth: "696px",
     },
     desktop: {
       gap: "24px",
       gridTemplate: "repeat(4, 282px)",
       gridRow: "378px",
       height: "282px",
+      ulWidth: "1200px",
     },
   },
   products: {
@@ -29,16 +32,19 @@ const ByDevice = {
       gridTemplate: "repeat(2, 168px)",
       gridRow: "343px",
       height: "168px",
+      ulWidth: "343px",
     },
     tablet: {
       gap: "40px 24px",
       gridTemplate: "repeat(3, 221px)",
       height: "221px",
+      ulWidth: "696px",
     },
     desktop: {
       gap: "40px 24px",
       gridTemplate: "repeat(5, 221px)",
       height: "221px",
+      ulWidth: "1200px",
     },
   },
 };
@@ -82,7 +88,7 @@ const ProductImg = styled.img`
 const ItemListStyle = styled.ul`
   margin: 24px auto;
   padding: 0px;
-  width: 100%;
+  width: ${({ device, value }) => ByDevice[value][device].ulWidth};
   display: grid;
   list-style: none;
   gap: ${({ device, value }) => ByDevice[value][device].gap};

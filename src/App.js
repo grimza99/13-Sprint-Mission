@@ -4,7 +4,7 @@ import Nav from "./components/Nav";
 import styled from "styled-components";
 
 const Contents = styled.div`
-  width: 1200px;
+  width: 100%;
   margin: 70px auto;
 `;
 function App() {
