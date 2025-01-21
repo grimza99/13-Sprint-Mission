@@ -11,7 +11,7 @@ const PandaMarketLogo = styled.img`
   margin-left: 200px;
   cursor: pointer;
   margin-left: 200px;
-  margin-left: ${({ device }) => (device === "desktop" ? "200px" : "15px")};
+  margin-left: ${({ $device }) => ($device === "desktop" ? "200px" : "15px")};
 `;
 
 const MobilePandaMarketLogo = styled.img`
@@ -20,25 +20,24 @@ const MobilePandaMarketLogo = styled.img`
   margin-left: 15px;
 `;
 
-const activeLink = ({ isActive, device }) => {
+const activeLink = ({ isActive, $device }) => {
   return {
     color: isActive ? "#3692FF" : "#4b5563",
     width: "108px",
     padding: "21px 15px 21px 15px",
     fontSize: "18px",
     fontWeight: "700px",
-    gap: device === "mobile" ? "8px" : "21px",
+    gap: $device === "mobile" ? "8px" : "21px",
     lineHeight: "26px",
     textAlign: "center",
     border: "none",
     backgroundColor: "#ffffff",
-    fontSize: "18px",
   };
 };
 const MyLogoButton = styled.img`
   width: 40px;
   height: 40px;
-  margin-right: ${({ device }) => (device === "desktop" ? "200px" : "15px")};
+  margin-right: ${({ $device }) => ($device === "desktop" ? "200px" : "15px")};
 `;
 
 const NavArea = styled.div`
@@ -57,7 +56,7 @@ const NavArea = styled.div`
 const NavButtonLeft = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ device }) => (device === "mobile" ? "8px" : "21px")};
+  gap: ${({ $device }) => ($device === "mobile" ? "8px" : "21px")};
 `;
 function Nav() {
   const device = useWindowSize();

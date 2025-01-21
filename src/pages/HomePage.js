@@ -16,6 +16,7 @@ const Contents = styled.div`
 `;
 const InputDiv = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   margin: 0 auto;
   flex-wrap: wrap;

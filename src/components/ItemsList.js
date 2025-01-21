@@ -1,5 +1,6 @@
 import favoriteImg from "../assets/favoriteLogo.svg";
 import styled from "styled-components";
+import useWindowSize from "../Hooks/useWindowSize";
 //
 
 const ByDevice = {
@@ -77,8 +78,7 @@ const FavoriteCount = styled.span`
 
 const ProductImg = styled.img`
   width: 100%;
-  height: ${({ $device, $value }) =>
-    ByDevice[$value][$device].height || "auto"};
+  height: ${({ device, value }) => ByDevice[value][device].height || "auto"};
 `;
 
 const ItemListStyle = styled.ul`
@@ -102,12 +102,13 @@ const Item = styled.div`
 
 //
 
-function ListItem({ value, items, device }) {
+function ListItem({ value, items }) {
+  const device = useWindowSize();
   return (
     <Item>
       <ProductImg
-        $value={value}
-        $device={device}
+        value={value}
+        device={device}
         src={items.images[0]}
         alt="이미지"
       />
@@ -127,7 +128,7 @@ function ItemsList({ value, items, device }) {
   return (
     <div>
       <div>
-        <ItemListStyle value={value} items={items} device={device}>
+        <ItemListStyle value={value} device={device}>
           {items.map((item) => {
             return (
               <li key={item.id}>
