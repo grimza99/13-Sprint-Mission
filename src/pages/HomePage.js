@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import PageCount from "../components/pageCount";
 import styled from "styled-components";
 import useWindowSize from "../Hooks/useWindowSize";
+import SelectBox from "../components/SelectBox";
+
 //
 
 const Contents = styled.div`
@@ -51,24 +53,17 @@ const InputForm = styled.input`
     device === "desktop" ? "500px" : device === "tablet" ? "80px" : "0px"};
 `;
 
-const SortSelect = styled.select`
-  width: 130px;
-  height: 42px;
-  padding: 12px 20px 12px 20px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  order: ${({ device }) => (device === "mobile" ? 3 : "auto")};
-`;
 //
 function HomePage() {
   const [items, setItems] = useState([]);
-  const [order, setOrder] = useState("recent");
+  const [selectedOrder, setSelectedOrder] = useState("최신순");
   const [bestItems, setBestItems] = useState([]);
   const [page, setPage] = useState(1);
   const device = useWindowSize();
   //
-  const handleChangeSort = (e) => {
-    setOrder(e.target.value);
+  const handleChangeSort = (selected) => {
+    const { label } = selected;
+    setSelectedOrder(label);
   };
 
   const handleLoad = async (options) => {
@@ -83,8 +78,8 @@ function HomePage() {
   };
 
   useEffect(() => {
-    handleLoad({ order, device, page });
-  }, [order, page, device]);
+    handleLoad({ selectedOrder, device, page });
+  }, [selectedOrder, page, device]);
 
   return (
     <Contents device={device}>
@@ -102,10 +97,7 @@ function HomePage() {
         <SearchBtn device={device} type="submit">
           <Link to="/additem">상품 등록하기</Link>
         </SearchBtn>
-        <SortSelect device={device} value={order} onChange={handleChangeSort}>
-          <option value="recent">최신순</option>
-          <option value="favorite">좋아요 순</option>
-        </SortSelect>
+        <SelectBox onChange={handleChangeSort} value={selectedOrder} />
       </InputDiv>
       <ItemsList value="products" device={device} items={items} />
       <PageCount page={page} onClick={handleClickPageChange} />

@@ -3,8 +3,9 @@ const BASE_URL = "https://panda-market-api.vercel.app";
 export async function getProducts({
   device = "desktop",
   page = 1,
-  order = "recent",
+  selectedOrder = "최신순",
 }) {
+  const order = selectedOrder === "최신순" ? "recent" : "favorite";
   const pageSize = device === "mobile" ? 4 : device === "tablet" ? 6 : 10;
   const query = `?orderBy=${order}&page=${page}&pageSize=${pageSize}`;
   const response = await fetch(`${BASE_URL}/products${query}`);

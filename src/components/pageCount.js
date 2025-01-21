@@ -40,7 +40,7 @@ export function PageButton({ page, value, onClick }) {
   );
 }
 function PageCount({ page, onClick }) {
-  const BtnArray = [1, 2, 3, 4, 5];
+  const BtnArray = ["<", 1, 2, 3, 4, 5, ">"];
   const handleClickBtn = (e) => {
     const currentPage = e.target.value;
     onClick(currentPage);
@@ -50,7 +50,7 @@ function PageCount({ page, onClick }) {
     <PageBtn>
       {BtnArray.map((btn) => {
         return (
-          <li style={{ listStyle: "none" }}>
+          <li key={btn} style={{ listStyle: "none" }}>
             <PageButton onClick={handleClickBtn} value={btn} page={page} />
           </li>
         );
