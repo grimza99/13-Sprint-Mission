@@ -14,22 +14,27 @@ export const Label = styled.label`
   height: 26px;
   font-size: 18px;
   color: ${theme.color.gray800};
+  font-weight: 700;
+  line-height: 26px;
 `;
 
 export const Input = styled.input`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: ${theme.color.gray100};
   font-size: 16px;
   font-weight: 400px;
   line-height: 26px;
   border-radius: 12px;
+  border: none;
   color: ${theme.color.gray800};
+  position: relative;
   ::placeholder {
     color: ${theme.color.gray400};
+    line-height: normal;
     font-size: 16px;
+    text-align: left;
+    position: absolute;
+    top: 10px;
     /* font: pretendard 16px r */
   }
 
@@ -38,6 +43,13 @@ export const Input = styled.input`
     css`
       width: 282px;
       height: 282px;
+
+    ::placeholder {
+      color: ${theme.color.gray400};
+      line-height: normal;
+      font-size: 16px;
+      text-align: center;
+      justify-content: center;
     `}
   ${(props) =>
     props.$normal &&
@@ -47,6 +59,7 @@ export const Input = styled.input`
      ${(props) =>
     props.$textArea &&
     css`
+      padding-top: 20px;
       height: 282px;
     `}
 `;
