@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useWindowSize from "../../Hooks/useWindowSize";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const device = useWindowSize;
 

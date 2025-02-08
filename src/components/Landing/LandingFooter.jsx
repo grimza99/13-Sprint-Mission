@@ -3,7 +3,7 @@ import insta_ic from "../../assets/root_img/Instagram_ic.svg";
 import twitter_ic from "../../assets/root_img/Twitter_ic.svg";
 import youtube_ic from "../../assets/root_img/Youtube_ic.svg";
 //
-import useWindowSize from "../../Hooks/useWindowSize";
+import useWindowSize from "../../hooks/useWindowSize";
 import { Link } from "react-router-dom";
 //
 function LandingFooter() {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useWindowSize = () => {
+export default function useWindowSize() {
   const [deviceType, setDeviceType] = useState("desktop");
   const handleResize = () => {
     if (window.matchMedia("(max-width: 767px)").matches) {
@@ -20,6 +20,4 @@ const useWindowSize = () => {
     };
   }, []);
   return deviceType;
-};
-
-export default useWindowSize;
+}

@@ -2,7 +2,7 @@ import landing01 from "../../../assets/root_img/landing01.svg";
 import landing02 from "../../../assets/root_img/landing02.svg";
 import landing03 from "../../../assets/root_img/landing03.svg";
 //
-import useWindowSize from "../../../Hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize";
 import "./Card.css";
 //
 const contentValue = {
@@ -34,7 +34,7 @@ function Card({ value }) {
 
   return (
     <>
-      <div>
+      <div device={device}>
         <img src={cardData.src} alt="이미지" />
         <div>
           <span>{cardData.title}</span>

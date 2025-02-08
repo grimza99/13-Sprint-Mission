@@ -4,12 +4,12 @@ import pandaImg2 from "../assets/root_img/Panda_Bottom_Img.svg";
 import LandingNav from "../components/Landing/LandingNav";
 import Card from "../components/Landing/Card/Card";
 import LandingFooter from "../components/Landing/LandingFooter";
-import useWindowSize from "../Hooks/useWindowSize";
-import Button from "../common/Button";
+// import useWindowSize from "../Hooks/useWindowSize";
+import Button from "../components/common/Button";
 import { Link } from "react-router-dom";
 
 function LandingPage() {
-  const device = useWindowSize();
+  // const device = useWindowSize();
   return (
     <>
       <LandingNav />

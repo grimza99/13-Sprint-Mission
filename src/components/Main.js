@@ -1,4 +1,4 @@
-import useWindowSize from "../Hooks/useWindowSize";
+import useWindowSize from "../hooks/useWindowSize";
 import App from "../App";
 import HomePage from "../pages/HomePage";
 import AddItem from "../pages/AddItem";
