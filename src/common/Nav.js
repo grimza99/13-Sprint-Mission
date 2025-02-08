@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import Logo from "../assets/root_img/textLogo.svg";
+import LogoPandaMarket from "../assets/root_img/Logo_PandaMarketText.svg";
 import myLogo from "../assets/myLogo.svg";
 import styled from "styled-components";
 import useWindowSize from "../Hooks/useWindowSize";
@@ -68,7 +68,11 @@ function Nav() {
             <MobilePandaMarketLogo src={textLogo} alt="판다마켓" />
           )}
           {device !== "mobile" && (
-            <PandaMarketLogo device={device} src={Logo} alt="판다마켓" />
+            <PandaMarketLogo
+              device={device}
+              src={LogoPandaMarket}
+              alt="판다마켓"
+            />
           )}
           <div>
             <NavLink device={device} to="/docs" style={activeLink}>

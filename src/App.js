@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import React from "react";
-import Nav from "./components/Nav";
+import Nav from "./common/Nav";
 import styled from "styled-components";
 
 const Contents = styled.div`

@@ -5,6 +5,7 @@ import AddItem from "../pages/AddItem";
 //
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components"; //import
+import LandingPage from "../pages/LandingPage";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -32,7 +33,8 @@ function Main() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />}>
+          <Route path="/" element={<LandingPage />} />
+          <Route element={<App />}>
             <Route path="/items" element={<HomePage device={deviceType} />} />
             <Route path="/additem" element={<AddItem />} />
           </Route>
