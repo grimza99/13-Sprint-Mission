@@ -1,6 +1,6 @@
-import Logo_pandaMarketText from "../../assets/root_img/Logo_PandaMarketText.svg";
+import Logo_pandaMarketText from "../../../assets/root_img/Logo_PandaMarketText.svg";
 // import useWindowSize from "../../hooks/useWindowSize";
-import Button from "../../components/common/Button";
+import Button from "../Button/Button.jsx";
 import { Link } from "react-router-dom";
 import { Contents, Logo } from "./NavStyle.jsx";
 

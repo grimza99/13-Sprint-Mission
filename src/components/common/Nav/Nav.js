@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import LogoPandaMarket from "../../assets/root_img/Logo_PandaMarketText.svg";
-import myLogo from "../../assets/myLogo.svg";
+import LogoPandaMarket from "../../../assets/root_img/Logo_PandaMarketText.svg";
+import myLogo from "../../../assets/myLogo.svg";
 import styled from "styled-components";
-import useWindowSize from "../../hooks/useWindowSize";
-import textLogo from "../../assets/textLogo.svg";
+import useWindowSize from "../../../hooks/useWindowSize";
+import textLogo from "../../../assets/textLogo.svg";
 
 const PandaMarketLogo = styled.img`
   width: 153px;

@@ -1,11 +1,11 @@
 import useWindowSize from "../hooks/useWindowSize";
 import App from "../App";
 import HomePage from "../pages/HomePage";
-import AddItem from "../pages/AddItem";
+import AddItem from "../pages/AddItem/AddItem";
 //
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components"; //import
-import LandingPage from "../pages/LandingPage";
+import LandingPage from "../pages/Landing/LandingPage";
 
 const GlobalStyle = createGlobalStyle`
   * {
