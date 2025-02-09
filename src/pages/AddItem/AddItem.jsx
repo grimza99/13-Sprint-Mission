@@ -15,6 +15,12 @@ function AddItem() {
     const filterTags = tags.find((prev) => prev !== tag);
     setTags(filterTags);
   };
+  const CreateTag = (e) => {
+    if (e.key === "Enter") {
+      setTags([tags.concat(value)]);
+    }
+    console.log(tags);
+  };
   return (
     <S.Container>
       <S.FlexDiv>
@@ -33,13 +39,22 @@ function AddItem() {
         />
         <Input normal label="판매가격" placeholder="판매 가격을 입력해주세요" />
         <S.TagInputContainer>
-          <Input normal label="태그" placeholder="태그를 입력해주세요" />(
-          {tags.map((tag) => {
-            return (
-              <Tag key={tag} value={tag} onClick={handleClickTagDelete(tag)} />
-            );
-          })}
-          )
+          <Input
+            onKeyDown={CreateTag}
+            normal
+            label="태그"
+            placeholder="태그를 입력해주세요"
+          />
+          <S.TagsContainer>
+            {tags &&
+              tags.map((tag) => {
+                return (
+                  <div key={tag}>
+                    <Tag value={tag} onClick={handleClickTagDelete(tag)} />
+                  </div>
+                );
+              })}
+          </S.TagsContainer>
         </S.TagInputContainer>
       </S.InputsContainer>
     </S.Container>

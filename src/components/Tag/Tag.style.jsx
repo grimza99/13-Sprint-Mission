@@ -3,7 +3,8 @@ import theme from "../../style/theme";
 
 export const Container = styled.div`
   background-color: ${theme.color.gray100};
-  width: 36px;
+  width: 110px;
+  height: 36px;
   padding: 6px 12px;
   border-radius: 26px;
   border: none;
@@ -21,4 +22,7 @@ export const Tag = styled.div`
   font-size: 16px;
   line-height: 26px;
 `;
-export const DeleteButton = styled.button``;
+export const DeleteButton = styled.img`
+  width: 22px;
+  height: 24px;
+`;

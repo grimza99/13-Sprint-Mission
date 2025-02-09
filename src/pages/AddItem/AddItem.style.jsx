@@ -28,4 +28,13 @@ export const InputsContainer = styled.div`
   gap: 32px;
 `;
 
-export const TagInputContainer = styled.div``;
+export const TagInputContainer = styled.div`
+  display: flex;
+  gap: 14px;
+`;
+
+export const TagsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 12px;
+`;

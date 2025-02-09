@@ -5,7 +5,7 @@ export default function Tag({ value, onClick }) {
     <S.Container>
       <S.FlexContents>
         <S.Tag>#{value}</S.Tag>
-        <S.DeleteButton onClick={onClick}>{DeleteButton}</S.DeleteButton>
+        <S.DeleteButton src={DeleteButton} />
       </S.FlexContents>
     </S.Container>
   );
