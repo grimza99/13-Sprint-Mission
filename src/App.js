@@ -10,7 +10,7 @@ const Contents = styled.div`
 function App() {
   return (
     <div>
-      <Nav></Nav>
+      <Nav />
       <Contents>
         <Outlet />
       </Contents>

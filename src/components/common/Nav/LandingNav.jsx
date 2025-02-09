@@ -2,21 +2,21 @@ import Logo_pandaMarketText from "../../../assets/root_img/Logo_PandaMarketText.
 // import useWindowSize from "../../hooks/useWindowSize";
 import Button from "../Button/Button.jsx";
 import { Link } from "react-router-dom";
-import { Contents, Logo } from "./NavStyle.jsx";
+import * as S from "./Nav.style.jsx";
 
 //
 function LandingNav() {
   // const device = useWindowSize();
   return (
-    <Contents>
+    <S.Contents>
       <Link to="./">
-        <Logo src={Logo_pandaMarketText} alt="판다로고" />
+        <S.Logo src={Logo_pandaMarketText} alt="판다로고" />
       </Link>
 
       <Link to="./login">
         <Button>로그인</Button>
       </Link>
-    </Contents>
+    </S.Contents>
   );
 }
 

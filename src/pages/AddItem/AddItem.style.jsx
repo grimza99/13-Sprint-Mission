@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
+export const Background = styled.div`
+  width: 100%;
+  overflow-x: none;
+`;
 export const Container = styled.div`
   width: 1200px;
   display: flex;
   gap: 29px;
   flex-direction: column;
+  margin: 0 auto;
 `;
 
 export const FlexDiv = styled.div`
