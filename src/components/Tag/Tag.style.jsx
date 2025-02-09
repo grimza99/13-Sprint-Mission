@@ -3,7 +3,7 @@ import theme from "../../style/theme";
 
 export const Container = styled.div`
   background-color: ${theme.color.gray100};
-  width: 110px;
+  width: auto;
   height: 36px;
   padding: 6px 12px;
   border-radius: 26px;
@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const FlexContents = styled.div`
   width: 100%;
   display: flex;
+  gap: 8px;
   justify-content: space-between;
 `;
 

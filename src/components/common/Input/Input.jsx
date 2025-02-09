@@ -1,13 +1,8 @@
+import PlusIcon from "../../../assets/icons/plusIcon.svg";
 import * as S from "./Input.style";
-// import Plus from "../../../assets/icons/plusIcon.svg";
-export default function Input({
-  label,
-  children,
-  placeholder,
-  value,
-  ...props
-}) {
-  const { img, normal, textArea, onChange, onKeyUp, ...rest } = props;
+import { useRef, useState } from "react";
+export function NormalInput({ label, children, placeholder, value, ...props }) {
+  const { name, type, normal, textArea, onChange, onKeyUp, ...rest } = props;
   const handleChange = (e) => {
     onChange(e.target.value);
     onKeyUp(e);
@@ -16,9 +11,9 @@ export default function Input({
     <S.InputWrapper>
       <S.Label>{label}</S.Label>
       <S.Input
-        type="text"
+        name={name}
+        type={type}
         value={value}
-        $img={img}
         $normal={normal}
         $textArea={textArea}
         placeholder={placeholder}
@@ -26,7 +21,41 @@ export default function Input({
         onKeyUp={onKeyUp}
         {...rest}
       ></S.Input>
-      {/* {img && <S.Plus>{Plus}</S.Plus>} */}
     </S.InputWrapper>
+  );
+}
+
+export function ImgInput({ value, ...props }) {
+  const { ...rest } = props;
+  const imgRef = useRef();
+  const [imgPreview, setImgPreview] = useState("");
+  //
+  const handlePreviewImg = () => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImgPreview(reader.result);
+    };
+  };
+  return (
+    <S.ImgInputWrapper>
+      <S.ImgInput>
+        <S.Input
+          onChange={handlePreviewImg}
+          type="file"
+          id="fileUpload"
+          accept="image/*"
+          $img
+          ref={imgRef}
+          {...rest}
+        />
+        <S.PlusLabelContainer htmlFor="fileUpload">
+          <S.PlusIcon src={PlusIcon} />
+          <p>이미지 등록</p>
+        </S.PlusLabelContainer>
+      </S.ImgInput>
+      <div>{imgPreview && <S.PreviewImg src={imgPreview} />}</div>
+    </S.ImgInputWrapper>
   );
 }

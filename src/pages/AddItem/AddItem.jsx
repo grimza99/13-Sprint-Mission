@@ -1,5 +1,5 @@
 import Button from "../../components/common/Button/Button";
-import Input from "../../components/common/Input/Input";
+import { NormalInput, ImgInput } from "../../components/common/Input/Input";
 import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
 import { useEffect, useState } from "react";
@@ -14,15 +14,18 @@ function AddItem() {
 
   useEffect(() => {}, []);
 
-  // const handleClickTagDelete = (tag) => {
-  //   const filterTags = tags.filter((prev) => prev !== tag);
-  //   setTags(filterTags);
-  // };
+  const handleClickTagDelete = (tag) => {
+    const filterTags = tags.filter((prev) => prev !== tag);
+    setTags(filterTags);
+  };
   const CreateTag = (e) => {
-    if (e.key === "Enter" && e.target.value.trim() !== "") {
-      setTags((prev) => [...prev, e.target.value]); // 배열이면 prev에 새 태그 추가
-      e.target.value = ""; // 입력값 초기화;
-      console.log(tags);
+    const trimmedValue = e.target.value.trim();
+    if (e.key === "Enter" && trimmedValue !== "") {
+      const notDuplicate = tags.find((tag) => tag === trimmedValue);
+      if (!notDuplicate) {
+        setTags((prev) => [...prev, trimmedValue]);
+      }
+      e.target.value = "";
     }
   };
 
@@ -36,16 +39,31 @@ function AddItem() {
         </S.ButtonContainer>
       </S.FlexDiv>
       <S.InputsContainer>
-        <Input img label="상품 이미지" placeholder="이미지등록" />
-        <Input normal label="상품명" placeholder="상품명을 입력해주세요" />
-        <Input
+        <ImgInput
+          type="file"
+          img
+          label="상품 이미지"
+          accept="image/jpeg, image/png"
+        ></ImgInput>
+
+        <NormalInput
+          normal
+          label="상품명"
+          placeholder="상품명을 입력해주세요"
+        />
+        <NormalInput
           textArea
           label="상품 소개"
           placeholder="상품 소개를 입력해주세요"
         />
-        <Input normal label="판매가격" placeholder="판매 가격을 입력해주세요" />
+        <NormalInput
+          normal
+          label="판매가격"
+          placeholder="판매 가격을 입력해주세요"
+        />
         <S.TagInputContainer>
-          <Input
+          <NormalInput
+            name="img"
             onKeyUp={CreateTag}
             onChange={handleOnChangeValue}
             normal
@@ -57,7 +75,7 @@ function AddItem() {
               tags.map((tag) => {
                 return (
                   <div key={tag}>
-                    <Tag value={tag} />
+                    <Tag value={tag} onClick={handleClickTagDelete} />
                   </div>
                 );
               })}

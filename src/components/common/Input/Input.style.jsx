@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import theme from "../../../style/theme";
-
+import plusIcon from "../../../assets/icons/plusIcon.svg";
 export const InputWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -41,15 +41,8 @@ export const Input = styled.input`
   ${(props) =>
     props.$img &&
     css`
-      width: 282px;
-      height: 282px;
-
-    ::placeholder {
-      color: ${theme.color.gray400};
-      line-height: normal;
-      font-size: 16px;
-      text-align: center;
-      justify-content: center;
+      z-index: -1;
+      display: none;
     `}
   ${(props) =>
     props.$normal &&
@@ -64,6 +57,34 @@ export const Input = styled.input`
     `}
 `;
 
-export const Plus = styled.img`
+export const ImgInput = styled.div`
+  width: 282px;
+  height: 282px;
+  color: ${theme.color.gray800};
+  background-color: ${theme.color.gray100};
+  border-radius: 12px;
+  position: relative;
+  border: none;
+`;
+export const PlusLabelContainer = styled.label`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: ${theme.color.gray400};
+  line-height: normal;
+  font-size: 16px;
+  text-align: center;
+`;
+export const PlusIcon = styled.img`
   width: 48px;
+`;
+export const ImgInputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+`;
+export const PreviewImg = styled.img`
+  width: 282px;
+  height: 282px;
 `;

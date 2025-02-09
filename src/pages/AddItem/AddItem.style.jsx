@@ -30,6 +30,7 @@ export const InputsContainer = styled.div`
 
 export const TagInputContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 14px;
 `;
 
