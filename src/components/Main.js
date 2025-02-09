@@ -1,7 +1,7 @@
 import useWindowSize from "../hooks/useWindowSize";
 import App from "../App";
 import HomePage from "../pages/HomePage";
-import AddItem from "../pages/AddItem/AddItem";
+import AddItem from "../pages/AddItem/AddItem.jsx";
 //
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components"; //import

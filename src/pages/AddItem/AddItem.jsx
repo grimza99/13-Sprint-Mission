@@ -2,7 +2,7 @@ import Button from "../../components/common/Button/Button";
 import Input from "../../components/common/Input/Input";
 import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //
 function AddItem() {
   const [selectedImg, setSelectedImg] = useState("");
@@ -11,16 +11,22 @@ function AddItem() {
   const [price, setPrice] = useState(0);
   const [tags, setTags] = useState([]);
   //
-  const handleClickTagDelete = (tag) => {
-    const filterTags = tags.find((prev) => prev !== tag);
-    setTags(filterTags);
-  };
+
+  useEffect(() => {}, []);
+
+  // const handleClickTagDelete = (tag) => {
+  //   const filterTags = tags.filter((prev) => prev !== tag);
+  //   setTags(filterTags);
+  // };
   const CreateTag = (e) => {
-    if (e.key === "Enter") {
-      setTags([tags.concat(value)]);
+    if (e.key === "Enter" && e.target.value.trim() !== "") {
+      setTags((prev) => [...prev, e.target.value]); // 배열이면 prev에 새 태그 추가
+      e.target.value = ""; // 입력값 초기화;
+      console.log(tags);
     }
-    console.log(tags);
   };
+
+  const handleOnChangeValue = (value) => {};
   return (
     <S.Container>
       <S.FlexDiv>
@@ -40,7 +46,8 @@ function AddItem() {
         <Input normal label="판매가격" placeholder="판매 가격을 입력해주세요" />
         <S.TagInputContainer>
           <Input
-            onKeyDown={CreateTag}
+            onKeyUp={CreateTag}
+            onChange={handleOnChangeValue}
             normal
             label="태그"
             placeholder="태그를 입력해주세요"
@@ -50,7 +57,7 @@ function AddItem() {
               tags.map((tag) => {
                 return (
                   <div key={tag}>
-                    <Tag value={tag} onClick={handleClickTagDelete(tag)} />
+                    <Tag value={tag} />
                   </div>
                 );
               })}
