@@ -1,5 +1,9 @@
 import Button from "../../components/common/Button/Button";
-import { NormalInput, ImgInput } from "../../components/common/Input/Input";
+import {
+  NormalInput,
+  ImgInput,
+  TagInput,
+} from "../../components/common/Input/Input";
 import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
 import { useState } from "react";
@@ -11,10 +15,11 @@ function AddItem() {
     name: "",
     content: "",
     price: 0,
-    tag: tags,
+    tag: [],
   });
   //
-
+  console.log(tags);
+  console.log(data);
   const handleChange = (name, value) => {
     setData((prev) => ({
       ...prev,
@@ -36,7 +41,14 @@ function AddItem() {
     }
   };
   const handleOnChange = () => {};
-  const handleOnChangeValue = (value) => {};
+  const handlePriceChange = (value) => {
+    if (Number(value) >= 0) {
+      handleChange("price", Number(value));
+    }
+  };
+  const handleOnChangeValue = (value) => {
+    handleChange("tag", [...tags, ...value]);
+  };
   return (
     <S.Background>
       <S.Container>
@@ -49,16 +61,14 @@ function AddItem() {
         <S.InputsContainer>
           <ImgInput
             type="file"
-            img
             name="img"
             onChange={(value) => handleChange("img", value)}
             label="상품 이미지"
             accept="image/jpeg, image/png"
-          ></ImgInput>
+          />
 
           <NormalInput
             name="name"
-            normal
             label="상품명"
             placeholder="상품명을 입력해주세요"
             onChange={(value) => handleChange("name", value)}
@@ -70,17 +80,15 @@ function AddItem() {
             onChange={(value) => handleChange("content", value)}
           />
           <NormalInput
-            normal
             label="판매가격"
             placeholder="판매 가격을 입력해주세요"
-            onChange={(value) => handleChange("price", value)}
+            onChange={handlePriceChange}
           />
           <S.TagInputContainer>
-            <NormalInput
+            <TagInput
               name="img"
               onKeyUp={CreateTag}
               onChange={handleOnChangeValue}
-              normal
               label="태그"
               placeholder="태그를 입력해주세요"
             />

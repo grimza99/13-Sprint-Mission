@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import theme from "../../../style/theme";
-import plusIcon from "../../../assets/icons/plusIcon.svg";
 export const InputWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -39,22 +38,38 @@ export const Input = styled.input`
   }
 
   ${(props) =>
-    props.$img &&
-    css`
-      z-index: -1;
-      display: none;
-    `}
-  ${(props) =>
     props.$normal &&
     css`
       height: 56px;
     `}
-     ${(props) =>
+  ${(props) =>
     props.$textArea &&
     css`
       padding-top: 20px;
       height: 282px;
     `}
+`;
+
+export const ImgInputTag = styled.input`
+  z-index: -1;
+  display: none;
+  width: 100%;
+  background-color: ${theme.color.gray100};
+  font-size: 16px;
+  font-weight: 400px;
+  line-height: 26px;
+  border-radius: 12px;
+  border: none;
+  color: ${theme.color.gray800};
+  position: relative;
+  ::placeholder {
+    color: ${theme.color.gray400};
+    line-height: normal;
+    font-size: 16px;
+    text-align: left;
+    position: absolute;
+    top: 10px;
+  }
 `;
 
 export const ImgInput = styled.div`
