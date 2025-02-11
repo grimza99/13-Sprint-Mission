@@ -26,13 +26,16 @@ export const Input = styled.input`
   border-radius: 12px;
   border: none;
   color: ${theme.color.gray800};
-  padding: 24px;
-  ::placeholder {
+  padding: 24px 10px;
+  position: relative;
+  &::placeholder {
     color: ${theme.color.gray400};
     line-height: normal;
     font-size: 16px;
     text-align: left;
-    /* font: pretendard 16px r */
+    position: absolute;
+    top: 10px;
+    left: 10px;
   }
 
   ${(props) =>

@@ -13,9 +13,9 @@ export const Button = styled.button`
   line-height: 26px;
   font-weight: 600px;
   color: ${theme.color.white};
-  background-color: ${theme.color.gray400};
+  background-color: ${theme.color.blue};
 
-  :active {
-    background-color: ${theme.color.blue};
+  &:disabled {
+    background-color: ${theme.color.gray400};
   }
 `;
