@@ -48,6 +48,26 @@ function AddItem() {
     }
   };
   console.log(data);
+  const requiredInput = ["name", "content", "tags", "price"];
+  const isInputValid = requiredInput.every((field) => {
+    const value = data[field];
+    switch (typeof value) {
+      case "object":
+        if (Array.isArray(value) && value.length === 0) {
+          return false;
+        }
+        return true;
+        break;
+      case "string":
+        return value.trim() !== "";
+
+      case "number":
+        return value > 0;
+      default:
+        return false;
+    }
+  });
+  console.log(isInputValid);
 
   return (
     <S.Background>
@@ -55,7 +75,7 @@ function AddItem() {
         <S.FlexDiv>
           <S.Title>상품등록페이지</S.Title>
           <S.ButtonContainer>
-            <Button>등록</Button>
+            <Button disabled={!isInputValid}>등록</Button>
           </S.ButtonContainer>
         </S.FlexDiv>
         <S.InputsContainer>
