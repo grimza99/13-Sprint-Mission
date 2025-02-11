@@ -1,44 +1,45 @@
 import Button from "../../components/common/Button/Button";
-import {
-  NormalInput,
-  ImgInput,
-  TagInput,
-} from "../../components/common/Input/Input";
+import * as I from "../../components/common/Input/Input";
 import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
 import { useState } from "react";
 //
+const INITIAL_DATA = {
+  img: "",
+  name: "",
+  content: "",
+  price: 0,
+  tags: [],
+};
 function AddItem() {
-  const [tags, setTags] = useState([]);
-  const [data, setData] = useState({
-    img: "",
-    name: "",
-    content: "",
-    price: 0,
-    tag: [],
-  });
+  const [tag, setTag] = useState("");
+  const [data, setData] = useState(INITIAL_DATA);
   //
-  console.log(tags);
-  console.log(data);
+
   const handleChange = (name, value) => {
     setData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
-  const handleClickTagDelete = (tag) => {
-    const filterTags = tags.filter((prev) => prev !== tag);
-    setTags(filterTags);
-  };
+
   const CreateTag = (e) => {
-    const trimmedValue = e.target.value.trim();
-    if (e.key === "Enter" && trimmedValue !== "") {
-      const notDuplicate = tags.find((tag) => tag === trimmedValue);
+    if (e.key === "Enter" && tag.trim() !== "") {
+      const notDuplicate = data.tags.includes(tag.trim());
       if (!notDuplicate) {
-        setTags((prev) => [...prev, trimmedValue]);
+        setData((prev) => ({
+          ...prev,
+          tags: [...prev.tags, tag.trim()],
+        }));
       }
+      setTag("");
       e.target.value = "";
     }
+  };
+
+  const handleClickTagDelete = (tag) => {
+    const filterTags = data.tags.filter((prev) => prev !== tag);
+    setData((prev) => ({ ...prev, tags: filterTags }));
   };
 
   const handlePriceChange = (value) => {
@@ -46,9 +47,8 @@ function AddItem() {
       handleChange("price", Number(value));
     }
   };
-  const handleOnChangeValue = (value) => {
-    handleChange("tag", [...tags, ...value]);
-  };
+  console.log(data);
+
   return (
     <S.Background>
       <S.Container>
@@ -59,7 +59,7 @@ function AddItem() {
           </S.ButtonContainer>
         </S.FlexDiv>
         <S.InputsContainer>
-          <ImgInput
+          <I.ImgInput
             type="file"
             name="img"
             onChange={(value) => handleChange("img", value)}
@@ -67,34 +67,38 @@ function AddItem() {
             accept="image/jpeg, image/png"
           />
 
-          <NormalInput
+          <I.NormalInput
+            normal
             name="name"
             label="상품명"
             placeholder="상품명을 입력해주세요"
             onChange={(value) => handleChange("name", value)}
           />
-          <NormalInput
+          <I.NormalInput
             textArea
             label="상품 소개"
             placeholder="상품 소개를 입력해주세요"
             onChange={(value) => handleChange("content", value)}
           />
-          <NormalInput
+          <I.NormalInput
+            normal
             label="판매가격"
             placeholder="판매 가격을 입력해주세요"
             onChange={handlePriceChange}
           />
           <S.TagInputContainer>
-            <TagInput
-              name="img"
+            <I.TagInput
+              normal
+              type="text"
+              value={tag}
               onKeyUp={CreateTag}
-              onChange={handleOnChangeValue}
               label="태그"
+              onChange={(e) => setTag(e.target.value)}
               placeholder="태그를 입력해주세요"
             />
             <S.TagsContainer>
-              {tags &&
-                tags.map((tag) => {
+              {data.tags &&
+                data.tags.map((tag) => {
                   return (
                     <div key={tag}>
                       <Tag value={tag} onClick={handleClickTagDelete} />

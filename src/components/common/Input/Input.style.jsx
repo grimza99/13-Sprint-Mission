@@ -26,14 +26,12 @@ export const Input = styled.input`
   border-radius: 12px;
   border: none;
   color: ${theme.color.gray800};
-  position: relative;
+  padding: 24px;
   ::placeholder {
     color: ${theme.color.gray400};
     line-height: normal;
     font-size: 16px;
     text-align: left;
-    position: absolute;
-    top: 10px;
     /* font: pretendard 16px r */
   }
 
@@ -45,7 +43,7 @@ export const Input = styled.input`
   ${(props) =>
     props.$textArea &&
     css`
-      padding-top: 20px;
+      padding-top: 24px;
       height: 282px;
     `}
 `;

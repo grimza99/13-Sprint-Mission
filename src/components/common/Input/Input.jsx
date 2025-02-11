@@ -25,7 +25,7 @@ export function NormalInput({ label, children, placeholder, value, ...props }) {
   );
 }
 //
-export function ImgInput({ value, onChange, onClick, ...props }) {
+export function ImgInput({ value, label, onChange, onClick, ...props }) {
   const { ...rest } = props;
   const imgRef = useRef();
   const [imgPreview, setImgPreview] = useState("");
@@ -36,12 +36,13 @@ export function ImgInput({ value, onChange, onClick, ...props }) {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImgPreview(reader.result);
+      onChange(reader.result);
     };
-    onChange(imgPreview);
   };
   //
   const handleClickImgDelete = () => {
     setImgPreview("");
+    onChange("");
   };
   return (
     <S.ImgInputWrapper>
@@ -71,10 +72,17 @@ export function ImgInput({ value, onChange, onClick, ...props }) {
   );
 }
 //
-export function TagInput({ label, children, placeholder, value, ...props }) {
-  const { name, type, normal, textArea, onChange, onKeyUp, ...rest } = props;
+export function TagInput({
+  label,
+  onChange,
+  children,
+  placeholder,
+  onKeyUp,
+  value,
+  ...props
+}) {
+  const { name, type, normal, textArea, ...rest } = props;
   const handleChange = (e) => {
-    onChange(e.target.value);
     onKeyUp(e);
   };
   return (
@@ -87,8 +95,8 @@ export function TagInput({ label, children, placeholder, value, ...props }) {
         $normal={normal}
         $textArea={textArea}
         placeholder={placeholder}
-        onChange={handleChange}
-        onKeyUp={onKeyUp}
+        onKeyUp={handleChange}
+        onChange={onChange}
         {...rest}
       ></S.Input>
     </S.InputWrapper>
