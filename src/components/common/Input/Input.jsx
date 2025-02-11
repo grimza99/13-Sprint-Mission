@@ -1,6 +1,8 @@
 import PlusIcon from "../../../assets/icons/plusIcon.svg";
+import DeleteIcon from "../../../assets/icons/DeleteIcon.svg";
 import * as S from "./Input.style";
 import { useRef, useState } from "react";
+//
 export function NormalInput({ label, children, placeholder, value, ...props }) {
   const { name, type, normal, textArea, onChange, ...rest } = props;
   const handleChange = (e) => {
@@ -22,12 +24,12 @@ export function NormalInput({ label, children, placeholder, value, ...props }) {
     </S.InputWrapper>
   );
 }
-
-export function ImgInput({ value, ...props }) {
+//
+export function ImgInput({ value, onChange, onClick, ...props }) {
   const { ...rest } = props;
   const imgRef = useRef();
   const [imgPreview, setImgPreview] = useState("");
-  //
+
   const handlePreviewImg = () => {
     const file = imgRef.current.files[0];
     const reader = new FileReader();
@@ -35,6 +37,11 @@ export function ImgInput({ value, ...props }) {
     reader.onloadend = () => {
       setImgPreview(reader.result);
     };
+    onChange(imgPreview);
+  };
+  //
+  const handleClickImgDelete = () => {
+    setImgPreview("");
   };
   return (
     <S.ImgInputWrapper>
@@ -52,11 +59,18 @@ export function ImgInput({ value, ...props }) {
           <p>이미지 등록</p>
         </S.PlusLabelContainer>
       </S.ImgInput>
-      <div>{imgPreview && <S.PreviewImg src={imgPreview} />}</div>
+      <div>
+        {imgPreview && (
+          <S.ImgPreviewWrapper>
+            <S.PreviewImg src={imgPreview} />
+            <S.DeleteImg src={DeleteIcon} onClick={handleClickImgDelete} />
+          </S.ImgPreviewWrapper>
+        )}
+      </div>
     </S.ImgInputWrapper>
   );
 }
-
+//
 export function TagInput({ label, children, placeholder, value, ...props }) {
   const { name, type, normal, textArea, onChange, onKeyUp, ...rest } = props;
   const handleChange = (e) => {

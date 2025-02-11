@@ -103,3 +103,12 @@ export const PreviewImg = styled.img`
   width: 282px;
   height: 282px;
 `;
+
+export const ImgPreviewWrapper = styled.div`
+  position: relative;
+`;
+export const DeleteImg = styled.img`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+`;

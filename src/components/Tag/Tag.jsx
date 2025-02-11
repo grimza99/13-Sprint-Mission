@@ -1,4 +1,4 @@
-import DeleteButton from "../../assets/icons/TagIcon.svg";
+import DeleteButton from "../../assets/icons/DeleteIcon.svg";
 import * as S from "./Tag.style";
 export default function Tag({ value, onClick }) {
   const handleClickDeleteBtm = () => {

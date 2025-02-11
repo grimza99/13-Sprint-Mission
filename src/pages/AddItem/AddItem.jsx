@@ -40,7 +40,7 @@ function AddItem() {
       e.target.value = "";
     }
   };
-  const handleOnChange = () => {};
+
   const handlePriceChange = (value) => {
     if (Number(value) >= 0) {
       handleChange("price", Number(value));
