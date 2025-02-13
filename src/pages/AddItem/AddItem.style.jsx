@@ -2,20 +2,27 @@ import styled from "styled-components";
 
 export const Background = styled.div`
   width: 100%;
+  margin: 0;
   overflow-x: none;
+  padding-top: 24px;
+  @media (max-width: 375px) {
+    padding: 24px 15px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    padding: 16px 24px;
+  }
 `;
 export const Container = styled.div`
-  width: 1200px;
+  width: 100%;
   display: flex;
   gap: 29px;
   flex-direction: column;
-  margin: 0 auto;
 
   @media (max-width: 375px) {
-    width: 346px;
+    width: 100%;
   }
-  @media (min-width: none) and (max-width: 370px) {
-    width: 696px;
+  @media (min-width: 376px) and (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -30,6 +37,8 @@ export const Title = styled.p`
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 export const ButtonContainer = styled.div`
   width: 74px;

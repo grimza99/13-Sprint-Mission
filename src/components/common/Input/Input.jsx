@@ -53,8 +53,8 @@ export function ImgInput({ placeholder, type, name, onChange, ...props }) {
   };
   return (
     <S.ImgInputWrapper>
-      <S.ImgInput>
-        <S.ImgInputTag
+      <S.ImgInputContainer>
+        <S.ImgInput
           onChange={handlePreviewImg}
           type={type}
           name={name}
@@ -67,7 +67,7 @@ export function ImgInput({ placeholder, type, name, onChange, ...props }) {
           <S.PlusIcon src={PlusIcon} />
           <p>{placeholder}</p>
         </S.PlusLabelContainer>
-      </S.ImgInput>
+      </S.ImgInputContainer>
       <div>
         {imgPreview && (
           <S.ImgPreviewWrapper>

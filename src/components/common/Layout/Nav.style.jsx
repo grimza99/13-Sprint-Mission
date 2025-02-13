@@ -10,6 +10,7 @@ export const HeaderArea = styled.div`
   height: 70px;
   background-color: ${theme.color.white};
   padding: 10px 200px;
+  z-index: 50;
   @media (max-width: 375px) {
     padding: 15px 15px;
   }
@@ -66,9 +67,10 @@ export const NavLinkWrapper = styled.div`
 `;
 export const activeLink = ({ isActive }) => ({
   color: isActive ? "#3692FF" : "#4b5563",
-  width: `${({ $device }) => ($device == "mobile" ? "70px" : "108px")}`,
-  padding: `${({ $device }) => ($device == "mobile" ? "7px 0px" : "11px 0px")}`,
-  fontSize: `${({ $device }) => ($device == "mobile" ? "16px" : "18")}`,
+  width: `${({ $device }) => ($device === "mobile" ? "70px" : "108px")}`,
+  padding: `${({ $device }) =>
+    $device === "mobile" ? "7px 0px" : "11px 0px"}`,
+  fontSize: `${({ $device }) => ($device === "mobile" ? "16px" : "18")}`,
   fontWeight: "700",
   lineHeight: "26px",
   textAlign: "center",

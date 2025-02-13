@@ -12,15 +12,17 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-
   body {
     font-family: 'Pretendard', sans-serif;
     font-display: swap;
+    margin: 0; 
+    padding: 0;
   }
-  img {
-  border-radius: 16px;
+  html {
+  margin: 0; 
+  padding: 0;
   }
-    a {
+  a {
     text-decoration: none; 
     color: #ffffff;
   }

@@ -51,8 +51,34 @@ export const Input = styled.input`
     `}
 `;
 
-export const ImgInputTag = styled.input`
-  z-index: -1;
+//imgInput 부분
+export const ImgInputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  @media (max-width: 375px) {
+    gap: 10px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    gap: 10px;
+  }
+`;
+export const ImgInputContainer = styled.div`
+  width: 282px;
+  aspect-ratio: 1/ 1;
+  color: ${theme.color.gray800};
+  background-color: ${theme.color.gray100};
+  border-radius: 12px;
+  position: relative;
+  border: none;
+  @media (max-width: 375px) {
+    width: 168px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    width: 168px;
+  }
+`;
+export const ImgInput = styled.input`
   display: none;
   width: 100%;
   background-color: ${theme.color.gray100};
@@ -73,15 +99,6 @@ export const ImgInputTag = styled.input`
   }
 `;
 
-export const ImgInput = styled.div`
-  width: 282px;
-  height: 282px;
-  color: ${theme.color.gray800};
-  background-color: ${theme.color.gray100};
-  border-radius: 12px;
-  position: relative;
-  border: none;
-`;
 export const PlusLabelContainer = styled.label`
   position: absolute;
   top: 50%;
@@ -95,19 +112,20 @@ export const PlusLabelContainer = styled.label`
 export const PlusIcon = styled.img`
   width: 48px;
 `;
-export const ImgInputWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-`;
-export const PreviewImg = styled.img`
-  width: 282px;
-  height: 282px;
-`;
-
 export const ImgPreviewWrapper = styled.div`
   position: relative;
 `;
+export const PreviewImg = styled.img`
+  width: 282px;
+  aspect-ratio: 1/1;
+  @media (max-width: 375px) {
+    width: 168px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    width: 168px;
+  }
+`;
+
 export const DeleteImg = styled.img`
   position: absolute;
   top: 15px;
