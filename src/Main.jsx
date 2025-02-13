@@ -3,10 +3,10 @@ import { createGlobalStyle } from "styled-components";
 //
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import App from "./App.js";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage.jsx";
 import AddItem from "./pages/AddItem/AddItem.jsx";
+import Product from "./pages/ProductId/Product.jsx";
 //
-import useWindowSize from "./hooks/useWindowSize";
 //
 const GlobalStyle = createGlobalStyle`
   * {
@@ -29,7 +29,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 //
 function Main() {
-  const deviceType = useWindowSize();
   return (
     <>
       <GlobalStyle />
@@ -37,7 +36,8 @@ function Main() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route element={<App />}>
-            <Route path="/items" element={<HomePage device={deviceType} />} />
+            <Route path="/items" element={<HomePage />} />
+            <Route path="/items/:productId" element={<Product />} />
             <Route path="/additem" element={<AddItem />} />
           </Route>
         </Routes>

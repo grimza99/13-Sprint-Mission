@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //
 import * as S from "./HomePage.style";
-import ItemsList from "../components/ItemsList";
-import { getProducts, bestProducts } from "../api";
-import PageCount from "../components/pageCount";
-import useWindowSize from "../hooks/useWindowSize";
-import SelectBox from "../components/SelectBox";
-
+import ItemsList from "../../components/ItemsList";
+import { getProducts, bestProducts } from "../../api/product.api";
+import PageCount from "../../components/pageCount";
+import useWindowSize from "../../hooks/useWindowSize";
+import SelectBox from "../../components/SelectBox";
 //
 
 //
@@ -46,11 +45,11 @@ function HomePage() {
       </div>
       <S.InputDiv device={device}>
         <h3> 전체 상품</h3>
-        <InputForm
+        <S.InputForm
           type="text"
           placeholder="검색할 상품을 입력해주세요"
           device={device}
-        ></InputForm>
+        ></S.InputForm>
         <S.SearchBtn device={device} type="submit">
           <Link to="/additem">상품 등록하기</Link>
         </S.SearchBtn>
