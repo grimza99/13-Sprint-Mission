@@ -1,9 +1,9 @@
-import pandaImg1 from "../../assets/root_img/Panda_Top_Img.svg";
-import pandaImg2 from "../../assets/root_img/Panda_Bottom_Img.svg";
+import pandaImg1 from "../../assets/Logo/Panda_Top_Img.svg";
+import pandaImg2 from "../../assets/Logo/Panda_Bottom_Img.svg";
 //
-import LandingNav from "../../components/common/Nav/LandingNav";
+import Nav from "../../components/common/Layout/Nav";
 import Card from "../../components/Card/Card";
-import LandingFooter from "./LandingFooter";
+import LandingFooter from "../../components/common/Layout/LandingFooter";
 import useWindowSize from "../../hooks/useWindowSize";
 import Button from "../../components/common/Button/Button";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ function LandingPage() {
   const device = useWindowSize();
   return (
     <>
-      <LandingNav />
+      <Nav />
       <div>
         <div>
           <div>

@@ -3,8 +3,15 @@ import DeleteIcon from "../../../assets/icons/DeleteIcon.svg";
 import * as S from "./Input.style";
 import { useRef, useState } from "react";
 //
-export function NormalInput({ label, children, placeholder, value, ...props }) {
-  const { name, type, normal, textArea, onChange, ...rest } = props;
+export function NormalInput({
+  type,
+  label,
+  children,
+  placeholder,
+  value,
+  ...props
+}) {
+  const { name, normal, textArea, onChange, ...rest } = props;
   const handleChange = (e) => {
     onChange(e.target.value);
   };
@@ -25,7 +32,7 @@ export function NormalInput({ label, children, placeholder, value, ...props }) {
   );
 }
 //
-export function ImgInput({ value, label, onChange, onClick, ...props }) {
+export function ImgInput({ placeholder, type, name, onChange, ...props }) {
   const { ...rest } = props;
   const imgRef = useRef();
   const [imgPreview, setImgPreview] = useState("");
@@ -49,7 +56,8 @@ export function ImgInput({ value, label, onChange, onClick, ...props }) {
       <S.ImgInput>
         <S.ImgInputTag
           onChange={handlePreviewImg}
-          type="file"
+          type={type}
+          name={name}
           id="fileUpload"
           accept="image/*"
           ref={imgRef}
@@ -57,7 +65,7 @@ export function ImgInput({ value, label, onChange, onClick, ...props }) {
         />
         <S.PlusLabelContainer htmlFor="fileUpload">
           <S.PlusIcon src={PlusIcon} />
-          <p>이미지 등록</p>
+          <p>{placeholder}</p>
         </S.PlusLabelContainer>
       </S.ImgInput>
       <div>
@@ -81,7 +89,7 @@ export function TagInput({
   value,
   ...props
 }) {
-  const { name, type, normal, textArea, ...rest } = props;
+  const { name, type, normal, ...rest } = props;
   const handleChange = (e) => {
     onKeyUp(e);
   };
@@ -93,7 +101,6 @@ export function TagInput({
         type={type}
         value={value}
         $normal={normal}
-        $textArea={textArea}
         placeholder={placeholder}
         onKeyUp={handleChange}
         onChange={onChange}

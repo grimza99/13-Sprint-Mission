@@ -1,4 +1,5 @@
 import Button from "../../components/common/Button/Button";
+import { placeholder } from "../../constants/globalConstant";
 import * as I from "../../components/common/Input/Input";
 import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
@@ -47,7 +48,6 @@ function AddItem() {
       handleChange("price", Number(value));
     }
   };
-  console.log(data);
   const requiredInput = ["name", "content", "tags", "price"];
   const isInputValid = requiredInput.every((field) => {
     const value = data[field];
@@ -57,7 +57,6 @@ function AddItem() {
           return false;
         }
         return true;
-        break;
       case "string":
         return value.trim() !== "";
 
@@ -67,13 +66,12 @@ function AddItem() {
         return false;
     }
   });
-  console.log(isInputValid);
 
   return (
     <S.Background>
       <S.Container>
         <S.FlexDiv>
-          <S.Title>상품등록페이지</S.Title>
+          <S.Title>상품 등록하기</S.Title>
           <S.ButtonContainer>
             <Button disabled={!isInputValid}>등록</Button>
           </S.ButtonContainer>
@@ -82,9 +80,8 @@ function AddItem() {
           <I.ImgInput
             type="file"
             name="img"
+            placeholder={placeholder.img}
             onChange={(value) => handleChange("img", value)}
-            label="상품 이미지"
-            accept="image/jpeg, image/png"
           />
 
           <I.NormalInput

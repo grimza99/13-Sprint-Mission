@@ -10,6 +10,13 @@ export const Container = styled.div`
   gap: 29px;
   flex-direction: column;
   margin: 0 auto;
+
+  @media (max-width: 375px) {
+    width: 346px;
+  }
+  @media (min-width: none) and (max-width: 370px) {
+    width: 696px;
+  }
 `;
 
 export const FlexDiv = styled.div`

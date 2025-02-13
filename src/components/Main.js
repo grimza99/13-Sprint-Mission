@@ -1,12 +1,13 @@
-import useWindowSize from "../hooks/useWindowSize";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+//
+import LandingPage from "../pages/LandingPage/LandingPage.jsx";
 import App from "../App";
 import HomePage from "../pages/HomePage";
 import AddItem from "../pages/AddItem/AddItem.jsx";
 //
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import { createGlobalStyle } from "styled-components"; //import
-import LandingPage from "../pages/Landing/LandingPage";
-
+import useWindowSize from "../hooks/useWindowSize";
+//
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -24,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
     color: #ffffff;
   }
 `;
-
 //
 function Main() {
   const deviceType = useWindowSize();

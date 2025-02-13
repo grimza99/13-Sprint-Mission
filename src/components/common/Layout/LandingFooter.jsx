@@ -1,9 +1,9 @@
-import facebook_ic from "../../assets/root_img/Facebook_ic.svg";
-import insta_ic from "../../assets/root_img/Instagram_ic.svg";
-import twitter_ic from "../../assets/root_img/Twitter_ic.svg";
-import youtube_ic from "../../assets/root_img/Youtube_ic.svg";
+import facebook_ic from "../../../assets/snsLogo/Facebook_ic.svg";
+import insta_ic from "../../../assets/snsLogo/Instagram_ic.svg";
+import twitter_ic from "../../../assets/snsLogo/Twitter_ic.svg";
+import youtube_ic from "../../../assets/snsLogo/Youtube_ic.svg";
 //
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize";
 import { Link } from "react-router-dom";
 //
 function LandingFooter() {
