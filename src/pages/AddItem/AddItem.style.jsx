@@ -4,7 +4,7 @@ export const Background = styled.div`
   width: 100%;
   margin: 0;
   overflow-x: none;
-  padding-top: 24px;
+  padding: 24px 24px;
   @media (max-width: 375px) {
     padding: 24px 15px;
   }

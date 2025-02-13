@@ -33,6 +33,7 @@ export const Contents = styled.div`
 export const NavContents = styled.div`
   display: flex;
   gap: 32px;
+  align-items: center;
 
   @media (max-width: 375px) {
     gap: 8px;

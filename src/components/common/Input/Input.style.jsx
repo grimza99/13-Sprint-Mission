@@ -30,6 +30,7 @@ export const Input = styled.input`
   color: ${theme.color.gray800};
   position: relative;
   height: 56px;
+  padding: 16px 24px;
   &::placeholder {
     color: ${theme.color.gray400};
     line-height: normal;
@@ -38,6 +39,9 @@ export const Input = styled.input`
     position: absolute;
     top: 16px;
     left: 24px;
+  }
+  &:focus {
+    outline: none;
   }
   ${(props) =>
     props.$textArea &&
