@@ -1,5 +1,5 @@
 import Button from "../../components/common/Button/Button";
-import { placeholder } from "../../constants/globalConstant";
+import { placeholder, button } from "../../constants/globalConstant";
 import * as I from "../../components/common/Input/Input";
 import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
@@ -14,21 +14,18 @@ const INITIAL_DATA = {
 };
 function AddItem() {
   const [tag, setTag] = useState("");
-  const [data, setData] = useState(INITIAL_DATA);
+  const [formData, setFormData] = useState(INITIAL_DATA);
   //
-
-  const handleChange = (name, value) => {
-    setData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleChange = (target) => {
+    setFormData({ ...formData, [target.name]: target.value });
+    //ToDo: img 프로퍼티에는 imgInput에서 넘겨준 file 객체가 담기고 있음 추후 백엔드 확인해야함
   };
 
   const CreateTag = (e) => {
     if (e.key === "Enter" && tag.trim() !== "") {
-      const notDuplicate = data.tags.includes(tag.trim());
+      const notDuplicate = formData.tags.includes(tag.trim());
       if (!notDuplicate) {
-        setData((prev) => ({
+        setFormData((prev) => ({
           ...prev,
           tags: [...prev.tags, tag.trim()],
         }));
@@ -39,18 +36,13 @@ function AddItem() {
   };
 
   const handleClickTagDelete = (tag) => {
-    const filterTags = data.tags.filter((prev) => prev !== tag);
-    setData((prev) => ({ ...prev, tags: filterTags }));
+    const filterTags = formData.tags.filter((prev) => prev !== tag);
+    setFormData((prev) => ({ ...prev, tags: filterTags }));
   };
 
-  const handlePriceChange = (value) => {
-    if (Number(value) >= 0) {
-      handleChange("price", Number(value));
-    }
-  };
   const requiredInput = ["name", "content", "tags", "price"];
   const isInputValid = requiredInput.every((field) => {
-    const value = data[field];
+    const value = formData[field];
     switch (typeof value) {
       case "object":
         if (Array.isArray(value) && value.length === 0) {
@@ -66,14 +58,14 @@ function AddItem() {
         return false;
     }
   });
-
+  console.log(formData);
   return (
     <S.Background>
       <S.Container>
         <S.FlexDiv>
           <S.Title>상품 등록하기</S.Title>
           <S.ButtonContainer>
-            <Button disabled={!isInputValid}>등록</Button>
+            <Button disabled={!isInputValid}>{button.send}</Button>
           </S.ButtonContainer>
         </S.FlexDiv>
         <S.InputsContainer>
@@ -81,41 +73,42 @@ function AddItem() {
             type="file"
             name="img"
             placeholder={placeholder.img}
-            onChange={(value) => handleChange("img", value)}
+            onChange={handleChange}
           />
 
-          <I.NormalInput
-            normal
-            name="name"
+          <I.Input
             label="상품명"
-            placeholder="상품명을 입력해주세요"
-            onChange={(value) => handleChange("name", value)}
+            placeholder={placeholder.productName}
+            name="name"
+            onChange={handleChange}
           />
-          <I.NormalInput
+          <I.Input
             textArea
             label="상품 소개"
-            placeholder="상품 소개를 입력해주세요"
-            onChange={(value) => handleChange("content", value)}
+            placeholder={placeholder.content}
+            name="content"
+            onChange={handleChange}
           />
-          <I.NormalInput
-            normal
+          <I.Input
             label="판매가격"
-            placeholder="판매 가격을 입력해주세요"
-            onChange={handlePriceChange}
+            type="number"
+            placeholder={placeholder.price}
+            name="price"
+            onChange={handleChange}
           />
           <S.TagInputContainer>
-            <I.TagInput
-              normal
-              type="text"
+            <I.Input
+              tag
+              label="태그"
+              placeholder={placeholder.tag}
+              name="tags"
               value={tag}
               onKeyUp={CreateTag}
-              label="태그"
-              onChange={(e) => setTag(e.target.value)}
-              placeholder="태그를 입력해주세요"
+              onChange={setTag}
             />
             <S.TagsContainer>
-              {data.tags &&
-                data.tags.map((tag) => {
+              {formData.tags &&
+                formData.tags.map((tag) => {
                   return (
                     <div key={tag}>
                       <Tag value={tag} onClick={handleClickTagDelete} />

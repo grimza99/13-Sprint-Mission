@@ -3,29 +3,28 @@ import DeleteIcon from "../../../assets/icons/DeleteIcon.svg";
 import * as S from "./Input.style";
 import { useRef, useState } from "react";
 //
-export function NormalInput({
-  type,
-  label,
-  children,
-  placeholder,
-  value,
-  ...props
-}) {
-  const { name, normal, textArea, onChange, ...rest } = props;
+export function Input({ label, placeholder, name, onChange, ...props }) {
+  const { tag, onKeyUp, value, type, textArea, ...rest } = props;
   const handleChange = (e) => {
+    onChange(e.target);
+  };
+  const handleOnKeyUp = (e) => {
+    onKeyUp(e);
+  };
+  const handleChangeTag = (e) => {
     onChange(e.target.value);
   };
   return (
     <S.InputWrapper>
       <S.Label>{label}</S.Label>
       <S.Input
-        name={name}
-        type={type}
+        type={type ? type : "text"}
         value={value}
-        $normal={normal}
+        name={name}
         $textArea={textArea}
         placeholder={placeholder}
-        onChange={handleChange}
+        onChange={tag ? handleChangeTag : handleChange}
+        onKeyUp={tag ? handleOnKeyUp : undefined}
         {...rest}
       ></S.Input>
     </S.InputWrapper>
@@ -43,7 +42,7 @@ export function ImgInput({ placeholder, type, name, onChange, ...props }) {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImgPreview(reader.result);
-      onChange(reader.result);
+      onChange({ name: "img", value: file });
     };
   };
   //
@@ -77,35 +76,5 @@ export function ImgInput({ placeholder, type, name, onChange, ...props }) {
         )}
       </div>
     </S.ImgInputWrapper>
-  );
-}
-//
-export function TagInput({
-  label,
-  onChange,
-  children,
-  placeholder,
-  onKeyUp,
-  value,
-  ...props
-}) {
-  const { name, type, normal, ...rest } = props;
-  const handleChange = (e) => {
-    onKeyUp(e);
-  };
-  return (
-    <S.InputWrapper>
-      <S.Label>{label}</S.Label>
-      <S.Input
-        name={name}
-        type={type}
-        value={value}
-        $normal={normal}
-        placeholder={placeholder}
-        onKeyUp={handleChange}
-        onChange={onChange}
-        {...rest}
-      ></S.Input>
-    </S.InputWrapper>
   );
 }

@@ -29,6 +29,7 @@ export const Input = styled.input`
   border: none;
   color: ${theme.color.gray800};
   position: relative;
+  height: 56px;
   &::placeholder {
     color: ${theme.color.gray400};
     line-height: normal;
@@ -38,12 +39,6 @@ export const Input = styled.input`
     top: 16px;
     left: 24px;
   }
-
-  ${(props) =>
-    props.$normal &&
-    css`
-      height: 56px;
-    `}
   ${(props) =>
     props.$textArea &&
     css`
