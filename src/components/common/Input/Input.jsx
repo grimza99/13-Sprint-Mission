@@ -42,7 +42,7 @@ export function ImgInput({ placeholder, type, name, onChange, ...props }) {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImgPreview(reader.result);
-      onChange({ name: "img", value: file });
+      onChange({ name: "img", value: file }); //백엔드에서 img를 file 객체안받을시 수정 필요
     };
   };
   //
