@@ -7,7 +7,6 @@ import useWindowSize from "../../../hooks/useWindowSize";
 
 export default function Nav() {
   const device = useWindowSize();
-  console.log(device);
   return (
     <div>
       <S.HeaderArea>

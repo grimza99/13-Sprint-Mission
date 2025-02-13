@@ -58,7 +58,6 @@ function AddItem() {
         return false;
     }
   });
-  console.log(formData);
   return (
     <S.Background>
       <S.Container>
