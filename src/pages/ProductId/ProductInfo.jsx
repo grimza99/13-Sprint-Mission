@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 //
-import { getProductInfo } from "../../api/product.api";
-
 import profile from "../../assets/icons/myLogo.svg";
-import * as S from "./ProductInfo.style";
 import EditIcon from "../../assets/icons/Edit.Icon.svg";
+//
+import { getProductInfo } from "../../api/product.api";
+import * as S from "./ProductInfo.style";
 import Tag from "../../components/Tag/Tag";
+import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
 //
 
 export default function ProductInfo({ productId }) {
   const [product, setProduct] = useState({});
-
   const handleLoad = async () => {
     const info = await getProductInfo(productId);
     setProduct(info);
@@ -61,7 +61,7 @@ export default function ProductInfo({ productId }) {
               <S.CreatedAt>{formattedDate}</S.CreatedAt>
             </div>
           </S.ProfileWrapper>
-          <div>{product.favoriteCount}</div>
+          <BtnHeart active="false" border value={product.favoriteCount} />
         </S.ProfileFavorite>
       </S.InfoProfileWrapper>
     </S.ProductInfoWrapper>

@@ -6,7 +6,7 @@ import BtnHeart from "./common/BtnHeart/BtnHeart";
 export default function TestPage() {
   return (
     <>
-      <BtnHeart value="100" active={false} small />
+      <BtnHeart border value="100" active={false} small />
       <BtnHeart value="100" active={false} />
     </>
   );

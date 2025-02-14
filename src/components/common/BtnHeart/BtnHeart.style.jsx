@@ -5,6 +5,7 @@ import theme from "../../../style/theme";
 export const InactiveBtnHeart = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
   width: 87px;
   height: 40px;
@@ -22,11 +23,17 @@ export const InactiveBtnHeart = styled.button`
       width: 79px;
       height: 32px;
     `};
+  ${(props) =>
+    props.$border &&
+    css`
+      border: 1px solid ${theme.color.gray200};
+    `};
 `;
 
 export const ActiveBtnHeart = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   width: 87px;
   height: 40px;
@@ -42,6 +49,11 @@ export const ActiveBtnHeart = styled.button`
     css`
       width: 79px;
       height: 32px;
+    `};
+  ${(props) =>
+    props.$border &&
+    css`
+      border: 1px solid ${theme.color.gray200};
     `};
 `;
 
