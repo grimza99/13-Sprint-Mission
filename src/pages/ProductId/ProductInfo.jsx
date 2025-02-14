@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 //
 import profile from "../../assets/icons/myLogo.svg";
-import EditIcon from "../../assets/icons/Edit.Icon.svg";
 //
 import { getProductInfo } from "../../api/product.api";
 import * as S from "./ProductInfo.style";
 import Tag from "../../components/Tag/Tag";
 import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
+import KebabBtn from "../../components/common/Button/KebabBtn";
+import useFormatDate from "../../hooks/useFormatDate";
 //
 
 export default function ProductInfo({ productId }) {
@@ -18,11 +19,7 @@ export default function ProductInfo({ productId }) {
   useEffect(() => {
     handleLoad();
   }, []);
-
-  const date = new Date(product.createdAt);
-  const formattedDate = `${date.getFullYear()}.${String(
-    date.getMonth() + 1
-  ).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
+  const formattedDate = useFormatDate(product.createdAt);
   console.log(product);
   return (
     <S.ProductInfoWrapper>
@@ -40,7 +37,7 @@ export default function ProductInfo({ productId }) {
               <S.ProductTitle>{product.name}</S.ProductTitle>
               <S.ProductPrice>{product.price}원</S.ProductPrice>
             </S.TitlePriceWrapper>
-            <img src={EditIcon} alt="수정버튼" />
+            <KebabBtn />
           </S.TitleEditBtnWrapper>
           <div>
             <S.DesTitleContentWrapper>
