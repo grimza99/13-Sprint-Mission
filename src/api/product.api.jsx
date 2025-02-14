@@ -1,5 +1,5 @@
-const BASE_URL = "https://panda-market-api.vercel.app";
 import axios from "axios";
+const BASE_URL = "https://panda-market-api.vercel.app";
 
 export async function getProducts({
   device = "desktop",
@@ -30,10 +30,11 @@ export async function bestProducts({ device }) {
   return body;
 }
 
-export async function getProductInfo({ productId }) {
+export async function getProductInfo(productId) {
   try {
     const response = await axios.get(`${BASE_URL}/products/${productId}`);
     if (!response) throw new Error("제품정보 get api 실패");
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error, "제품정보 api 실패");
