@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../../style/theme";
 //
+
 export const Button = styled.button`
   display: flex;
   justify-content: center;

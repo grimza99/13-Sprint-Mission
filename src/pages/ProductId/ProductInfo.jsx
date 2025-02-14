@@ -26,13 +26,13 @@ export default function ProductInfo({ productId }) {
   console.log(product);
   return (
     <S.ProductInfoWrapper>
-      <S.ProductImgDiv>
+      <div>
         {product?.images && product?.images?.length > 0 ? (
-          <img src={product.images} alt="Product" />
+          <S.ProductImgDiv src={product.images} alt="Product" />
         ) : (
-          <img alt="이미지가 없습니다." />
+          <S.ProductImgDiv alt="이미지가 없습니다." />
         )}
-      </S.ProductImgDiv>
+      </div>
       <S.InfoProfileWrapper>
         <div>
           <S.TitleEditBtnWrapper>

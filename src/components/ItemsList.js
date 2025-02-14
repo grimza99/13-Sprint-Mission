@@ -1,4 +1,4 @@
-import favoriteImg from "../assets/favoriteLogo.svg";
+import favoriteImg from "../assets/icons/inactive.heart.icon.svg";
 import styled from "styled-components";
 import useWindowSize from "../hooks/useWindowSize";
 //

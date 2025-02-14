@@ -6,7 +6,7 @@ export const ProductInfoWrapper = styled.div`
   gap: 24px;
 `;
 
-export const ProductImgDiv = styled.div`
+export const ProductImgDiv = styled.img`
   width: 486px;
   aspect-ratio: 1/1;
 `;
