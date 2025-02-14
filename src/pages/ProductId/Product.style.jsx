@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.div`
-  width: 100%;
+  width: 1200px;
+  padding: 24px;
   //TODO전역 스타일 화 하기
 `;
 export const Contents = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 80px;
 `;

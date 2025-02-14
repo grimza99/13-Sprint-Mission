@@ -26,6 +26,9 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none; 
     color: #ffffff;
   }
+  p{
+    margin: 0px;
+  }
 `;
 //
 function Main() {

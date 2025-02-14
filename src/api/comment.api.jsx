@@ -10,6 +10,7 @@ export async function getProductComments(productId) {
     if (!res) {
       throw new Error("리뷰 불러오기 실패");
     }
+    console.log(res.data);
     return res.data;
   } catch (error) {
     console.error(error);

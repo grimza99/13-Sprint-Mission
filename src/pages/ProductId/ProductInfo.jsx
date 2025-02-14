@@ -1,38 +1,56 @@
+import { useState } from "react";
+//
+import profile from "../../assets/icons/myLogo.svg";
+import * as S from "./ProductInfo.style";
 import EditIcon from "../../assets/icons/Edit.Icon.svg";
 import Tag from "../../components/Tag/Tag";
+//
 export default function ProductInfo({ info }) {
+  const date = new Date(info.createdAt);
+  const formattedDate = `${date.getFullYear()}.${String(
+    date.getMonth() + 1
+  ).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
+
   return (
-    <div>
-      <div>
-        <img alt="상품 이미지" />
+    <S.ProductInfoWrapper>
+      <S.ProductImgDiv>
+        {info?.images && info.images.length > 0 ? (
+          <img src={info.images} alt="Product" />
+        ) : (
+          <img alt="이미지가 없습니다." />
+        )}
+      </S.ProductImgDiv>
+      <S.InfoProfileWrapper>
         <div>
+          <S.TitleEditBtnWrapper>
+            <S.TitlePriceWrapper>
+              <S.ProductTitle>{info.name}</S.ProductTitle>
+              <S.ProductPrice>{info.price}원</S.ProductPrice>
+            </S.TitlePriceWrapper>
+            <img src={EditIcon} alt="수정버튼" />
+          </S.TitleEditBtnWrapper>
           <div>
-            <div>
-              <div>
-                <div>{info.name}</div>
-                <div>{info.price}</div>
-              </div>
-              <img src={EditIcon} alt="수정버튼" />
-            </div>
-            <div>
-              <p>상품소개</p>
+            <S.DesTitleContentWrapper>
+              <S.DescriptionTitle>상품소개</S.DescriptionTitle>
               <div>{info.description}</div>
-              <p>상품 태그</p>
+            </S.DesTitleContentWrapper>
+            <S.DesTitleContentWrapper>
+              <S.DescriptionTitle>상품 태그</S.DescriptionTitle>
               <Tag value={info.tags[0]} />
-            </div>
-          </div>
-          <div>
-            <div>
-              <img alt="프로필이미지" />
-              <div>
-                <p>{info.nickname}</p>
-                <p>{info.createdAt}</p>
-              </div>
-            </div>
-            <div>{info.favoriteCount}</div>
+            </S.DesTitleContentWrapper>
           </div>
         </div>
-      </div>
-    </div>
+        <S.ProfileFavorite>
+          <S.ProfileWrapper>
+            <S.ProfileImg src={profile} alt="프로필이미지" />
+            <div>
+              <S.NickName>{info.ownerNickname}</S.NickName>
+              <S.CreatedAt>{formattedDate}</S.CreatedAt>
+            </div>
+          </S.ProfileWrapper>
+          <div>{info.favoriteCount}</div>
+        </S.ProfileFavorite>
+      </S.InfoProfileWrapper>
+    </S.ProductInfoWrapper>
   );
 }
