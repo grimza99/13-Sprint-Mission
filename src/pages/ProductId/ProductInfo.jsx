@@ -32,7 +32,7 @@ export default function ProductInfo({ productId }) {
         )}
       </S.ProductImgDiv>
       <S.InfoProfileWrapper>
-        <div>
+        <S.InfoTagWrapper>
           <S.TitleEditBtnWrapper>
             <S.TitlePriceWrapper>
               <S.ProductTitle>{product.name}</S.ProductTitle>
@@ -50,7 +50,7 @@ export default function ProductInfo({ productId }) {
               <Tag $product tags={product.tags} />
             </S.DesTitleContentWrapper>
           </div>
-        </div>
+        </S.InfoTagWrapper>
         <S.ProfileFavorite>
           <S.ProfileWrapper>
             <S.ProfileImg src={profile} alt="프로필이미지" />

@@ -4,6 +4,8 @@ import theme from "../../style/theme";
 export const ProductInfoWrapper = styled.div`
   display: flex;
   gap: 24px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid ${theme.color.gray200};
 `;
 
 export const ProductImgDiv = styled.div`
@@ -23,12 +25,15 @@ export const InfoProfileWrapper = styled.div`
 `;
 export const InfoTagWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 24px;
 `;
+
 export const TitleEditBtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid;
+  padding-bottom: 16px;
+  border-bottom: 1px solid ${theme.color.gray200};
 `;
 export const TitlePriceWrapper = styled.div`
   display: flex;
