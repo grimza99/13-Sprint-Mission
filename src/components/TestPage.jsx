@@ -2,12 +2,17 @@
 
 // import Button from "./common/Button/Button";
 import BtnHeart from "./common/BtnHeart/BtnHeart";
+import Tag from "../components/Tag/Tag";
 // import { Input } from "./common/Input/Input";
 export default function TestPage() {
+  const tag3 = [];
+  const tag1 = ["태그1", "태그2"];
+  const tags = ["태그1", "태그2", "태그3", "태그4"];
   return (
     <>
-      <BtnHeart border value="100" active={false} small />
       <BtnHeart value="100" active={false} />
+      <BtnHeart value="100" active={true} />
+      <Tag tags={tag3} />
     </>
   );
 }

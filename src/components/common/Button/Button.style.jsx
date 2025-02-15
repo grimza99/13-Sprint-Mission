@@ -19,4 +19,16 @@ export const Button = styled.button`
   &:disabled {
     background-color: ${theme.color.gray400};
   }
+
+  ${(props) =>
+    props.$medium &&
+    css`
+      width: 240px;
+      height: 48px;
+    `};
+  ${(props) =>
+    props.$circle &&
+    css`
+      border-radius: 40px;
+    `};
 `;

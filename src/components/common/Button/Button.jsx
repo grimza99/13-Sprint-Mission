@@ -1,10 +1,10 @@
 import * as S from "./Button.style";
-import heart from "../../../assets/icons/inactive.heart.icon.svg";
 //
 //버튼 컨테이너 필요
 export default function Button({ onClick, ...props }) {
   const {
     $small,
+    medium,
     value,
     toggle,
     square,
@@ -26,6 +26,7 @@ export default function Button({ onClick, ...props }) {
           onClick={onClickChange}
           $square={square}
           $circle={circle}
+          $medium={medium}
           disabled={disabled}
           {...rest}
         >

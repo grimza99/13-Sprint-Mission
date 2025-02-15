@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 //
-import profile from "../../assets/icons/myLogo.svg";
+import profile from "../../assets/icons/default.profile.icon.svg";
 //
 import { getProductInfo } from "../../api/product.api";
 import * as S from "./ProductInfo.style";
@@ -23,13 +23,13 @@ export default function ProductInfo({ productId }) {
   console.log(product);
   return (
     <S.ProductInfoWrapper>
-      <div>
+      <S.ProductImgDiv>
         {product?.images && product?.images?.length > 0 ? (
-          <S.ProductImgDiv src={product.images} alt="Product" />
+          <S.ProductImg src={product?.images} alt="Product" />
         ) : (
-          <S.ProductImgDiv alt="이미지가 없습니다." />
+          <S.ProductImg alt="이미지가 없습니다." />
         )}
-      </div>
+      </S.ProductImgDiv>
       <S.InfoProfileWrapper>
         <div>
           <S.TitleEditBtnWrapper>

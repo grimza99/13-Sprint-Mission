@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import theme from "../../style/theme";
 
+export const TagsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 12px;
+`;
 export const Container = styled.div`
   background-color: ${theme.color.gray100};
   width: auto;
