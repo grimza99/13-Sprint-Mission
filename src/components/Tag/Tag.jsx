@@ -11,11 +11,13 @@ export default function Tag({ tags, ...props }) {
             <S.Container key={tag}>
               <S.FlexContents>
                 <S.Tag>#{tag}</S.Tag>
-                <S.DeleteButton
-                  tag={tag}
-                  onClick={() => onClick(tag)}
-                  src={DeleteButton}
-                />
+                {!rest.$product && (
+                  <S.DeleteButton
+                    tag={tag}
+                    onClick={() => onClick(tag)}
+                    src={DeleteButton}
+                  />
+                )}
               </S.FlexContents>
             </S.Container>
           );
