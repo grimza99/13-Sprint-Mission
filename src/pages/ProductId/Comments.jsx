@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 //
 import * as S from "./Comments.style";
 import { placeholder } from "../../constants/globalConstant";
@@ -16,7 +17,7 @@ export default function Comments({ productId }) {
   const [isDisabled, setIsDisabled] = useState(true);
   const [comments, setComments] = useState({});
   const [formData, setFormData] = useState("");
-
+  const navigate = useNavigate();
   const handleLoad = async () => {
     const data = await getProductComments(productId);
     setComments(data);
@@ -57,7 +58,7 @@ export default function Comments({ productId }) {
           ))}
         </S.CommentCardContainer>
       )}
-      <Button $medium $circle>
+      <Button onClick={() => navigate("/items")} $ medium $circle>
         목록으로 돌아가기
         <img src={returnIcon} />
       </Button>
