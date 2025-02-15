@@ -105,16 +105,7 @@ function AddItem() {
               onKeyUp={CreateTag}
               onChange={setTag}
             />
-            <S.TagsContainer>
-              {formData.tags &&
-                formData.tags.map((tag) => {
-                  return (
-                    <div key={tag}>
-                      <Tag value={tag} onClick={handleClickTagDelete} />
-                    </div>
-                  );
-                })}
-            </S.TagsContainer>
+            <Tag tags={formData.tags} onClick={handleClickTagDelete} />
           </S.TagInputContainer>
         </S.InputsContainer>
       </S.Container>

@@ -5,9 +5,11 @@ import theme from "../../style/theme";
 export const CommentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 24px;
 `;
 export const InputWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -31,11 +33,13 @@ export const NoCommentImg = styled.img`
 `;
 
 export const ButtonWrapper = styled.div`
+  margin-left: auto;
   width: 74px;
   height: 42px;
 `;
 
 export const CommentCardContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 24px;

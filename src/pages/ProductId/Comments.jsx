@@ -40,10 +40,6 @@ export default function Comments({ productId }) {
             <S.NoCommentImg src={noComment} />
             아직 문의가 없어요
           </S.NoCommentImgWrapper>
-          <Button medium circle>
-            목록으로 돌아가기
-            <img src={returnIcon} />
-          </Button>
         </S.NoCommentWrapper>
       ) : (
         <S.CommentCardContainer>
@@ -52,6 +48,10 @@ export default function Comments({ productId }) {
           ))}
         </S.CommentCardContainer>
       )}
+      <Button $medium $circle>
+        목록으로 돌아가기
+        <img src={returnIcon} />
+      </Button>
     </S.CommentWrapper>
   );
 }

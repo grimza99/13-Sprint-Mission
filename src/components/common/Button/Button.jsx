@@ -14,6 +14,7 @@ export default function Button({ onClick, ...props }) {
     disabled,
     ...rest
   } = props;
+  //...rest: $square,$small,$medium,toggle,$circle,children,disabled
   const onClickChange = (e) => {
     onClick(e);
   };

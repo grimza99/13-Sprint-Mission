@@ -11,10 +11,12 @@ export default function Product() {
   return (
     <>
       <S.PageWrapper>
-        <S.Contents>
-          <ProductInfo productId={productId} />
-          <Comments productId={productId} />
-        </S.Contents>
+        <S.ContentsWrapper>
+          <S.Contents>
+            <ProductInfo productId={productId} />
+            <Comments productId={productId} />
+          </S.Contents>
+        </S.ContentsWrapper>
       </S.PageWrapper>
     </>
   );

@@ -12,6 +12,7 @@ export const ProductImgDiv = styled.div`
 `;
 export const ProductImg = styled.img`
   width: 100%;
+  border-radius: 16px;
   aspect-ratio: 1/1;
 `;
 export const InfoProfileWrapper = styled.div`
@@ -58,6 +59,10 @@ export const DescriptionTitle = styled.p`
   color: ${theme.color.gray600}; //4b5563
 `;
 
+export const ProductContent = styled.div`
+  overflow-y: scroll;
+  height: 146px;
+`;
 export const ProfileFavorite = styled.div`
   display: flex;
   justify-content: space-between;

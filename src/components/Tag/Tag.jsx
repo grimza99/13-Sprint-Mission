@@ -2,8 +2,9 @@ import DeleteButton from "../../assets/icons/DeleteIcon.svg";
 import * as S from "./Tag.style";
 export default function Tag({ tags, ...props }) {
   const { onClick, ...rest } = props;
+  //...rest : $product(gap8px,items/id페이지)
   return (
-    <S.TagsContainer>
+    <S.TagsContainer {...rest}>
       {tags?.length > 0 &&
         tags.map((tag) => {
           return (
@@ -14,7 +15,6 @@ export default function Tag({ tags, ...props }) {
                   tag={tag}
                   onClick={() => onClick(tag)}
                   src={DeleteButton}
-                  {...rest}
                 />
               </S.FlexContents>
             </S.Container>
@@ -22,16 +22,4 @@ export default function Tag({ tags, ...props }) {
         })}
     </S.TagsContainer>
   );
-}
-{
-  /* 
-              {formData.tags &&
-                formData.tags.map((tag) => {
-                  return (
-                    <div key={tag}>
-                      <Tag value={tag} onClick={handleClickTagDelete} />
-                    </div>
-                  );
-                })}
-            */
 }

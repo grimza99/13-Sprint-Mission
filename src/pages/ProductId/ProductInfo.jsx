@@ -7,7 +7,7 @@ import * as S from "./ProductInfo.style";
 import Tag from "../../components/Tag/Tag";
 import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
 import KebabBtn from "../../components/common/Button/KebabBtn";
-import useFormatDate from "../../hooks/useFormatDate";
+import { useFormatDate, useFormatPrice } from "../../hooks/useFormatting";
 //
 
 export default function ProductInfo({ productId }) {
@@ -20,6 +20,7 @@ export default function ProductInfo({ productId }) {
     handleLoad();
   }, []);
   const formattedDate = useFormatDate(product.createdAt);
+  const formattedPrice = useFormatPrice(product.price, "KRW");
   console.log(product);
   return (
     <S.ProductInfoWrapper>
@@ -35,18 +36,18 @@ export default function ProductInfo({ productId }) {
           <S.TitleEditBtnWrapper>
             <S.TitlePriceWrapper>
               <S.ProductTitle>{product.name}</S.ProductTitle>
-              <S.ProductPrice>{product.price}원</S.ProductPrice>
+              <S.ProductPrice>{formattedPrice}원</S.ProductPrice>
             </S.TitlePriceWrapper>
             <KebabBtn />
           </S.TitleEditBtnWrapper>
           <div>
             <S.DesTitleContentWrapper>
               <S.DescriptionTitle>상품소개</S.DescriptionTitle>
-              <div>{product.description}</div>
+              <S.ProductContent>{product.description}</S.ProductContent>
             </S.DesTitleContentWrapper>
             <S.DesTitleContentWrapper>
               <S.DescriptionTitle>상품 태그</S.DescriptionTitle>
-              <Tag />
+              <Tag $product tags={product.tags} />
             </S.DesTitleContentWrapper>
           </div>
         </div>
