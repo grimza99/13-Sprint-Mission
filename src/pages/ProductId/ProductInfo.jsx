@@ -26,13 +26,11 @@ export default function ProductInfo({ productId }) {
   const handleOnChange = () => {};
   return (
     <S.ProductInfoWrapper>
-      <S.ProductImgDiv>
-        {product?.images && product?.images?.length > 0 ? (
-          <S.ProductImg src={product?.images} alt="Product" />
-        ) : (
-          <S.ProductImg alt="이미지가 없습니다." />
-        )}
-      </S.ProductImgDiv>
+      {product?.images && product?.images?.length > 0 ? (
+        <S.ProductImg src={product?.images} alt="Product" />
+      ) : (
+        <S.ProductImg alt="이미지가 없습니다." />
+      )}
       <S.InfoProfileWrapper>
         <S.InfoTagWrapper>
           <S.TitleEditBtnWrapper>

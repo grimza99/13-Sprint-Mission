@@ -8,12 +8,8 @@ export const ProductInfoWrapper = styled.div`
   border-bottom: 1px solid ${theme.color.gray200};
 `;
 
-export const ProductImgDiv = styled.div`
-  width: 486px;
-  height: 486px;
-`;
 export const ProductImg = styled.img`
-  width: 100%;
+  width: 486px;
   border-radius: 16px;
   aspect-ratio: 1/1;
 `;
@@ -66,7 +62,7 @@ export const DescriptionTitle = styled.p`
 
 export const ProductContent = styled.div`
   overflow-y: scroll;
-  height: 146px;
+  height: 104px;
 `;
 export const ProfileFavorite = styled.div`
   display: flex;

@@ -9,7 +9,7 @@ export function useFormatDate(data) {
 export const useFormatPrice = (data, currency = "KRW") => {
   if (typeof data !== "number") return "가격 정보 없음";
   return data.toLocaleString("ko-KR", {
-    style: "currency",
+    style: "decimal",
     currency: currency,
   });
 };

@@ -1,7 +1,8 @@
-import favoriteImg from "../assets/icons/inactive.heart.icon.svg";
+import favoriteImg from "../../assets/icons/inactive.heart.icon.svg";
 import styled from "styled-components";
-import useWindowSize from "../hooks/useWindowSize";
+import useWindowSize from "../../hooks/useWindowSize";
 //
+import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
 
 const ByDevice = {
   best: {
@@ -116,8 +117,7 @@ function ListItem({ value, items }) {
         <Title>{items.name}</Title>
         <Price>{items.price} 원</Price>
         <div>
-          <img src={favoriteImg} alt="좋아요하트"></img>
-          <FavoriteCount>{items.favoriteCount}</FavoriteCount>
+          <BtnHeart small value={items.favoriteCount} />
         </div>
       </div>
     </Item>

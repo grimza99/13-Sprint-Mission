@@ -51,7 +51,7 @@ export const Input = styled.input`
   ${(props) =>
     props.$comment &&
     css`
-      height: 140px;
+      height: 104px;
     `}
 `;
 
