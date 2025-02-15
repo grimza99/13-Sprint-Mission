@@ -1,7 +1,8 @@
 import * as S from "./CommentCard.style.jsx";
 import defaultImg from "../../assets/icons/default.profile.icon.svg";
-import KebabBtn from "../common/Button/KebabBtn.jsx";
+import { EditSelect } from "../common/Select/Select.jsx";
 export default function Comment({ data }) {
+  const handleOnChange = () => {};
   return (
     <S.CommentWrapper>
       <S.CommentFlex>
@@ -18,7 +19,7 @@ export default function Comment({ data }) {
           </S.NickNameDateWrapper>
         </S.ProfileWrapper>
       </S.CommentFlex>
-      <KebabBtn />
+      <EditSelect onChange={handleOnChange} />
     </S.CommentWrapper>
   );
 }

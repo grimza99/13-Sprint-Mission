@@ -6,7 +6,7 @@ import ItemsList from "../../components/ItemsList";
 import { getProducts, bestProducts } from "../../api/product.api";
 import PageCount from "../../components/pageCount";
 import useWindowSize from "../../hooks/useWindowSize";
-import SelectBox from "../../components/SelectBox";
+import { SortSelect } from "../../components/common/Select/Select";
 //
 
 //
@@ -53,7 +53,7 @@ function HomePage() {
         <S.SearchBtn device={device} type="submit">
           <Link to="/additem">상품 등록하기</Link>
         </S.SearchBtn>
-        <SelectBox onChange={handleChangeSort} value={selectedOrder} />
+        <SortSelect onChange={handleChangeSort} value={selectedOrder} />
       </S.InputDiv>
       <ItemsList value="products" device={device} items={items} />
       <PageCount page={page} onClick={handleClickPageChange} />

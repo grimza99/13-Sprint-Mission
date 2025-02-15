@@ -6,22 +6,24 @@ import { getProductInfo } from "../../api/product.api";
 import * as S from "./ProductInfo.style";
 import Tag from "../../components/Tag/Tag";
 import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
-import KebabBtn from "../../components/common/Button/KebabBtn";
+import { EditSelect } from "../../components/common/Select/Select";
 import { useFormatDate, useFormatPrice } from "../../hooks/useFormatting";
 //
 
 export default function ProductInfo({ productId }) {
   const [product, setProduct] = useState({});
+  const formattedDate = useFormatDate(product.createdAt);
+  const formattedPrice = useFormatPrice(product.price, "KRW");
+  //
   const handleLoad = async () => {
     const info = await getProductInfo(productId);
     setProduct(info);
   };
+
   useEffect(() => {
     handleLoad();
   }, []);
-  const formattedDate = useFormatDate(product.createdAt);
-  const formattedPrice = useFormatPrice(product.price, "KRW");
-  console.log(product);
+  const handleOnChange = () => {};
   return (
     <S.ProductInfoWrapper>
       <S.ProductImgDiv>
@@ -38,7 +40,7 @@ export default function ProductInfo({ productId }) {
               <S.ProductTitle>{product.name}</S.ProductTitle>
               <S.ProductPrice>{formattedPrice}원</S.ProductPrice>
             </S.TitlePriceWrapper>
-            <KebabBtn />
+            <EditSelect onChange={handleOnChange} />
           </S.TitleEditBtnWrapper>
           <div>
             <S.DesTitleContentWrapper>
