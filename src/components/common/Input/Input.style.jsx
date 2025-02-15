@@ -48,6 +48,11 @@ export const Input = styled.input`
     css`
       height: 282px;
     `}
+  ${(props) =>
+    props.$comment &&
+    css`
+      height: 140px;
+    `}
 `;
 
 //imgInput 부분
