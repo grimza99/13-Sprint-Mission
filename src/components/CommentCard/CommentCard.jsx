@@ -5,11 +5,13 @@ import defaultImg from "../../assets/icons/default.profile.icon.svg";
 import { Input } from "../common/Input/Input.jsx";
 import { EditSelect } from "../common/Select/Select.jsx";
 import { button } from "../../constants/globalConstant.jsx";
+import { useFormatUpDate } from "../../hooks/useFormatting.jsx";
 //
 export default function CommentCard({ data }) {
   const [initialValue, setInitialValue] = useState(data.content);
   const [isEditing, setIsEditing] = useState(null);
   const [isDelete, setIsDelete] = useState(null);
+  const formattedUpdate = useFormatUpDate(data.updatedAt);
   //
   const handleOnChange = (option) => {
     if (option === button.edit) {
@@ -35,16 +37,27 @@ export default function CommentCard({ data }) {
         )}
 
         <S.ProfileWrapper>
-          {data.writer.image ? (
-            <img src={data.writer.image} />
-          ) : (
-            <img src={defaultImg} />
+          <S.ProfileDateWrapper>
+            {data.writer.image ? (
+              <img src={data.writer.image} />
+            ) : (
+              <img src={defaultImg} />
+            )}
+            <S.NickNameDateWrapper>
+              <S.NickName>{data.writer.nickname}</S.NickName>
+              <S.Date>{formattedUpdate}</S.Date>
+            </S.NickNameDateWrapper>
+          </S.ProfileDateWrapper>
+          {data.id === isEditing && (
+            <div>
+              <S.CancelBtn onClick={() => setIsEditing("")}>
+                {button.cancel}
+              </S.CancelBtn>
+              <S.EditConfirmBtn onClick={() => setIsEditing("")}>
+                {button.editConfirm}
+              </S.EditConfirmBtn>
+            </div>
           )}
-          <S.NickNameDateWrapper>
-            <S.NickName>{data.writer.nickname}</S.NickName>
-            <S.Date>{data.updatedAt}</S.Date>
-          </S.NickNameDateWrapper>
-          {data.id === isEditing && <div></div>}
         </S.ProfileWrapper>
       </S.CommentFlex>
       <EditSelect onChange={handleOnChange} />

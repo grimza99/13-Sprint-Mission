@@ -10,6 +10,7 @@ export const CommentWrapper = styled.div`
   padding-bottom: 12px;
 `;
 export const CommentFlex = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -20,6 +21,10 @@ export const Content = styled.p`
 export const ProfileWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 8px;
+`;
+export const ProfileDateWrapper = styled.div`
+  display: flex;
   gap: 8px;
 `;
 export const NickNameDateWrapper = styled.div`
@@ -34,4 +39,23 @@ export const NickName = styled.p`
 export const Date = styled.p`
   font: ${theme.font.H8};
   color: ${theme.color.gray400};
+`;
+
+export const CancelBtn = styled.button`
+  width: 68px;
+  height: 47px;
+  font: ${theme.font.H5Bold};
+  border: none;
+  background-color: ${theme.color.white};
+  color: ${theme.color.gray500};
+`;
+
+export const EditConfirmBtn = styled.button`
+  width: 106px;
+  height: 42px;
+  border-radius: 8px;
+  font: ${theme.font.H5Bold};
+  border: none;
+  background-color: ${theme.color.blue};
+  color: ${theme.color.white};
 `;
