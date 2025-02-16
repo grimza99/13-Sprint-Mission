@@ -1,8 +1,7 @@
 import axios from "axios";
 const BASE_URL = "https://panda-market-api.vercel.app";
 
-export async function getProductComments(productId) {
-  let limit = 3;
+export async function getProductComments(productId, limit = 3) {
   try {
     const res = await axios.get(
       `${BASE_URL}/products/${productId}/comments?limit=${limit}`
@@ -10,7 +9,6 @@ export async function getProductComments(productId) {
     if (!res) {
       throw new Error("리뷰 불러오기 실패");
     }
-    console.log(res.data);
     return res.data;
   } catch (error) {
     console.error(error);
