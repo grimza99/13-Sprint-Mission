@@ -31,9 +31,13 @@ export default function CommentCard({ data }) {
     <S.CommentWrapper>
       <S.CommentFlex>
         {data.id === isEditing ? (
-          <Input value={initialValue} />
+          <Input
+            $edit
+            value={initialValue}
+            onChange={(target) => setInitialValue(target.value)}
+          />
         ) : (
-          <S.Content>{data.content}</S.Content>
+          <S.Content>{initialValue}</S.Content>
         )}
 
         <S.ProfileWrapper>

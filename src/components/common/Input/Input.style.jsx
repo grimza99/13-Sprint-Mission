@@ -60,10 +60,18 @@ export const Input = styled.input`
   ${(props) =>
     props.$comment &&
     css`
+      font: ${theme.font.H7Regular};
       height: 104px;
       @media (max-width: 375px) {
         height: 129px;
       }
+    `}
+
+    ${(props) =>
+    props.$edit &&
+    css`
+      font: ${theme.font.H7Regular};
+      height: 80px;
     `}
 `;
 
