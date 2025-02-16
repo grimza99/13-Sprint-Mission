@@ -4,13 +4,12 @@ import * as S from "./Input.style";
 import { useRef, useState } from "react";
 //
 export function Input({ onChange, ...props }) {
-  const { label, tag, onKeyUp, type, ...rest } = props;
+  const { label, tag, onKeyUp, ...rest } = props;
 
   return (
     <S.InputWrapper>
       {!label && <S.Label {...props}>{label}</S.Label>}
       <S.Input
-        type={type ? type : "text"}
         onChange={onChange}
         onKeyUp={onKeyUp && onKeyUp}
         {...rest}
@@ -19,8 +18,7 @@ export function Input({ onChange, ...props }) {
   );
 }
 //
-export function ImgInput({ placeholder, type, name, onChange, ...props }) {
-  const { ...rest } = props;
+export function ImgInput({ onChange, ...props }) {
   const imgRef = useRef();
   const [imgPreview, setImgPreview] = useState("");
 
@@ -43,16 +41,15 @@ export function ImgInput({ placeholder, type, name, onChange, ...props }) {
       <S.ImgInputContainer>
         <S.ImgInput
           onChange={handlePreviewImg}
-          type={type}
-          name={name}
+          type="file"
           id="fileUpload"
           accept="image/*"
           ref={imgRef}
-          {...rest}
+          {...props}
         />
         <S.PlusLabelContainer htmlFor="fileUpload">
           <S.PlusIcon src={PlusIcon} />
-          <p>{placeholder}</p>
+          <p>{props.placeholder}</p>
         </S.PlusLabelContainer>
       </S.ImgInputContainer>
       <div>

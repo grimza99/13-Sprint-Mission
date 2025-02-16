@@ -18,7 +18,7 @@ function AddItem() {
   //
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    //ToDo: img 프로퍼티에는 imgInput에서 넘겨준 file 객체가 담기고 있음 추후 백엔드 확인해야함
+    //ToDo: img 프로퍼티에는 imgInput에서 넘겨준 file 객체가 담기고 있음
   };
 
   const CreateTag = (e) => {
@@ -69,7 +69,6 @@ function AddItem() {
         </S.FlexDiv>
         <S.InputsContainer>
           <I.ImgInput
-            type="file"
             name="img"
             placeholder={placeholder.img}
             onChange={handleChange}
