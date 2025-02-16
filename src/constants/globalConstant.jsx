@@ -10,4 +10,8 @@ export const placeholder = {
 
 export const button = {
   send: "등록",
+  edit: "수정하기",
+  delete: "삭제하기",
+  cancel: "취소",
+  editConfirm: "수정 완료",
 };

@@ -4,7 +4,7 @@ const theme = {
     gray800: "#1f2937",
     gray700: "#374151",
     gray600: "#4b5563",
-    gray500: "#6b7280",
+    gray500: "#737373",
     gray400: "#9ca3af",
     gray200: "#e5e7eb",
     gray100: "#f3f4f6",

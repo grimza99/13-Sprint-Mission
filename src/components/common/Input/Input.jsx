@@ -3,8 +3,8 @@ import DeleteIcon from "../../../assets/icons/DeleteIcon.svg";
 import * as S from "./Input.style";
 import { useRef, useState } from "react";
 //
-export function Input({ label, placeholder, name, onChange, ...props }) {
-  const { tag, onKeyUp, value, type, textArea, ...rest } = props;
+export function Input({ name, onChange, ...props }) {
+  const { label, tag, onKeyUp, type, textArea, ...rest } = props;
   const handleChange = (e) => {
     onChange(e.target);
   };
@@ -16,13 +16,11 @@ export function Input({ label, placeholder, name, onChange, ...props }) {
   };
   return (
     <S.InputWrapper>
-      <S.Label {...props}>{label}</S.Label>
+      {!label && <S.Label {...props}>{label}</S.Label>}
       <S.Input
         type={type ? type : "text"}
-        value={value}
         name={name}
         $textArea={textArea}
-        placeholder={placeholder}
         onChange={tag ? handleChangeTag : handleChange}
         onKeyUp={tag ? handleOnKeyUp : undefined}
         {...rest}

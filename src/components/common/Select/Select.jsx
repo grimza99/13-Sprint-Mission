@@ -4,6 +4,7 @@ import selectIcon from "../../../assets/icons/select.icon.svg";
 import kebabIcon from "../../../assets/icons/kebab.icon.svg";
 
 import { useAutoClose } from "../../../hooks/useAutoClose";
+import { button } from "../../../constants/globalConstant";
 //
 
 export function SortSelect({ onChange, ...props }) {
@@ -41,7 +42,7 @@ export function SortSelect({ onChange, ...props }) {
 }
 
 export function EditSelect({ onChange, ...props }) {
-  const options = ["수정하기", "삭제하기"];
+  const options = [button.edit, button.delete];
   const { ref, isOpen, setIsOpen } = useAutoClose(false);
 
   const handleOptionClick = (option) => {
