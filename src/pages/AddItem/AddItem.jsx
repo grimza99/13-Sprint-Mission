@@ -12,6 +12,8 @@ const INITIAL_DATA = {
   price: 0,
   tags: [],
 };
+const REQUIRED_INPUT = ["name", "content", "tags", "price"];
+//
 function AddItem() {
   const [tag, setTag] = useState("");
   const [formData, setFormData] = useState(INITIAL_DATA);
@@ -40,8 +42,7 @@ function AddItem() {
     setFormData((prev) => ({ ...prev, tags: filterTags }));
   };
 
-  const requiredInput = ["name", "content", "tags", "price"];
-  const isInputValid = requiredInput.every((field) => {
+  const isInputValid = REQUIRED_INPUT.every((field) => {
     const value = formData[field];
     switch (typeof value) {
       case "object":
