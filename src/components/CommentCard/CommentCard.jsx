@@ -64,7 +64,7 @@ export default function CommentCard({ data }) {
           )}
         </S.ProfileWrapper>
       </S.CommentFlex>
-      <EditSelect onChange={handleOnChange} />
+      {data.id !== isEditing && <EditSelect onChange={handleOnChange} />}
     </S.CommentWrapper>
   );
 }
