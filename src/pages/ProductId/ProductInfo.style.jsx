@@ -66,25 +66,19 @@ export const TitlePriceWrapper = styled.div`
   gap: 16px;
 `;
 export const ProductTitle = styled.p`
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 32px;
+  font: ${theme.font.H2Bold};
   @media (max-width: 375px) {
-    font-size: 16px;
-    line-height: 26px;
+    font: ${theme.font.H5Bold};
   }
   @media (min-width: 376px) and (max-width: 768px) {
-    font-size: 20px;
+    font: ${theme.font.H3Bold};
   }
 `;
 
 export const ProductPrice = styled.p`
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 47.73px;
+  font: ${theme.font.H1};
   @media (max-width: 375px) {
-    font-size: 24px;
-    line-height: 32px;
+    font: ${theme.font.H2Bold};
   }
   @media (min-width: 376px) and (max-width: 768px) {
     font-size: 32px;
@@ -100,22 +94,17 @@ export const DesTitleContentWrapper = styled.div`
   }
 `;
 export const DescriptionTitle = styled.p`
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 26px;
+  font: ${theme.font.H5Bold};
   color: ${theme.color.gray600}; //4b5563
   @media (max-width: 768px) {
-    font-size: 14px;
+    font: ${theme.font.H7Bold};
   }
 `;
 
 export const ProductContent = styled.div`
   overflow-y: scroll;
   height: 104px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-
+  font: ${theme.font.H5Regular};
   @media (max-width: 768px) {
     height: 156px;
   }
@@ -142,14 +131,10 @@ export const NickNameDate = styled.div`
   display: flex;
 `;
 export const NickName = styled.p`
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: ${theme.color.gray600}; //#4B5563
+  font: ${theme.font.H7Medium};
+  color: ${theme.color.gray600};
 `;
 export const CreatedAt = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
+  font: ${theme.font.H7Regular};
   color: ${theme.color.gray400};
 `;

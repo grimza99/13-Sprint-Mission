@@ -1,12 +1,12 @@
 import styled from "styled-components";
-// import theme from "../../style/theme";
+import theme from "../../style/theme";
 
 export const CommentWrapper = styled.div`
   width: 100%;
   height: 100px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid ${theme.color.gray200};
   padding-bottom: 12px;
 `;
 export const CommentFlex = styled.div`
@@ -15,9 +15,7 @@ export const CommentFlex = styled.div`
   gap: 24px;
 `;
 export const Content = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
+  font: ${theme.font.H7Regular};
 `;
 export const ProfileWrapper = styled.div`
   display: flex;
@@ -30,13 +28,9 @@ export const NickNameDateWrapper = styled.div`
 `;
 
 export const NickName = styled.p`
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
+  font: ${theme.font.H8};
 `;
 export const Date = styled.p`
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-  color: #9ca3af;
+  font: ${theme.font.H8};
+  color: ${theme.color.gray400};
 `;
