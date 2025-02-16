@@ -16,4 +16,10 @@ export const Contents = styled.div`
   display: flex;
   flex-direction: column;
   gap: 80px;
+  @media (max-width: 375px) {
+    gap: 24px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    gap: 40px;
+  }
 `;

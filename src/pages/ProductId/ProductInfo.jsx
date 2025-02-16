@@ -59,7 +59,9 @@ export default function ProductInfo({ productId }) {
               <S.CreatedAt>{formattedDate}</S.CreatedAt>
             </div>
           </S.ProfileWrapper>
-          <BtnHeart active="false" border value={product.favoriteCount} />
+          <S.BorderLeft>
+            <BtnHeart small border value={product.favoriteCount} />
+          </S.BorderLeft>
         </S.ProfileFavorite>
       </S.InfoProfileWrapper>
     </S.ProductInfoWrapper>

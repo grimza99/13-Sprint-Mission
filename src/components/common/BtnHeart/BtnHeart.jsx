@@ -3,8 +3,8 @@ import inactiveHeart from "../../../assets/icons/inactive.heart.icon.svg";
 //
 import * as S from "./BtnHeart.style";
 //
-export default function BtnHeart({ active, value, ...props }) {
-  const { border, onClick, small, ...rest } = props;
+export default function BtnHeart({ value, ...props }) {
+  const { border, active, onClick, small, ...rest } = props;
   const onClickChange = (e) => {
     onClick(e);
   };

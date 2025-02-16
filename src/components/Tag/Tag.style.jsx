@@ -5,7 +5,7 @@ export const TagsContainer = styled.div`
   width: 100%;
   display: flex;
   gap: 12px;
-
+  flex-wrap: wrap;
   ${(props) =>
     props.$product &&
     css`
@@ -33,8 +33,12 @@ export const Tag = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
+  @media (max-width: 375px) {
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+  }
 `;
 export const DeleteButton = styled.img`
   width: 22px;
-  height: 24px;
+  height: 22px;
 `;

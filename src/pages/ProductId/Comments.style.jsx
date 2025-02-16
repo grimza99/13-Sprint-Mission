@@ -7,6 +7,9 @@ export const CommentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  @media (max-width: 768px) {
+    gap: 40px;
+  }
 `;
 export const InputWrapper = styled.div`
   width: 100%;

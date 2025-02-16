@@ -16,7 +16,7 @@ export function Input({ label, placeholder, name, onChange, ...props }) {
   };
   return (
     <S.InputWrapper>
-      <S.Label>{label}</S.Label>
+      <S.Label {...props}>{label}</S.Label>
       <S.Input
         type={type ? type : "text"}
         value={value}
