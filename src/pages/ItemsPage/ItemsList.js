@@ -1,4 +1,4 @@
-import favoriteImg from "../../assets/icons/inactive.heart.icon.svg";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useWindowSize from "../../hooks/useWindowSize";
 //
@@ -103,9 +103,10 @@ const Item = styled.div`
 //
 
 function ListItem({ value, items }) {
+  const navigate = useNavigate();
   const device = useWindowSize();
   return (
-    <Item>
+    <Item onClick={() => navigate(`./${items.id}`)}>
       <ProductImg
         value={value}
         device={device}
