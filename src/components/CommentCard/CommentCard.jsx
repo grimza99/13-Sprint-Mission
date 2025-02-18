@@ -43,10 +43,11 @@ export default function CommentCard({ data }) {
         <S.ProfileWrapper>
           <S.ProfileDateWrapper>
             {data.writer.image ? (
-              <img src={data.writer.image} />
+              <S.ProfileImg src={data.writer.image} />
             ) : (
-              <img src={defaultImg} />
+              <S.ProfileImg src={defaultImg} />
             )}
+
             <S.NickNameDateWrapper>
               <S.NickName>{data.writer.nickname}</S.NickName>
               <S.Date>{formattedUpdate}</S.Date>

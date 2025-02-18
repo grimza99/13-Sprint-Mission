@@ -27,9 +27,11 @@ export default function ProductInfo({ productId }) {
   return (
     <S.ProductInfoWrapper>
       {product?.images && product?.images?.length > 0 ? (
-        <S.ProductImg src={product?.images} alt="Product" />
+        <S.ImgDiv>
+          <S.ProductImg src={product?.images} alt="Product" />
+        </S.ImgDiv>
       ) : (
-        <S.ProductImg alt="이미지가 없습니다." />
+        <S.ImgDiv>이미지가 없습니다.</S.ImgDiv>
       )}
       <S.InfoProfileWrapper>
         <S.InfoTagWrapper>

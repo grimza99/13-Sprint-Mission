@@ -5,7 +5,7 @@ import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import App from "./App.js";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import AddItem from "./pages/AddItem/AddItem.jsx";
-import Product from "./pages/ProductId/Product.jsx";
+import Product from "./pages/ProductPage/Product.jsx";
 import Test from "./components/TestPage.jsx";
 //
 //

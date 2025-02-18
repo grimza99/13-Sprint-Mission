@@ -27,6 +27,13 @@ export const ProfileDateWrapper = styled.div`
   display: flex;
   gap: 8px;
 `;
+
+export const ProfileImg = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 99px;
+  border: none;
+`;
 export const NickNameDateWrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -42,6 +42,26 @@ export const ProductImg = styled.img`
     max-height: 340px;
   }
 `;
+
+export const ImgDiv = styled.div`
+  width: 486px;
+  height: 486px;
+  border-radius: 16px;
+  aspect-ratio: 1/1;
+  @media (max-width: 375px) {
+    min-width: 343px;
+    min-height: 343px;
+  }
+  @media (min-width: 375px) and (max-width: 590px) {
+    min-width: 343px;
+    min-height: 343px;
+    margin: 0px auto;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    max-width: 340px;
+    max-height: 340px;
+  }
+`;
 export const InfoProfileWrapper = styled.div`
   width: 100%;
   display: flex;
