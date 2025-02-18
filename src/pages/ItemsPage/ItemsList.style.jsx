@@ -1,8 +1,4 @@
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import useWindowSize from "../../hooks/useWindowSize";
-//
-import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
 
 const ByDevice = {
   best: {
@@ -99,47 +95,3 @@ const Item = styled.div`
   flex-direction: column;
   gap: 16px;
 `;
-
-//
-
-function ListItem({ value, items }) {
-  const navigate = useNavigate();
-  const device = useWindowSize();
-  return (
-    <Item onClick={() => navigate(`./${items.id}`)}>
-      <ProductImg
-        value={value}
-        device={device}
-        src={items.images[0]}
-        alt="이미지"
-      />
-
-      <div>
-        <Title>{items.name}</Title>
-        <Price>{items.price} 원</Price>
-        <div>
-          <BtnHeart small value={items.favoriteCount} />
-        </div>
-      </div>
-    </Item>
-  );
-}
-function ItemsList({ value, items, device }) {
-  return (
-    <div>
-      <div>
-        <ItemListStyle value={value} device={device}>
-          {items.map((item) => {
-            return (
-              <li key={item.id}>
-                <ListItem value={value} device={device} items={item} />
-              </li>
-            );
-          })}
-        </ItemListStyle>
-      </div>
-    </div>
-  );
-}
-
-export default ItemsList;
