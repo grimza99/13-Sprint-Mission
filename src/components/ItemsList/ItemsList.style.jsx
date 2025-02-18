@@ -46,7 +46,7 @@ const ByDevice = {
     },
   },
 };
-const Title = styled.h4`
+export const Title = styled.h4`
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
@@ -54,7 +54,7 @@ const Title = styled.h4`
   color: #1f2937;
   margin: 0px;
 `;
-const Price = styled.div`
+export const Price = styled.div`
   font-size: 16px;
   font-weight: 700;
   line-height: 26px;
@@ -64,7 +64,7 @@ const Price = styled.div`
   margin-bottom: 6px;
 `;
 
-const FavoriteCount = styled.span`
+export const FavoriteCount = styled.span`
   color: #4b5563;
   font-size: 12px;
   font-weight: 500;
@@ -72,12 +72,12 @@ const FavoriteCount = styled.span`
   text-align: left;
 `;
 
-const ProductImg = styled.img`
+export const ProductImg = styled.img`
   width: 100%;
   height: ${({ device, value }) => ByDevice[value][device].height || "auto"};
 `;
 
-const ItemListStyle = styled.ul`
+export const ItemListStyle = styled.ul`
   margin: 24px auto;
   padding: 0px;
   width: ${({ device, value }) => ByDevice[value][device].ulWidth};
@@ -89,7 +89,7 @@ const ItemListStyle = styled.ul`
   grid-auto-rows: ${({ value, device }) => ByDevice[value][device].gridRow};
 `;
 
-const Item = styled.div`
+export const Item = styled.div`
   display: flex;
   height: 317px;
   flex-direction: column;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //
-import * as S from "./HomePage.style";
+import * as S from "./ItemsPage.style";
 import ItemsList from "../../components/ItemsList/ItemsList";
 import { getProducts, bestProducts } from "../../api/product.api";
 import PageCount from "../../components/pageCount";
