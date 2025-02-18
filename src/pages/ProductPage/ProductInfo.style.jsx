@@ -6,7 +6,6 @@ export const ProductInfoWrapper = styled.div`
   gap: 24px;
   padding-bottom: 40px;
   border-bottom: 1px solid ${theme.color.gray200};
-
   @media (max-width: 375px) {
     flex-direction: column;
     padding-bottom: 24px;
@@ -24,29 +23,14 @@ export const ProductInfoWrapper = styled.div`
 `;
 
 export const ProductImg = styled.img`
-  max-width: 486px;
-  max-height: 486px;
+  width: 100%;
+  height: 100%;
   border-radius: 16px;
-  aspect-ratio: 1/1;
-  @media (max-width: 375px) {
-    min-width: 343px;
-    min-height: 343px;
-  }
-  @media (min-width: 375px) and (max-width: 590px) {
-    min-width: 343px;
-    min-height: 343px;
-    margin: 0px auto;
-  }
-  @media (min-width: 376px) and (max-width: 768px) {
-    max-width: 340px;
-    max-height: 340px;
-  }
 `;
 
 export const ImgDiv = styled.div`
   width: 486px;
   height: 486px;
-  border-radius: 16px;
   aspect-ratio: 1/1;
   @media (max-width: 375px) {
     min-width: 343px;
