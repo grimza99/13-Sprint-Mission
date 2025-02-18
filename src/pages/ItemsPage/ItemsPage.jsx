@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //
 import * as S from "./HomePage.style";
-import ItemsList from "../ItemsPage/ItemsList";
+import ItemsList from "../../components/ItemsList/ItemsList";
 import { getProducts, bestProducts } from "../../api/product.api";
 import PageCount from "../../components/pageCount";
 import useWindowSize from "../../hooks/useWindowSize";

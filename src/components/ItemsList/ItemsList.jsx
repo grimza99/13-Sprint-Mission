@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useWindowSize from "../../hooks/useWindowSize";
 //
 import * as S from "./ItemsList.style";
-import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
+import BtnHeart from "../common/BtnHeart/BtnHeart";
 
 //
 
