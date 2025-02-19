@@ -20,7 +20,7 @@ function ListItem({ value, items }) {
       <div>
         <S.Title>{items.name}</S.Title>
         <S.Price>{items.price} 원</S.Price>
-        <BtnHeart small value={items.favoriteCount} />
+        <BtnHeart $items value={items.favoriteCount} />
       </div>
     </S.Item>
   );

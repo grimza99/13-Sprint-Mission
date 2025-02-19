@@ -11,9 +11,7 @@ export const InactiveBtnHeart = styled.button`
   height: 40px;
   border: none;
   border-radius: 35px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
+  font: ${theme.font.H5Regular};
   background: ${theme.color.white};
   color: ${theme.color.gray500};
   ${(props) =>
@@ -26,6 +24,13 @@ export const InactiveBtnHeart = styled.button`
     props.$border &&
     css`
       border: 1px solid ${theme.color.gray200};
+    `};
+  ${(props) =>
+    props.$items &&
+    css`
+      font: ${theme.font.H8};
+      width: 42px;
+      height: 19px;
     `};
 `;
 
@@ -65,5 +70,11 @@ export const HeartImg = styled.img`
     css`
       width: 20px;
       height: 17px;
+    `}
+  ${(props) =>
+    props.$items &&
+    css`
+      width: 16px;
+      height: 16px;
     `}
 `;

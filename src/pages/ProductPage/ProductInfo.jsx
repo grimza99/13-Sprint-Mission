@@ -62,7 +62,7 @@ export default function ProductInfo({ productId }) {
             </div>
           </S.ProfileWrapper>
           <S.BorderLeft>
-            <BtnHeart small border value={product.favoriteCount} />
+            <BtnHeart $small $border value={product.favoriteCount} />
           </S.BorderLeft>
         </S.ProfileFavorite>
       </S.InfoProfileWrapper>

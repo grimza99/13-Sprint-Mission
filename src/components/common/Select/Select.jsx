@@ -22,15 +22,15 @@ export function SortSelect({ onChange, ...props }) {
 
   return (
     <>
-      <S.DropDown ref={ref}>
+      <S.DropDown ref={ref} {...rest}>
         {device === "mobile" ? (
           <S.SortImgWrapper $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-            <S.SortImg src={sortIcon} />
+            <S.SortImg src={sortIcon} alt="정렬" />
           </S.SortImgWrapper>
         ) : (
           <S.Selected $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
             {selected}
-            <img src={selectIcon} />
+            <img src={selectIcon} alt="정렬" />
           </S.Selected>
         )}
 

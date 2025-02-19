@@ -4,30 +4,17 @@ import inactiveHeart from "../../../assets/icons/inactive.heart.icon.svg";
 import * as S from "./BtnHeart.style";
 //
 export default function BtnHeart({ value, ...props }) {
-  const { border, active, onClick, small, ...rest } = props;
-  const onClickChange = (e) => {
-    onClick(e);
-  };
+  const { active, ...rest } = props;
   return (
     <>
       {active ? (
-        <S.ActiveBtnHeart
-          onClick={onClickChange}
-          $border={border}
-          $small={small}
-          {...rest}
-        >
-          <S.HeartImg src={activeHeart} $small={small ? small : undefined} />
+        <S.ActiveBtnHeart {...rest}>
+          <S.HeartImg src={activeHeart} {...rest} alt="좋아요" />
           {value}
         </S.ActiveBtnHeart>
       ) : (
-        <S.InactiveBtnHeart
-          onClick={onClickChange}
-          $border={border}
-          $small={small}
-          {...rest}
-        >
-          <S.HeartImg src={inactiveHeart} $small={small ? small : undefined} />
+        <S.InactiveBtnHeart {...rest}>
+          <S.HeartImg src={inactiveHeart} {...rest} alt="좋아요" />
           {value}
         </S.InactiveBtnHeart>
       )}
