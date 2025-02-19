@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import * as S from "./Select.style";
 import selectIcon from "../../../assets/icons/select.icon.svg";
 import kebabIcon from "../../../assets/icons/kebab.icon.svg";
-
+import sortIcon from "../../../assets/icons/sort.icon.svg";
 import { useAutoClose } from "../../../hooks/useAutoClose";
 import { button } from "../../../constants/globalConstant";
 //
 
 export function SortSelect({ onChange, ...props }) {
+  const { device, ...rest } = props;
   const options = ["최신순", "좋아요순"];
 
-  const [selected, setSelected] = useState(options[0] | "options배열 필요");
+  const [selected, setSelected] = useState("최신순");
   const { ref, isOpen, setIsOpen } = useAutoClose(false);
 
   const handleOptionClick = (option) => {
@@ -22,10 +23,17 @@ export function SortSelect({ onChange, ...props }) {
   return (
     <>
       <S.DropDown ref={ref}>
-        <S.Selected $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-          {selected}
-          <img src={selectIcon} />
-        </S.Selected>
+        {device === "mobile" ? (
+          <S.SortImgWrapper $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+            <S.SortImg src={sortIcon} />
+          </S.SortImgWrapper>
+        ) : (
+          <S.Selected $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+            {selected}
+            <img src={selectIcon} />
+          </S.Selected>
+        )}
+
         <S.Options $isOpen={isOpen}>
           {options.map((option) => (
             <S.OptionList

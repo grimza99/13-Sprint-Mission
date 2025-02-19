@@ -13,7 +13,7 @@ export const Button = styled.button`
   font-size: 16px;
   line-height: 26px;
   font-weight: 600px;
-  color: ${theme.color.white};
+  color: ${theme.color.gray100};
   background-color: ${theme.color.blue};
 
   &:disabled {

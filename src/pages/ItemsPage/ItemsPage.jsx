@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //
 import * as S from "./ItemsPage.style";
 import ItemsList from "../../components/ItemsList/ItemsList";
@@ -7,7 +7,8 @@ import { getProducts, bestProducts } from "../../api/product.api";
 import PageCount from "../../components/pageCount";
 import useWindowSize from "../../hooks/useWindowSize";
 import { SortSelect } from "../../components/common/Select/Select";
-//
+import Button from "../../components/common/Button/Button";
+import { SearchInput } from "../../components/common/Input/Input"; //
 
 //
 function HomePage() {
@@ -16,6 +17,7 @@ function HomePage() {
   const [bestItems, setBestItems] = useState([]);
   const [page, setPage] = useState(1);
   const device = useWindowSize();
+  const navigate = useNavigate();
   //
   const handleChangeSort = (selected) => {
     const { label } = selected;
@@ -38,26 +40,63 @@ function HomePage() {
   }, [selectedOrder, page, device]);
 
   return (
-    <S.Contents device={device}>
-      <div>
-        <h3>베스트 상품</h3>
-        <ItemsList value="best" device={device} items={bestItems} />
-      </div>
-      <S.InputDiv device={device}>
-        <h3> 전체 상품</h3>
-        <S.InputForm
-          type="text"
-          placeholder="검색할 상품을 입력해주세요"
-          device={device}
-        ></S.InputForm>
-        <S.SearchBtn device={device} type="submit">
-          <Link to="/additem">상품 등록하기</Link>
-        </S.SearchBtn>
-        <SortSelect onChange={handleChangeSort} value={selectedOrder} />
-      </S.InputDiv>
-      <ItemsList value="products" device={device} items={items} />
-      <PageCount page={page} onClick={handleClickPageChange} />
-    </S.Contents>
+    <S.Background>
+      <S.Contents device={device}>
+        <div>
+          <S.Title>베스트 상품</S.Title>
+          <ItemsList value="best" device={device} items={bestItems} />
+        </div>
+        {device === "mobile" ? (
+          <S.MobileContainer>
+            <S.MobileTitleBtn>
+              <S.Title> 전체 상품</S.Title>
+              <S.SearchBtnContainer device={device}>
+                <Button onClick={() => navigate("/additem")}>
+                  상품 등록하기
+                </Button>
+              </S.SearchBtnContainer>
+            </S.MobileTitleBtn>
+            <S.SearchSelectContainer>
+              <SearchInput
+                placeholder="검색할 상품을 입력해주세요"
+                onChange={() => {}}
+              />
+              <SortSelect
+                device={device}
+                onChange={handleChangeSort}
+                value={selectedOrder}
+              />
+            </S.SearchSelectContainer>
+          </S.MobileContainer>
+        ) : (
+          <S.TitleInputDiv device={device}>
+            <S.Title> 전체 상품</S.Title>
+            <S.InputDiv>
+              <S.InputContainer>
+                <SearchInput
+                  placeholder="검색할 상품을 입력해주세요"
+                  onChange={() => {}}
+                />
+              </S.InputContainer>
+              <S.SearchBtnContainer device={device}>
+                <Button onClick={() => navigate("/additem")}>
+                  상품 등록하기
+                </Button>
+              </S.SearchBtnContainer>
+
+              <SortSelect
+                device={device}
+                onChange={handleChangeSort}
+                value={selectedOrder}
+              />
+            </S.InputDiv>
+          </S.TitleInputDiv>
+        )}
+
+        <ItemsList value="products" device={device} items={items} />
+        <PageCount page={page} onClick={handleClickPageChange} />
+      </S.Contents>
+    </S.Background>
   );
 }
 

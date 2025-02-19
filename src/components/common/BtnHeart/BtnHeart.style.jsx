@@ -14,7 +14,6 @@ export const InactiveBtnHeart = styled.button`
   font-weight: 500;
   font-size: 16px;
   line-height: 26px;
-
   background: ${theme.color.white};
   color: ${theme.color.gray500};
   ${(props) =>

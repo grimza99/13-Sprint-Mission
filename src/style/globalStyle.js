@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
+    margin: 0px;
   }
   body {
     font-family: 'Pretendard', sans-serif;
@@ -14,12 +15,16 @@ const GlobalStyle = createGlobalStyle`
   margin: 0; 
   padding: 0;
   }
+ 
   a {
     text-decoration: none; 
     color: #ffffff;
   }
   p{
     margin: 0px;
+  }
+  button {
+    padding: 0px
   }
   @font-face {
   font-family: 'Pretendard';

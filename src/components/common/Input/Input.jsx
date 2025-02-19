@@ -1,19 +1,16 @@
 import PlusIcon from "../../../assets/icons/plusIcon.svg";
 import DeleteIcon from "../../../assets/icons/DeleteIcon.svg";
+import SearchIcon from "../../../assets/icons/search.icon.svg";
 import * as S from "./Input.style";
 import { useRef, useState } from "react";
 //
 export function Input({ onChange, ...props }) {
-  const { label, tag, onKeyUp, ...rest } = props;
+  const { label, ...rest } = props;
 
   return (
     <S.InputWrapper>
       {!label && <S.Label {...props}>{label}</S.Label>}
-      <S.Input
-        onChange={onChange}
-        onKeyUp={onKeyUp && onKeyUp}
-        {...rest}
-      ></S.Input>
+      <S.Input onChange={onChange} {...rest}></S.Input>
     </S.InputWrapper>
   );
 }
@@ -61,5 +58,13 @@ export function ImgInput({ onChange, ...props }) {
         )}
       </div>
     </S.ImgInputWrapper>
+  );
+}
+export function SearchInput({ onChange, ...props }) {
+  return (
+    <S.SearchInputWrapper>
+      <S.SearchInput onChange={onChange} {...props} />
+      <S.SearchIcon src={SearchIcon} />
+    </S.SearchInputWrapper>
   );
 }

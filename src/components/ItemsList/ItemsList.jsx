@@ -21,9 +21,8 @@ function ListItem({ value, items }) {
       <div>
         <S.Title>{items.name}</S.Title>
         <S.Price>{items.price} 원</S.Price>
-        <div>
-          <BtnHeart small value={items.favoriteCount} />
-        </div>
+
+        <BtnHeart small value={items.favoriteCount} />
       </div>
     </S.Item>
   );

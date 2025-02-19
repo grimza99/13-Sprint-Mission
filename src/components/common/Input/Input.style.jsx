@@ -45,7 +45,6 @@ export const Input = styled.input`
     position: absolute;
     white-space: normal;
     word-break: break-word;
-
     top: 16px;
     left: 24px;
   }
@@ -154,4 +153,31 @@ export const DeleteImg = styled.img`
   position: absolute;
   top: 15px;
   right: 15px;
+`;
+
+// searchInput
+export const SearchInput = styled.input`
+  border-radius: 12px;
+  border: none;
+  color: ${theme.color.gray800};
+  height: 56px;
+  padding: 16px 44px;
+  width: 100%;
+  height: 42px;
+  background-color: ${theme.color.gray100};
+  font: ${theme.font.H5Regular};
+  ::placeholder {
+    color: ${theme.color.gray400};
+    font: ${theme.font.H5Regular};
+  }
+`;
+
+export const SearchInputWrapper = styled.div`
+  position: relative;
+`;
+export const SearchIcon = styled.img`
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translate(0, -50%);
 `;
