@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     margin: 0px;
+    padding: 0px;
   }
   body {
     font-family: 'Pretendard', sans-serif;
@@ -25,6 +26,10 @@ const GlobalStyle = createGlobalStyle`
   }
   button {
     padding: 0px
+  }
+  ul{
+    list-style: none;
+
   }
   @font-face {
   font-family: 'Pretendard';

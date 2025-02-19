@@ -13,32 +13,27 @@ function ListItem({ value, items }) {
     <S.Item onClick={() => navigate(`./${items.id}`)}>
       <S.ProductImg
         value={value}
-        device={device}
+        $device={device}
         src={items.images[0]}
         alt="이미지"
       />
-      <div>
+      <S.FlexContent>
         <S.Title>{items.name}</S.Title>
         <S.Price>{items.price} 원</S.Price>
         <BtnHeart $items value={items.favoriteCount} />
-      </div>
+      </S.FlexContent>
     </S.Item>
   );
 }
-export default function ItemsList({ value, items, device }) {
+export default function ItemsList({ value, items, ...props }) {
+  const device = useWindowSize();
   return (
-    <div>
-      <div>
-        <S.ItemListStyle value={value} device={device}>
-          {items.map((item) => {
-            return (
-              <li key={item.id}>
-                <ListItem value={value} device={device} items={item} />
-              </li>
-            );
-          })}
-        </S.ItemListStyle>
-      </div>
-    </div>
+    <S.ItemListStyle value={value} $device={device}>
+      {items.map((item) => {
+        return (
+          <ListItem key={item.id} value={value} $device={device} items={item} />
+        );
+      })}
+    </S.ItemListStyle>
   );
 }

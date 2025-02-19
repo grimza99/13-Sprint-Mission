@@ -5,10 +5,11 @@ import kebabIcon from "../../../assets/icons/kebab.icon.svg";
 import sortIcon from "../../../assets/icons/sort.icon.svg";
 import { useAutoClose } from "../../../hooks/useAutoClose";
 import { button } from "../../../constants/globalConstant";
+import useWindowSize from "../../../hooks/useWindowSize";
 //
 
 export function SortSelect({ onChange, ...props }) {
-  const { device, ...rest } = props;
+  const device = useWindowSize();
   const options = ["최신순", "좋아요순"];
 
   const [selected, setSelected] = useState("최신순");
@@ -22,7 +23,7 @@ export function SortSelect({ onChange, ...props }) {
 
   return (
     <>
-      <S.DropDown ref={ref} {...rest}>
+      <S.DropDown ref={ref} {...props}>
         {device === "mobile" ? (
           <S.SortImgWrapper $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
             <S.SortImg src={sortIcon} alt="정렬" />
@@ -61,7 +62,11 @@ export function EditSelect({ onChange, ...props }) {
   return (
     <>
       <S.EditDropDown ref={ref}>
-        <S.KebobButton $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+        <S.KebobButton
+          $isOpen={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
+          {...props}
+        >
           <img src={kebabIcon} alt="케밥" />
         </S.KebobButton>
         <S.Options $isOpen={isOpen}>

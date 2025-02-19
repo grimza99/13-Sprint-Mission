@@ -25,21 +25,39 @@ const ByDevice = {
     mobile: {
       gap: "32px 8px",
       gridTemplate: "repeat(2, 168px)",
-      gridRow: "343px",
+      gridRow: "264px",
       height: "168px",
     },
     tablet: {
       gap: "40px 24px",
       gridTemplate: "repeat(3, 221px)",
       height: "221px",
+      gridRow: "317px",
     },
     desktop: {
       gap: "40px 24px",
       gridTemplate: "repeat(5, 221px)",
       height: "221px",
+      gridRow: "317px",
     },
   },
 };
+export const Item = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+export const ProductImg = styled.img`
+  aspect-ratio: 1/1;
+  height: ${({ $device, value }) => ByDevice[value][$device].height || "auto"};
+`;
+
+export const FlexContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`;
 export const Title = styled.h4`
   font: ${theme.font.H7Medium};
   text-align: left;
@@ -49,35 +67,13 @@ export const Price = styled.div`
   font: ${theme.font.H5Bold};
   text-align: left;
   color: ${theme.color.gray800};
-  margin-top: 6px;
-  margin-bottom: 6px;
 `;
 
-export const FavoriteCount = styled.span`
-  color: ${theme.color.gray600};
-  font: ${theme.font.H8};
-  text-align: left;
-`;
-
-export const ProductImg = styled.img`
-  aspect-ratio: 1/1;
-  height: ${({ device, value }) => ByDevice[value][device].height || "auto"};
-`;
-
-export const ItemListStyle = styled.ul`
+export const ItemListStyle = styled.div`
   margin: 24px auto;
-  padding: 0px;
   display: grid;
-  list-style: none;
-  gap: ${({ device, value }) => ByDevice[value][device].gap};
-  grid-template-columns: ${({ device, value }) =>
-    ByDevice[value][device].gridTemplate};
-  grid-auto-rows: ${({ value, device }) => ByDevice[value][device].gridRow};
-`;
-
-export const Item = styled.div`
-  display: flex;
-  height: 317px;
-  flex-direction: column;
-  gap: 16px;
+  gap: ${({ $device, value }) => ByDevice[value][$device].gap};
+  grid-template-columns: ${({ $device, value }) =>
+    ByDevice[value][$device].gridTemplate};
+  grid-auto-rows: ${({ value, $device }) => ByDevice[value][$device].gridRow};
 `;

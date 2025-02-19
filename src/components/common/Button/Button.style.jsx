@@ -10,9 +10,7 @@ export const Button = styled.button`
   height: 100%;
   border-radius: 8px;
   border: none;
-  font-size: 16px;
-  line-height: 26px;
-  font-weight: 600px;
+  font: ${theme.font.H5Bold};
   color: ${theme.color.gray100};
   background-color: ${theme.color.blue};
 

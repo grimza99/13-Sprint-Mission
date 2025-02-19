@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./ItemsPage.style";
 import ItemsList from "../../components/ItemsList/ItemsList";
 import { getProducts, bestProducts } from "../../api/product.api";
-import PageCount from "../../components/pageCount";
+import PageCount from "../../components/PageNation/pageCount";
 import useWindowSize from "../../hooks/useWindowSize";
 import { SortSelect } from "../../components/common/Select/Select";
 import Button from "../../components/common/Button/Button";
@@ -19,9 +19,8 @@ function HomePage() {
   const device = useWindowSize();
   const navigate = useNavigate();
   //
-  const handleChangeSort = (selected) => {
-    const { label } = selected;
-    setSelectedOrder(label);
+  const handleChangeSort = (option) => {
+    setSelectedOrder(option);
   };
 
   const handleLoad = async (options) => {
@@ -41,16 +40,16 @@ function HomePage() {
 
   return (
     <S.Background>
-      <S.Contents device={device}>
+      <S.Contents>
         <div>
           <S.Title>베스트 상품</S.Title>
-          <ItemsList value="best" device={device} items={bestItems} />
+          <ItemsList value="best" items={bestItems} />
         </div>
         {device === "mobile" ? (
           <S.MobileContainer>
             <S.MobileTitleBtn>
               <S.Title> 전체 상품</S.Title>
-              <S.SearchBtnContainer device={device}>
+              <S.SearchBtnContainer>
                 <Button onClick={() => navigate("/additem")}>
                   상품 등록하기
                 </Button>
@@ -61,15 +60,11 @@ function HomePage() {
                 placeholder="검색할 상품을 입력해주세요"
                 onChange={() => {}}
               />
-              <SortSelect
-                device={device}
-                onChange={handleChangeSort}
-                value={selectedOrder}
-              />
+              <SortSelect onChange={handleChangeSort} value={selectedOrder} />
             </S.SearchSelectContainer>
           </S.MobileContainer>
         ) : (
-          <S.TitleInputDiv device={device}>
+          <S.TitleInputDiv>
             <S.Title> 전체 상품</S.Title>
             <S.InputDiv>
               <S.InputContainer>
@@ -78,22 +73,18 @@ function HomePage() {
                   onChange={() => {}}
                 />
               </S.InputContainer>
-              <S.SearchBtnContainer device={device}>
+              <S.SearchBtnContainer>
                 <Button onClick={() => navigate("/additem")}>
                   상품 등록하기
                 </Button>
               </S.SearchBtnContainer>
 
-              <SortSelect
-                device={device}
-                onChange={handleChangeSort}
-                value={selectedOrder}
-              />
+              <SortSelect onChange={handleChangeSort} value={selectedOrder} />
             </S.InputDiv>
           </S.TitleInputDiv>
         )}
 
-        <ItemsList value="products" device={device} items={items} />
+        <ItemsList value="products" items={items} />
         <PageCount page={page} onClick={handleClickPageChange} />
       </S.Contents>
     </S.Background>
