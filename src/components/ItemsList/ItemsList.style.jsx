@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import theme from "../../style/theme";
 const ByDevice = {
   best: {
     mobile: {
@@ -41,28 +41,21 @@ const ByDevice = {
   },
 };
 export const Title = styled.h4`
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 24px;
+  font: ${theme.font.H7Medium};
   text-align: left;
-  color: #1f2937;
-  margin: 0px;
+  color: ${theme.color.gray800};
 `;
 export const Price = styled.div`
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 26px;
+  font: ${theme.font.H5Bold};
   text-align: left;
-  color: #1f2937;
+  color: ${theme.color.gray800};
   margin-top: 6px;
   margin-bottom: 6px;
 `;
 
 export const FavoriteCount = styled.span`
-  color: #4b5563;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 18px;
+  color: ${theme.color.gray600};
+  font: ${theme.font.H8};
   text-align: left;
 `;
 

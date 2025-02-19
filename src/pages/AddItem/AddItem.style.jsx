@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import theme from "../../style/theme";
+//
 export const Background = styled.div`
   width: 100%;
   margin: 0;
@@ -34,9 +35,7 @@ export const FlexDiv = styled.div`
   width: 100%;
 `;
 export const Title = styled.p`
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 32px;
+  font: ${theme.font.H3Bold};
   margin-top: 5px;
   margin-bottom: 5px;
 `;

@@ -17,11 +17,9 @@ function ListItem({ value, items }) {
         src={items.images[0]}
         alt="이미지"
       />
-
       <div>
         <S.Title>{items.name}</S.Title>
         <S.Price>{items.price} 원</S.Price>
-
         <BtnHeart small value={items.favoriteCount} />
       </div>
     </S.Item>
