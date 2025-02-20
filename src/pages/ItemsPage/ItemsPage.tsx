@@ -8,22 +8,35 @@ import PageCount from "../../components/PageNation/pageCount";
 import useWindowSize from "../../hooks/useWindowSize";
 import { SortSelect } from "../../components/common/Select/Select";
 import Button from "../../components/common/Button/Button";
-import { SearchInput } from "../../components/common/Input/Input"; //
-
+import { SearchInput } from "../../components/common/Input/Input";
 //
+interface Item {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  tags: string[];
+  images: [string];
+  ownerId: number;
+  favoriteCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+//
+export const INITIAL_ITEM: Item[] = [];
 function HomePage() {
-  const [items, setItems] = useState([]);
-  const [selectedOrder, setSelectedOrder] = useState("최신순");
-  const [bestItems, setBestItems] = useState([]);
-  const [page, setPage] = useState(1);
-  const device = useWindowSize();
+  const [items, setItems] = useState<Item[]>(INITIAL_ITEM);
+  const [selectedOrder, setSelectedOrder] = useState<string>("최신순");
+  const [bestItems, setBestItems] = useState<Item[]>(INITIAL_ITEM);
+  const [page, setPage] = useState<number>(1);
+  const device = useWindowSize(); // useWindow 타입 지정해주기
   const navigate = useNavigate();
   //
-  const handleChangeSort = (option) => {
+  const handleChangeSort = (option:string) => {
     setSelectedOrder(option);
   };
 
-  const handleLoad = async (options) => {
+  const handleLoad = async (options:{ selectedOrder: string, device: string,page: number }) => {
     const { list: bestItems } = await bestProducts(options);
     const { list } = await getProducts(options);
     setItems(list);
@@ -35,7 +48,7 @@ function HomePage() {
   };
 
   useEffect(() => {
-    handleLoad({ selectedOrder, device, page });
+    handleLoad({ selectedOrder, device:, page });
   }, [selectedOrder, page, device]);
 
   return (

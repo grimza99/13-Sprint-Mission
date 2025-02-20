@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import theme from "../../../style/theme";
 
+type isOpen = {
+  $isOpen: boolean;
+};
 export const DropDown = styled.div`
   position: relative;
 `;
@@ -19,7 +22,7 @@ export const Selected = styled.div`
   z-index: 99;
 `;
 
-export const Options = styled.ul`
+export const Options = styled.ul<isOpen>`
   display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   background-color: ${theme.color.white};
   color: ${theme.color.gray400};
