@@ -51,6 +51,7 @@ export const Item = styled.div`
 export const ProductImg = styled.img`
   aspect-ratio: 1/1;
   height: ${({ $device, value }) => ByDevice[value][$device].height || "auto"};
+  border-radius: 16px;
 `;
 
 export const FlexContent = styled.div`

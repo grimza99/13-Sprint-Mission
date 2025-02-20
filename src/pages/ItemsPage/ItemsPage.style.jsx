@@ -6,11 +6,16 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+export const ContentsWrapper = styled.div`
+  width: 1200px;
   @media (max-width: 375px) {
     padding: 16px;
+    width: 100%;
   }
   @media (min-width: 376px) and (max-width: 768px) {
     padding: 24px;
+    width: 100%;
   }
 `;
 export const Contents = styled.div`

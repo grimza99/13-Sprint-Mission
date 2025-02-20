@@ -10,6 +10,7 @@ export function PageButton({ page, value, onClick }) {
     </S.Btn>
   );
 }
+//
 function PageCount({ page, onClick }) {
   const BtnArray = [1, 2, 3, 4, 5];
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,6 +27,7 @@ function PageCount({ page, onClick }) {
     setCurrentPage(currentPage + 1);
     onClick(currentPage + 1);
   };
+
   return (
     <S.PageBtn>
       <S.NextPrevBtn onClick={handleClickPrev}>

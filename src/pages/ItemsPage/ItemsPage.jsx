@@ -40,53 +40,55 @@ function HomePage() {
 
   return (
     <S.Background>
-      <S.Contents>
-        <div>
-          <S.Title>베스트 상품</S.Title>
-          <ItemsList value="best" items={bestItems} />
-        </div>
-        {device === "mobile" ? (
-          <S.MobileContainer>
-            <S.MobileTitleBtn>
-              <S.Title> 전체 상품</S.Title>
-              <S.SearchBtnContainer>
-                <Button onClick={() => navigate("/additem")}>
-                  상품 등록하기
-                </Button>
-              </S.SearchBtnContainer>
-            </S.MobileTitleBtn>
-            <S.SearchSelectContainer>
-              <SearchInput
-                placeholder="검색할 상품을 입력해주세요"
-                onChange={() => {}}
-              />
-              <SortSelect onChange={handleChangeSort} value={selectedOrder} />
-            </S.SearchSelectContainer>
-          </S.MobileContainer>
-        ) : (
-          <S.TitleInputDiv>
-            <S.Title> 전체 상품</S.Title>
-            <S.InputDiv>
-              <S.InputContainer>
+      <S.ContentsWrapper>
+        <S.Contents>
+          <div>
+            <S.Title>베스트 상품</S.Title>
+            <ItemsList value="best" items={bestItems} />
+          </div>
+          {device === "mobile" ? (
+            <S.MobileContainer>
+              <S.MobileTitleBtn>
+                <S.Title> 전체 상품</S.Title>
+                <S.SearchBtnContainer>
+                  <Button onClick={() => navigate("/additem")}>
+                    상품 등록하기
+                  </Button>
+                </S.SearchBtnContainer>
+              </S.MobileTitleBtn>
+              <S.SearchSelectContainer>
                 <SearchInput
                   placeholder="검색할 상품을 입력해주세요"
                   onChange={() => {}}
                 />
-              </S.InputContainer>
-              <S.SearchBtnContainer>
-                <Button onClick={() => navigate("/additem")}>
-                  상품 등록하기
-                </Button>
-              </S.SearchBtnContainer>
+                <SortSelect onChange={handleChangeSort} value={selectedOrder} />
+              </S.SearchSelectContainer>
+            </S.MobileContainer>
+          ) : (
+            <S.TitleInputDiv>
+              <S.Title> 전체 상품</S.Title>
+              <S.InputDiv>
+                <S.InputContainer>
+                  <SearchInput
+                    placeholder="검색할 상품을 입력해주세요"
+                    onChange={() => {}}
+                  />
+                </S.InputContainer>
+                <S.SearchBtnContainer>
+                  <Button onClick={() => navigate("/additem")}>
+                    상품 등록하기
+                  </Button>
+                </S.SearchBtnContainer>
 
-              <SortSelect onChange={handleChangeSort} value={selectedOrder} />
-            </S.InputDiv>
-          </S.TitleInputDiv>
-        )}
+                <SortSelect onChange={handleChangeSort} value={selectedOrder} />
+              </S.InputDiv>
+            </S.TitleInputDiv>
+          )}
 
-        <ItemsList value="products" items={items} />
-        <PageCount page={page} onClick={handleClickPageChange} />
-      </S.Contents>
+          <ItemsList value="products" items={items} />
+          <PageCount page={page} onClick={handleClickPageChange} />
+        </S.Contents>
+      </S.ContentsWrapper>
     </S.Background>
   );
 }

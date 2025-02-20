@@ -37,6 +37,5 @@ export const NextPrevBtn = styled.button`
   height: 40px;
   border-radius: 40px;
   border: 1px solid ${theme.color.gray200};
-
   background-color: ${theme.color.white};
 `;

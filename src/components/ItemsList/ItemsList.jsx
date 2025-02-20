@@ -3,9 +3,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 //
 import * as S from "./ItemsList.style";
 import BtnHeart from "../common/BtnHeart/BtnHeart";
-
 //
-
 function ListItem({ value, items }) {
   const navigate = useNavigate();
   const device = useWindowSize();
@@ -25,10 +23,12 @@ function ListItem({ value, items }) {
     </S.Item>
   );
 }
+//
 export default function ItemsList({ value, items, ...props }) {
   const device = useWindowSize();
+
   return (
-    <S.ItemListStyle value={value} $device={device}>
+    <S.ItemListStyle value={value} $device={device} {...props}>
       {items.map((item) => {
         return (
           <ListItem key={item.id} value={value} $device={device} items={item} />
