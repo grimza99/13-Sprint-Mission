@@ -2,7 +2,12 @@ import styled, { css } from "styled-components";
 import theme from "../../../style/theme";
 //
 
-export const InactiveBtnHeart = styled.button`
+export interface StyledProps {
+  $small: boolean;
+  $border: boolean;
+  $items: boolean;
+}
+export const InactiveBtnHeart = styled.button<StyledProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +39,7 @@ export const InactiveBtnHeart = styled.button`
     `};
 `;
 
-export const ActiveBtnHeart = styled.button`
+export const ActiveBtnHeart = styled.button<StyledProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +66,7 @@ export const ActiveBtnHeart = styled.button`
     `};
 `;
 
-export const HeartImg = styled.img`
+export const HeartImg = styled.img<StyledProps>`
   width: 26px;
   height: 23px;
 

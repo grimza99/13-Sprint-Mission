@@ -3,7 +3,11 @@ import inactiveHeart from "../../../assets/icons/inactive.heart.icon.svg";
 //
 import * as S from "./BtnHeart.style";
 //
-export default function BtnHeart({ value, ...props }) {
+interface Props extends S.StyledProps {
+  value: number;
+  active: boolean;
+}
+export default function BtnHeart({ value, ...props }: Props) {
   const { active, ...rest } = props;
   return (
     <>
