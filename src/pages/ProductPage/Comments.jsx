@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //
-import * as S from "./Comments.style";
+import * as S from "./Comments.style.tsx";
 import { placeholder } from "../../constants/globalConstant";
 import { button } from "../../constants/globalConstant";
 import noComment from "../../assets/no-comments.svg";

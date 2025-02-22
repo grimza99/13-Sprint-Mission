@@ -1,8 +1,11 @@
 import styled, { css } from "styled-components";
 import theme from "../../../style/theme";
 //
-
-export const Button = styled.button`
+interface ButtonProps {
+  $medium?: boolean;
+  $circle?: boolean;
+}
+export const Button = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;

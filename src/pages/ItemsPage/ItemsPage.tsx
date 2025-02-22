@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //
 import * as S from "./ItemsPage.style";
-import ItemsList from "../../components/ItemsList/ItemsList";
+import ItemsList from "../../components/ItemsList/ItemsList"; //ToDo
 import { getProducts, bestProducts } from "../../api/product.api";
-import PageCount from "../../components/PageNation/pageCount";
-import useWindowSize from "../../hooks/useWindowSize";
+import PageCount from "../../components/PageNation/pageCount"; //ToDo
+import useWindowSize from "../../hooks/useWindowSize"; //Todo
 import { SortSelect } from "../../components/common/Select/Select";
 import Button from "../../components/common/Button/Button";
-import { SearchInput } from "../../components/common/Input/Input";
+import { SearchInput } from "../../components/common/Input/Input"; //ToDo
 //
 interface Item {
   id: number;
@@ -32,23 +32,27 @@ function HomePage() {
   const device = useWindowSize(); // useWindow 타입 지정해주기
   const navigate = useNavigate();
   //
-  const handleChangeSort = (option:string) => {
+  const handleChangeSort = (option: string) => {
     setSelectedOrder(option);
   };
 
-  const handleLoad = async (options:{ selectedOrder: string, device: string,page: number }) => {
+  const handleLoad = async (options: {
+    selectedOrder: string;
+    device: string;
+    page: number;
+  }) => {
     const { list: bestItems } = await bestProducts(options);
     const { list } = await getProducts(options);
     setItems(list);
     setBestItems(bestItems);
   };
 
-  const handleClickPageChange = (value) => {
+  const handleClickPageChange = (value: number) => {
     setPage(Number(value));
   };
 
   useEffect(() => {
-    handleLoad({ selectedOrder, device:, page });
+    handleLoad({ selectedOrder, device, page });
   }, [selectedOrder, page, device]);
 
   return (
@@ -74,7 +78,7 @@ function HomePage() {
                   placeholder="검색할 상품을 입력해주세요"
                   onChange={() => {}}
                 />
-                <SortSelect onChange={handleChangeSort} value={selectedOrder} />
+                <SortSelect onChange={handleChangeSort} />
               </S.SearchSelectContainer>
             </S.MobileContainer>
           ) : (
@@ -93,7 +97,7 @@ function HomePage() {
                   </Button>
                 </S.SearchBtnContainer>
 
-                <SortSelect onChange={handleChangeSort} value={selectedOrder} />
+                <SortSelect onChange={handleChangeSort} />
               </S.InputDiv>
             </S.TitleInputDiv>
           )}

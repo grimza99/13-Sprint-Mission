@@ -5,7 +5,14 @@ import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
 import { useState } from "react";
 //
-const INITIAL_DATA = {
+interface Form {
+  img: string;
+  name: string;
+  content: string;
+  price: number;
+  tags: string[];
+}
+const INITIAL_DATA: Form = {
   img: "",
   name: "",
   content: "",
@@ -15,7 +22,7 @@ const INITIAL_DATA = {
 const REQUIRED_INPUT = ["name", "content", "tags", "price"];
 //
 function AddItem() {
-  const [tag, setTag] = useState("");
+  const [tag, setTag] = useState<string>("");
   const [formData, setFormData] = useState(INITIAL_DATA);
   //
   const handleChange = (e) => {
@@ -59,13 +66,17 @@ function AddItem() {
         return false;
     }
   });
+
+  const handleClickSubmit = () => {};
   return (
     <S.Background>
       <S.Container>
         <S.FlexDiv>
           <S.Title>상품 등록하기</S.Title>
           <S.ButtonContainer>
-            <Button disabled={!isInputValid}>{button.send}</Button>
+            <Button onClick={handleClickSubmit} disabled={!isInputValid}>
+              {button.send}
+            </Button>
           </S.ButtonContainer>
         </S.FlexDiv>
         <S.InputsContainer>

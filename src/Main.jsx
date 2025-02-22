@@ -3,7 +3,7 @@ import GlobalStyle from "./style/globalStyle.js";
 //
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import App from "./App.js";
-import ItemsPage from "./pages/ItemsPage/ItemsPage.jsx";
+import ItemsPage from "./pages/ItemsPage/ItemsPage.tsx";
 import AddItem from "./pages/AddItem/AddItem.jsx";
 import Product from "./pages/ProductPage/Product.jsx";
 import Test from "./components/TestPage.jsx";

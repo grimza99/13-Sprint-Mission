@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import profile from "../../assets/icons/default.profile.icon.svg";
 //
 import { getProductInfo } from "../../api/product.api";
-import * as S from "./ProductInfo.style";
+import * as S from "./ProductInfo.style.tsx";
 import Tag from "../../components/Tag/Tag";
 import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
 import { EditSelect } from "../../components/common/Select/Select";

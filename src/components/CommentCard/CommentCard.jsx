@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import * as S from "./CommentCard.style.jsx";
 import defaultImg from "../../assets/icons/default.profile.icon.svg";
 import { Input } from "../common/Input/Input.jsx";
-import { EditSelect } from "../common/Select/Select.jsx";
+import { EditSelect } from "../common/Select/Select.tsx";
 import { button } from "../../constants/globalConstant.jsx";
 import { useFormatUpDate } from "../../hooks/useFormatting.jsx";
 //
