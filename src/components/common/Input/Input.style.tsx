@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 import theme from "../../../style/theme";
 //
-
+export interface StyleProps {
+  $comment: boolean;
+  $textArea: boolean;
+  $edit: boolean;
+}
 export const InputWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -10,7 +14,7 @@ export const InputWrapper = styled.div`
   gap: 16px;
 `;
 
-export const Label = styled.label`
+export const Label = styled.label<StyleProps>`
   width: 100%;
   height: 26px;
   font-size: 18px;
@@ -25,7 +29,7 @@ export const Label = styled.label`
     `}
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<StyleProps>`
   width: 100%;
   background-color: ${theme.color.gray100};
   font-size: 16px;
