@@ -13,33 +13,33 @@ interface Props {
 }
 export default function CommentCard({ data }: Props) {
   const [initialValue, setInitialValue] = useState(data.content);
-  const [isEditing, setIsEditing] = useState(null);
-  const [isDelete, setIsDelete] = useState(null);
+  const [EditingId, setEditingId] = useState<number>(0);
+  const [DeleteId, setDeleteId] = useState<number>(0);
   const formattedUpdate = useFormatUpDate(data.updatedAt);
   //
-  const handleOnChange = (option) => {
+  const handleOnChange = (option: string) => {
     if (option === button.edit) {
-      setIsEditing(data.id);
+      setEditingId(data.id);
     }
     if (option === button.delete) {
-      setIsDelete(data.id);
+      setDeleteId(data.id);
     }
     return;
   };
 
   useEffect(() => {
     //삭제 리퀘스트 예정
-  }, [isDelete]);
+  }, [DeleteId]);
   //
   return (
     <S.CommentWrapper>
       <S.CommentFlex>
-        {data.id === isEditing ? (
+        {data.id === EditingId ? (
           <Input
             name="editComment"
             $edit
             value={initialValue}
-            onChange={(target) => setInitialValue(target.value)}
+            onChange={(e) => setInitialValue(e.target.value)}
           />
         ) : (
           <S.Content>{initialValue}</S.Content>
@@ -58,19 +58,19 @@ export default function CommentCard({ data }: Props) {
               <S.Date>{formattedUpdate}</S.Date>
             </S.NickNameDateWrapper>
           </S.ProfileDateWrapper>
-          {data.id === isEditing && (
+          {data.id === EditingId && (
             <div>
-              <S.CancelBtn onClick={() => setIsEditing("")}>
+              <S.CancelBtn onClick={() => setEditingId(0)}>
                 {button.cancel}
               </S.CancelBtn>
-              <S.EditConfirmBtn onClick={() => setIsEditing("")}>
+              <S.EditConfirmBtn onClick={() => setEditingId(0)}>
                 {button.editConfirm}
               </S.EditConfirmBtn>
             </div>
           )}
         </S.ProfileWrapper>
       </S.CommentFlex>
-      {data.id !== isEditing && <EditSelect onChange={handleOnChange} />}
+      {data.id !== EditingId && <EditSelect onChange={handleOnChange} />}
     </S.CommentWrapper>
   );
 }
