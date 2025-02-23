@@ -36,6 +36,7 @@ export default function CommentCard({ data }: Props) {
       <S.CommentFlex>
         {data.id === isEditing ? (
           <Input
+            name="editComment"
             $edit
             value={initialValue}
             onChange={(target) => setInitialValue(target.value)}
