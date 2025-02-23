@@ -3,14 +3,16 @@ import { placeholder, button } from "../../constants/globalConstant";
 import * as I from "../../components/common/Input/Input";
 import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+
 //
 interface Form {
-  img: string;
+  img: string | File;
   name: string;
   content: string;
   price: number;
   tags: string[];
+  [key: string]: string | File | number | string[];
 }
 const INITIAL_DATA: Form = {
   img: "",
@@ -25,12 +27,16 @@ function AddItem() {
   const [tag, setTag] = useState<string>("");
   const [formData, setFormData] = useState(INITIAL_DATA);
   //
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     //ToDo: img 프로퍼티에는 imgInput에서 넘겨준 file 객체가 담기고 있음
   };
 
-  const CreateTag = (e) => {
+  const handleImgChange = (value: File | string) => {
+    setFormData({ ...formData, img: value });
+  };
+
+  const CreateTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && tag.trim() !== "") {
       const notDuplicate = formData.tags.includes(tag.trim());
       if (!notDuplicate) {
@@ -40,11 +46,11 @@ function AddItem() {
         }));
       }
       setTag("");
-      e.target.value = "";
+      (e.target as HTMLInputElement).value = "";
     }
   };
 
-  const handleClickTagDelete = (tag) => {
+  const handleClickTagDelete = (tag: string) => {
     const filterTags = formData.tags.filter((prev) => prev !== tag);
     setFormData((prev) => ({ ...prev, tags: filterTags }));
   };
@@ -83,7 +89,7 @@ function AddItem() {
           <I.ImgInput
             name="img"
             placeholder={placeholder.img}
-            onChange={handleChange}
+            onChange={handleImgChange}
           />
 
           <I.Input

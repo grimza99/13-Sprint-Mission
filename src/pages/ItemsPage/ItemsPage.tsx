@@ -8,7 +8,7 @@ import PageCount from "../../components/PageNation/pageCount"; //ToDo
 import useWindowSize from "../../hooks/useWindowSize"; //Todo
 import { SortSelect } from "../../components/common/Select/Select";
 import Button from "../../components/common/Button/Button";
-import { SearchInput } from "../../components/common/Input/Input"; //ToDo
+import { SearchInput } from "../../components/common/Input/Input";
 //
 interface Item {
   id: number;
@@ -75,6 +75,7 @@ function HomePage() {
               </S.MobileTitleBtn>
               <S.SearchSelectContainer>
                 <SearchInput
+                  name="search"
                   placeholder="검색할 상품을 입력해주세요"
                   onChange={() => {}}
                 />
@@ -87,6 +88,7 @@ function HomePage() {
               <S.InputDiv>
                 <S.InputContainer>
                   <SearchInput
+                    name="search"
                     placeholder="검색할 상품을 입력해주세요"
                     onChange={() => {}}
                   />

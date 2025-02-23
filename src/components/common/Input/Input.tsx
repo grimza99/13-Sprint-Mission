@@ -11,9 +11,13 @@ interface Props extends S.StyleProps {
   label?: string;
   placeholder?: string;
   name: string;
+  tag?: boolean;
+  value?: string;
+  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  type?: "text" | "number" | "password" | "email";
 }
-export function Input({ onChange, ...props }: Props) {
-  const { label, ...rest } = props;
+export function Input({ onChange, type = "text", ...props }: Props) {
+  const { label, onKeyUp, ...rest } = props;
 
   return (
     <S.InputWrapper>
@@ -24,9 +28,8 @@ export function Input({ onChange, ...props }: Props) {
 }
 //
 interface ImgProps extends Omit<Props, "onChange"> {
-  onChange: (e: { name: string; value: File | string }) => void;
+  onChange: (value: File | string) => void;
 }
-
 export function ImgInput({ onChange, ...props }: ImgProps) {
   const imgRef = useRef<HTMLInputElement>(null);
   const [imgPreview, setImgPreview] = useState<string>("");
@@ -39,14 +42,14 @@ export function ImgInput({ onChange, ...props }: ImgProps) {
     reader.onloadend = () => {
       if (typeof reader.result === "string") {
         setImgPreview(reader.result);
-        onChange({ name: "img", value: file });
+        onChange(file);
       }
     };
   };
   //
   const handleClickImgDelete = () => {
     setImgPreview("");
-    onChange({ name: "img", value: " " });
+    onChange("");
   };
   return (
     <S.ImgInputWrapper>
@@ -75,6 +78,7 @@ export function ImgInput({ onChange, ...props }: ImgProps) {
     </S.ImgInputWrapper>
   );
 }
+
 export function SearchInput({ onChange, ...props }: Props) {
   return (
     <S.SearchInputWrapper>

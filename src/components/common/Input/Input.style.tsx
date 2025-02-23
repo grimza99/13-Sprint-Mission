@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import theme from "../../../style/theme";
 //
 export interface StyleProps {
-  $comment: boolean;
-  $textArea: boolean;
-  $edit: boolean;
+  $comment?: boolean;
+  $textArea?: boolean;
+  $edit?: boolean;
 }
 export const InputWrapper = styled.div`
   width: 100%;
