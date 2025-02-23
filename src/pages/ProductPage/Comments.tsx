@@ -1,22 +1,36 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //
-import * as S from "./Comments.style.tsx";
-import { placeholder } from "../../constants/globalConstant";
-import { button } from "../../constants/globalConstant";
+import * as S from "./Comments.style.js";
+import { placeholder } from "../../constants/globalConstant.jsx";
+import { button } from "../../constants/globalConstant.jsx";
 import noComment from "../../assets/no-comments.svg";
 import returnIcon from "../../assets/icons/return.icon.svg";
 //
-import { getProductComments } from "../../api/comment.api";
-import { Input } from "../../components/common/Input/Input";
-import Button from "../../components/common/Button/Button";
-import CommentCard from "../../components/CommentCard/CommentCard";
+import { getProductComments } from "../../api/comment.api.jsx";
+import { Input } from "../../components/common/Input/Input.js";
+import Button from "../../components/common/Button/Button.js";
+import CommentCard from "../../components/CommentCard/CommentCard.jsx";
 //
 
-export default function Comments({ productId }) {
+interface Writer {
+  image: string;
+  nickname: string;
+  id: number;
+}
+
+export interface Comment {
+  writer: Writer;
+  updatedAt: string; // 날짜를 string으로 처리
+  createdAt: string; // 날짜를 string으로 처리
+  content: string;
+  id: number;
+}
+
+export default function Comments({ productId }: string) {
   const [isDisabled, setIsDisabled] = useState(true);
-  const [comments, setComments] = useState({});
-  const [formData, setFormData] = useState("");
+  const [comments, setComments] = useState<Comment[]>([]);
+  // const [formData, setFormData] = useState("");
   const navigate = useNavigate();
   const handleLoad = async () => {
     const data = await getProductComments(productId);
@@ -44,7 +58,7 @@ export default function Comments({ productId }) {
           </Button>
         </S.ButtonWrapper>
       </S.InputWrapper>
-      {comments?.list?.length === 0 ? (
+      {comments?.length === 0 ? (
         <S.NoCommentWrapper>
           <S.NoCommentImgWrapper>
             <S.NoCommentImg src={noComment} />

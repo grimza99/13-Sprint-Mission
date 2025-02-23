@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 //
-import * as S from "./CommentCard.style.jsx";
+import * as S from "./CommentCard.style.js";
 import defaultImg from "../../assets/icons/default.profile.icon.svg";
-import { Input } from "../common/Input/Input.jsx";
-import { EditSelect } from "../common/Select/Select.tsx";
+import { Input } from "../common/Input/Input.js";
+import { EditSelect } from "../common/Select/Select.js";
 import { button } from "../../constants/globalConstant.jsx";
 import { useFormatUpDate } from "../../hooks/useFormatting.jsx";
+import { Comment } from "../../pages/ProductPage/Comments.js";
 //
-export default function CommentCard({ data }) {
+export default function CommentCard({ data }: Comment) {
   const [initialValue, setInitialValue] = useState(data.content);
   const [isEditing, setIsEditing] = useState(null);
   const [isDelete, setIsDelete] = useState(null);
