@@ -1,7 +1,14 @@
 import styled, { css } from "styled-components";
 import theme from "../../style/theme";
 
-export const TagsContainer = styled.div`
+export interface StyledProps {
+  $product?: boolean;
+}
+interface DeleteButtonProps {
+  tag: string;
+  onClick?: () => void;
+}
+export const TagsContainer = styled.div<StyledProps>`
   width: 100%;
   display: flex;
   gap: 12px;
@@ -38,7 +45,7 @@ export const Tag = styled.div`
   @media (min-width: 376px) and (max-width: 768px) {
   }
 `;
-export const DeleteButton = styled.img`
+export const DeleteButton = styled.img<DeleteButtonProps>`
   width: 22px;
   height: 22px;
 `;
