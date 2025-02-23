@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import theme from "../../../style/theme";
 //
-interface ButtonProps {
+export interface ButtonProps {
   $medium?: boolean;
   $circle?: boolean;
 }

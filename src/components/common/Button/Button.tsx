@@ -3,7 +3,7 @@ import { ReactNode, MouseEvent } from "react";
 
 //
 
-interface Props {
+interface Props extends S.ButtonProps {
   onClick: (e: MouseEvent) => void;
   children: ReactNode;
   disabled?: boolean;

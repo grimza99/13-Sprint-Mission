@@ -8,7 +8,10 @@ import { button } from "../../constants/globalConstant.jsx";
 import { useFormatUpDate } from "../../hooks/useFormatting.jsx";
 import { Comment } from "../../pages/ProductPage/Comments.js";
 //
-export default function CommentCard({ data }: Comment) {
+interface Props {
+  data: Comment;
+}
+export default function CommentCard({ data }: Props) {
   const [initialValue, setInitialValue] = useState(data.content);
   const [isEditing, setIsEditing] = useState(null);
   const [isDelete, setIsDelete] = useState(null);

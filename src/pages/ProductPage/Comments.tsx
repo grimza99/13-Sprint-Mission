@@ -11,6 +11,7 @@ import { getProductComments } from "../../api/comment.api.jsx";
 import { Input } from "../../components/common/Input/Input.js";
 import Button from "../../components/common/Button/Button.js";
 import CommentCard from "../../components/CommentCard/CommentCard.jsx";
+import { Params } from "./Product.js";
 //
 
 interface Writer {
@@ -21,13 +22,13 @@ interface Writer {
 
 export interface Comment {
   writer: Writer;
-  updatedAt: string; // 날짜를 string으로 처리
-  createdAt: string; // 날짜를 string으로 처리
+  updatedAt: string;
+  createdAt: string;
   content: string;
   id: number;
 }
 
-export default function Comments({ productId }: string) {
+export default function Comments({ productId }: Params) {
   const [isDisabled, setIsDisabled] = useState(true);
   const [comments, setComments] = useState<Comment[]>([]);
   // const [formData, setFormData] = useState("");
@@ -47,6 +48,7 @@ export default function Comments({ productId }: string) {
     <S.CommentWrapper>
       <S.InputWrapper>
         <Input
+          name="comment"
           onChange={handleChange}
           $comment
           placeholder={placeholder.createComment}
@@ -67,12 +69,12 @@ export default function Comments({ productId }: string) {
         </S.NoCommentWrapper>
       ) : (
         <S.CommentCardContainer>
-          {comments?.list?.map((data) => (
+          {comments?.map((data) => (
             <CommentCard key={data.id} data={data} />
           ))}
         </S.CommentCardContainer>
       )}
-      <Button onClick={() => navigate("/items")} $ medium $circle>
+      <Button onClick={() => navigate("/items")} $medium $circle>
         목록으로 돌아가기
         <img src={returnIcon} />
       </Button>
