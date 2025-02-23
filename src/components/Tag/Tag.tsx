@@ -3,10 +3,12 @@ import * as S from "./Tag.style";
 //
 interface Props extends S.StyledProps {
   tags: string[];
+  onClick?: (tag: string) => void;
 }
 export default function Tag({ tags, ...props }: Props) {
+  const { onClick, ...rest } = props;
   return (
-    <S.TagsContainer {...props}>
+    <S.TagsContainer>
       {tags?.length > 0 &&
         tags.map((tag) => {
           return (
@@ -14,7 +16,7 @@ export default function Tag({ tags, ...props }: Props) {
               <S.FlexContents>
                 <S.Tag>#{tag}</S.Tag>
                 {!props.$product && (
-                  <S.DeleteButton tag={tag} src={DeleteButton} {...props} />
+                  <S.DeleteButton tag={tag} src={DeleteButton} {...rest} />
                 )}
               </S.FlexContents>
             </S.Container>
