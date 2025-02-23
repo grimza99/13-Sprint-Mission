@@ -1,6 +1,27 @@
 import styled from "styled-components";
 import theme from "../../style/theme";
-const ByDevice = {
+
+interface Props {
+  value: string;
+  $device: string;
+}
+
+interface Device {
+  gap: string;
+  gridTemplate: string;
+  gridRow: string;
+  height: string;
+}
+
+interface DeviceStyle {
+  [key: string]: {
+    mobile: Device;
+    tablet: Device;
+    desktop: Device;
+    [key: string]: Device;
+  };
+}
+const ByDevice: DeviceStyle = {
   best: {
     mobile: {
       gap: "none",
@@ -31,8 +52,8 @@ const ByDevice = {
     tablet: {
       gap: "40px 24px",
       gridTemplate: "repeat(3, 221px)",
-      height: "221px",
       gridRow: "317px",
+      height: "221px",
     },
     desktop: {
       gap: "40px 24px",
@@ -48,7 +69,7 @@ export const Item = styled.div`
   flex-direction: column;
   gap: 16px;
 `;
-export const ProductImg = styled.img`
+export const ProductImg = styled.img<Props>`
   aspect-ratio: 1/1;
   height: ${({ $device, value }) => ByDevice[value][$device].height || "auto"};
   border-radius: 16px;
@@ -70,7 +91,7 @@ export const Price = styled.div`
   color: ${theme.color.gray800};
 `;
 
-export const ItemListStyle = styled.div`
+export const ItemListStyle = styled.div<Props>`
   margin: 24px auto;
   display: grid;
   gap: ${({ $device, value }) => ByDevice[value][$device].gap};
