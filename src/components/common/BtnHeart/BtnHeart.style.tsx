@@ -3,9 +3,9 @@ import theme from "../../../style/theme";
 //
 
 export interface StyledProps {
-  $small: boolean;
-  $border: boolean;
-  $items: boolean;
+  $small?: boolean;
+  $border?: boolean;
+  $items?: boolean;
 }
 export const InactiveBtnHeart = styled.button<StyledProps>`
   display: flex;

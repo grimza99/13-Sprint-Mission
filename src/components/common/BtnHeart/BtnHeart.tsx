@@ -5,7 +5,7 @@ import * as S from "./BtnHeart.style";
 //
 interface Props extends S.StyledProps {
   value: number;
-  active: boolean;
+  active?: boolean;
 }
 export default function BtnHeart({ value, ...props }: Props) {
   const { active, ...rest } = props;
