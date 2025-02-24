@@ -35,7 +35,6 @@ export interface ResponseData extends Product {
   favoriteCount: number;
   ownerNickname: string;
   ownerId: number;
-  description: string;
   id: number;
   isFavorite: boolean;
 }

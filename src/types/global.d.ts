@@ -10,7 +10,7 @@ declare global {
   interface Device {
     device: string;
   }
-
+  type Device = string;
   interface Product {
     name: string;
     price: number;
