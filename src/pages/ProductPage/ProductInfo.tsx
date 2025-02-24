@@ -12,12 +12,8 @@ import { useFormatDate, useFormatPrice } from "../../hooks/useFormatting";
 
 export default function ProductInfo({ productId }: Params) {
   const [product, setProduct] = useState<ResponseData>();
-  const formattedDate = product
-    ? useFormatDate(product.createdAt)
-    : "날짜 없음";
-  const formattedPrice = product
-    ? useFormatPrice(product.price, "KRW")
-    : "가격 없음";
+  const formattedDate = useFormatDate(product?.createdAt || "");
+  const formattedPrice = useFormatPrice(product?.price || 0, "KRW");
 
   //
   const handleLoad = async () => {
@@ -45,7 +41,7 @@ export default function ProductInfo({ productId }: Params) {
               <S.ProductTitle>
                 {product?.name ?? "상품 이름 없음"}
               </S.ProductTitle>
-              <S.ProductPrice>{formattedPrice}원</S.ProductPrice>
+              <S.ProductPrice>{formattedPrice || 0}원</S.ProductPrice>
             </S.TitlePriceWrapper>
             <EditSelect onChange={handleOnChange} />
           </S.TitleEditBtnWrapper>
@@ -67,7 +63,7 @@ export default function ProductInfo({ productId }: Params) {
             <S.ProfileImg src={profile} alt="프로필이미지" />
             <div>
               <S.NickName>{product?.ownerNickname ?? "닉네임"}</S.NickName>
-              <S.CreatedAt>{formattedDate}</S.CreatedAt>
+              <S.CreatedAt>{formattedDate || "날짜 정보 없음"}</S.CreatedAt>
             </div>
           </S.ProfileWrapper>
           <S.BorderLeft>

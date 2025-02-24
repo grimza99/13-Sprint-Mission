@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //
-import * as S from "./Comments.style.js";
+import * as S from "./Comments.style";
 import { placeholder } from "../../constants/globalConstant.jsx";
 import { button } from "../../constants/globalConstant.jsx";
 import noComment from "../../assets/no-comments.svg";
 import returnIcon from "../../assets/icons/return.icon.svg";
 //
-import { getProductComments } from "../../api/comment.api.jsx";
-import { Input } from "../../components/common/Input/Input.js";
-import Button from "../../components/common/Button/Button.js";
-import CommentCard from "../../components/CommentCard/CommentCard.jsx";
+import { getProductComments } from "../../api/comment.api";
+import { Input } from "../../components/common/Input/Input";
+import Button from "../../components/common/Button/Button";
+import CommentCard from "../../components/CommentCard/CommentCard";
 //
 
 export default function Comments({ productId }: Params) {

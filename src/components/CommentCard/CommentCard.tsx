@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 //
-import * as S from "./CommentCard.style.js";
+import * as S from "./CommentCard.style";
 import defaultImg from "../../assets/icons/default.profile.icon.svg";
-import { Input } from "../common/Input/Input.js";
-import { EditSelect } from "../common/Select/Select.js";
+import { Input } from "../common/Input/Input";
+import { EditSelect } from "../common/Select/Select";
 import { button } from "../../constants/globalConstant.jsx";
 import { useFormatUpDate } from "../../hooks/useFormatting.jsx";
 //
