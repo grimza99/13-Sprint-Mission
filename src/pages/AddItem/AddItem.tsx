@@ -49,7 +49,7 @@ function AddItem() {
   };
 
   const isInputValid = REQUIRED_INPUT.every((field) => {
-    const value = formData[field];
+    const value = formData[field]; //전역 타입 파일에 주석 단부분에서 인덱스 시그니쳐를 지우면 이부분이 오류가 납니다 ㅠㅠ
     switch (typeof value) {
       case "object":
         if (Array.isArray(value) && value.length === 0) {
