@@ -1,7 +1,8 @@
 import axios from "axios";
 const BASE_URL = "https://panda-market-api.vercel.app";
 //
-export async function getProducts({
+
+export async function getProduct({
   device = "desktop",
   page = 1,
   selectedOrder = "최신순",
@@ -9,25 +10,32 @@ export async function getProducts({
   const order = selectedOrder === "최신순" ? "recent" : "favorite";
   const pageSize = device === "mobile" ? 4 : device === "tablet" ? 6 : 10;
   const query = `?orderBy=${order}&page=${page}&pageSize=${pageSize}`;
-  const response = await fetch(`${BASE_URL}/products${query}`);
 
-  if (!response.ok) {
-    throw new Error("상품을 불러오지 못했습니다. 다시 시도해주세요");
+  try {
+    const res = await axios.get(`${BASE_URL}/products${query}`);
+    if (!res) throw new Error("상품 불러오기 실패");
+    const data = res.data;
+    return data;
+  } catch (error) {
+    console.error(error, "상품 불러오기 실패");
   }
-  const body = await response.json();
-  return body;
 }
 
 export async function bestProducts({ device }: Device) {
   const pageSize = device === "mobile" ? 1 : device === "tablet" ? 2 : 4;
-  const response = await fetch(
-    `${BASE_URL}/products?orderBy=favorite&pageSize=${pageSize}`
-  );
-  if (!response.ok) {
-    throw new Error("베스트 상품을 불러오지 못했습니다. 다시 시도해주세요");
+  try {
+    const res = await axios.get(
+      `${BASE_URL}/products?orderBy=favorite&pageSize=${pageSize}`
+    );
+    if (!res) throw new Error("베스트상품 api 실패");
+    const data = res.data;
+    return data;
+  } catch (error) {
+    console.error(
+      error,
+      "베스트 상품을 불러오지 못했습니다. 다시 시도해주세요"
+    );
   }
-  const body = await response.json();
-  return body;
 }
 
 export interface ResponseData extends Product {
