@@ -19,8 +19,8 @@ export default function Comments({ productId }: Params) {
   // const [formData, setFormData] = useState("");
   const navigate = useNavigate();
   const handleLoad = async () => {
-    const data = await getProductComments(productId);
-    setComments(data);
+    const data = await getProductComments({ productId });
+    setComments(data ?? []);
   };
   const handleChange = () => {
     setIsDisabled(false);

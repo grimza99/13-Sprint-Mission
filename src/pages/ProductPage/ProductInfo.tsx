@@ -10,7 +10,7 @@ import { EditSelect } from "../../components/common/Select/Select";
 import { useFormatDate, useFormatPrice } from "../../hooks/useFormatting";
 //
 
-export default function ProductInfo(productId: Params) {
+export default function ProductInfo({ productId }: Params) {
   const [product, setProduct] = useState<ResponseData>();
   const formattedDate = product
     ? useFormatDate(product.createdAt)
@@ -21,7 +21,7 @@ export default function ProductInfo(productId: Params) {
 
   //
   const handleLoad = async () => {
-    const info = await getProductInfo(productId);
+    const info = await getProductInfo({ productId });
     setProduct(info);
   };
 
