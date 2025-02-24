@@ -30,7 +30,7 @@ export async function bestProducts(device: string) {
   return body;
 }
 
-interface ProductInfo {
+export interface ProductInfo {
   createdAt: string;
   favoriteCount: number;
   ownerNickname: string;
