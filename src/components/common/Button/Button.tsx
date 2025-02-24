@@ -1,10 +1,10 @@
 import * as S from "./Button.style";
-import { ReactNode, MouseEvent } from "react";
+import { ReactNode } from "react";
 
 //
 
 interface Props extends S.ButtonProps {
-  onClick: (e: MouseEvent) => void;
+  onClick: onClick;
   children: ReactNode;
   disabled?: boolean;
 }

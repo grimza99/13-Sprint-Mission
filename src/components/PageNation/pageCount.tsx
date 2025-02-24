@@ -5,7 +5,7 @@ import nextIcon from "../../assets/icons/nextPage.icon.svg";
 //
 
 interface Props extends S.StyleProps {
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick: onClick;
 }
 export function PageButton({ page, value, onClick }: Props) {
   return (
