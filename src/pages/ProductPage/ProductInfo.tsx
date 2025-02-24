@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 //
 import profile from "../../assets/icons/default.profile.icon.svg";
 //
-import { getProductInfo, ProductInfo } from "../../api/product.api";
+import { getProductInfo, ResponseData } from "../../api/product.api";
 import * as S from "./ProductInfo.style";
 import Tag from "../../components/Tag/Tag";
 import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
@@ -11,7 +11,7 @@ import { useFormatDate, useFormatPrice } from "../../hooks/useFormatting";
 //
 
 export default function ProductInfo(productId: Params) {
-  const [product, setProduct] = useState<ProductInfo>();
+  const [product, setProduct] = useState<ResponseData>();
   const formattedDate = product
     ? useFormatDate(product.createdAt)
     : "날짜 없음";

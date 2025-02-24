@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./ItemsPage.style";
 import ItemsList from "../../components/ItemsList/ItemsList";
 import { getProducts, bestProducts } from "../../api/product.api";
-import PageCount from "../../components/PageNation/pageCount"; //ToDo
-import useWindowSize from "../../hooks/useWindowSize"; //Todo
+import PageCount from "../../components/PageNation/pageCount";
+import useWindowSize from "../../hooks/useWindowSize";
 import { SortSelect } from "../../components/common/Select/Select";
 import Button from "../../components/common/Button/Button";
 import { SearchInput } from "../../components/common/Input/Input";
 //
-export interface Item {
+
+export interface Item extends Omit<Product, "ownernickname" | "isFavorite"> {
   id: number;
   name: string;
   description: string;

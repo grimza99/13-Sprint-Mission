@@ -5,7 +5,7 @@ import nextIcon from "../../assets/icons/nextPage.icon.svg";
 //
 
 interface Props extends S.StyleProps {
-  onClick: (e: MouseEvent<HTMLButtonElement> | number) => void;
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 export function PageButton({ page, value, onClick }: Props) {
   return (
@@ -15,12 +15,16 @@ export function PageButton({ page, value, onClick }: Props) {
   );
 }
 //
-function PageCount({ page, onClick }: Props) {
+type PageCountProps = Omit<Props, "onClick"> & {
+  onClick: (btn: number) => void;
+};
+function PageCount({ page, onClick }: PageCountProps) {
   const BtnArray = [1, 2, 3, 4, 5];
   const [currentPage, setCurrentPage] = useState(1);
+
   const handleClickBtn = (btn: number) => {
     setCurrentPage(btn);
-    onClick(currentPage);
+    onClick(btn);
   };
 
   const handleClickPrev = () => {

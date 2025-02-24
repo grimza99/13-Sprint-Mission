@@ -3,7 +3,7 @@ import theme from "../../style/theme";
 
 export interface StyleProps {
   page: number;
-  value: number;
+  value?: number;
 }
 export const PageBtn = styled.div`
   display: flex;

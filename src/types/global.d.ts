@@ -7,31 +7,22 @@ declare global {
   interface Params {
     productId: string;
   }
+  interface Device {
+    device: string;
+  }
+
+  interface Product {
+    name: string;
+    price: number;
+    tags: Tag[];
+    images: [string];
+    description: string;
+    [key: string]: any;
+    //원래 any 부분에 string| boolean| [string]|number 를 적었었는데,
+    //이터러블이 아닌 값이 섞여있어서 includes랑 ...prev가 안되더라고요... ㅠㅠ
+  }
 }
 
-//addItem
-interface Form {
-  img: string | File;
-  name: string;
-  content: string;
-  price: number;
-  tags: Tag[];
-  [key: string]: string | File | number | string[];
-}
-
-//itemsPage
-export interface Item {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  tags: Tag[];
-  images: [string];
-  ownerId: number;
-  favoriteCount: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
 //comment
 interface Writer {
   image: string;

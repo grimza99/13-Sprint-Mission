@@ -4,9 +4,10 @@ import * as I from "../../components/common/Input/Input";
 import * as S from "./AddItem.style";
 import Tag from "../../components/Tag/Tag";
 import { ChangeEvent, useState } from "react";
-
 //
-const INITIAL_DATA: ProductInfo = {
+type ProductForm = Omit<Product, "images"> & { images: string | File };
+
+const INITIAL_DATA: ProductForm = {
   images: "",
   name: "",
   description: "",
@@ -43,7 +44,7 @@ function AddItem() {
   };
 
   const handleClickTagDelete = (tag: string) => {
-    const filterTags = formData.tags.filter((prev) => prev !== tag);
+    const filterTags = formData.tags.filter((prev: string) => prev !== tag);
     setFormData((prev) => ({ ...prev, tags: filterTags }));
   };
 
@@ -83,7 +84,6 @@ function AddItem() {
             placeholder={placeholder.img}
             onChange={handleImgChange}
           />
-
           <I.Input
             label="상품명"
             placeholder={placeholder.productName}

@@ -1,6 +1,6 @@
 import axios from "axios";
 const BASE_URL = "https://panda-market-api.vercel.app";
-
+//
 export async function getProducts({
   device = "desktop",
   page = 1,
@@ -18,7 +18,7 @@ export async function getProducts({
   return body;
 }
 
-export async function bestProducts(device: string) {
+export async function bestProducts({ device }: Device) {
   const pageSize = device === "mobile" ? 1 : device === "tablet" ? 2 : 4;
   const response = await fetch(
     `${BASE_URL}/products?orderBy=favorite&pageSize=${pageSize}`
@@ -30,7 +30,7 @@ export async function bestProducts(device: string) {
   return body;
 }
 
-export interface ResponseData extends ProductInfo {
+export interface ResponseData extends Product {
   createdAt: string;
   favoriteCount: number;
   ownerNickname: string;
@@ -39,6 +39,7 @@ export interface ResponseData extends ProductInfo {
   id: number;
   isFavorite: boolean;
 }
+
 export async function getProductInfo({ productId }: Params) {
   try {
     const response = await axios.get(`${BASE_URL}/products/${productId}`);
