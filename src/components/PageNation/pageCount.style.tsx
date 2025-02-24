@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import theme from "../../style/theme";
 
+export interface StyleProps {
+  page: number;
+  value: number;
+}
 export const PageBtn = styled.div`
   display: flex;
   gap: 4px;
@@ -9,7 +13,7 @@ export const PageBtn = styled.div`
   width: 304px;
 `;
 
-export const Btn = styled.button`
+export const Btn = styled.button<StyleProps>`
   width: 40px;
   height: 40px;
   border-radius: 40px;
