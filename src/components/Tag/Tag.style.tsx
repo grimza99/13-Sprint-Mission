@@ -5,7 +5,7 @@ export interface StyledProps {
   $product?: boolean;
 }
 interface DeleteButtonProps {
-  tag: string;
+  tag: Tag;
   onClick?: () => void;
 }
 export const TagsContainer = styled.div<StyledProps>`

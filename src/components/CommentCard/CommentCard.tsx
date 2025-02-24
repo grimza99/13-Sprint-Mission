@@ -6,8 +6,8 @@ import { Input } from "../common/Input/Input.js";
 import { EditSelect } from "../common/Select/Select.js";
 import { button } from "../../constants/globalConstant.jsx";
 import { useFormatUpDate } from "../../hooks/useFormatting.jsx";
-import { Comment } from "../../pages/ProductPage/Comments.js";
 //
+
 interface Props {
   data: Comment;
 }

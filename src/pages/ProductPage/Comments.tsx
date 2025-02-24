@@ -13,20 +13,6 @@ import Button from "../../components/common/Button/Button.js";
 import CommentCard from "../../components/CommentCard/CommentCard.jsx";
 //
 
-interface Writer {
-  image: string;
-  nickname: string;
-  id: number;
-}
-
-export interface Comment {
-  writer: Writer;
-  updatedAt: string;
-  createdAt: string;
-  content: string;
-  id: number;
-}
-
 export default function Comments({ productId }: Params) {
   const [isDisabled, setIsDisabled] = useState(true);
   const [comments, setComments] = useState<Comment[]>([]);

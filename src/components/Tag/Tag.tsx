@@ -2,8 +2,8 @@ import DeleteButton from "../../assets/icons/DeleteIcon.svg";
 import * as S from "./Tag.style";
 //
 interface Props extends S.StyledProps {
-  tags: string[];
-  onClick?: (tag: string) => void;
+  tags: Tag[];
+  onClick?: (tag: Tag) => void;
 }
 export default function Tag({ tags, ...props }: Props) {
   const { onClick, ...rest } = props;
