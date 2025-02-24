@@ -30,24 +30,20 @@ export async function bestProducts(device: string) {
   return body;
 }
 
-export interface ProductInfo {
+export interface ResponseData extends ProductInfo {
   createdAt: string;
   favoriteCount: number;
   ownerNickname: string;
-  ownerId: Number;
-  images: [string];
-  tags: string[];
-  price: number;
+  ownerId: number;
   description: string;
-  name: String;
   id: number;
-  isFavorite: Boolean;
+  isFavorite: boolean;
 }
-export async function getProductInfo(productId: string) {
+export async function getProductInfo({ productId }: Params) {
   try {
     const response = await axios.get(`${BASE_URL}/products/${productId}`);
     if (!response) throw new Error("제품정보 get api 실패");
-    const data: ProductInfo = response.data;
+    const data: ResponseData = response.data;
     return data;
   } catch (error) {
     console.error(error, "제품정보 api 실패");

@@ -2,14 +2,10 @@ export {};
 
 //전역 타입을 할 예정
 declare global {
-  type Product = {
-    id: number;
-    name: string;
-    price: number;
-  };
+  type Tag = string;
 
-  interface Window {
-    myGlobalVar: string;
+  interface Params {
+    productId: string;
   }
 }
 
@@ -19,7 +15,7 @@ interface Form {
   name: string;
   content: string;
   price: number;
-  tags: string[];
+  tags: Tag[];
   [key: string]: string | File | number | string[];
 }
 
@@ -29,7 +25,7 @@ export interface Item {
   name: string;
   description: string;
   price: number;
-  tags: string[];
+  tags: Tag[];
   images: [string];
   ownerId: number;
   favoriteCount: number;
@@ -49,10 +45,6 @@ export interface Comment {
   createdAt: string;
   content: string;
   id: number;
-}
-//product
-export interface Params {
-  productId: string;
 }
 
 export interface Props {
@@ -160,10 +152,10 @@ export interface StyledProps {
   $product?: boolean;
 }
 interface DeleteButtonProps {
-  tag: string;
+  tag: Tag;
   onClick?: () => void;
 }
 interface Props extends S.StyledProps {
-  tags: string[];
+  tags: Tag[];
   onClick?: (tag: string) => void;
 }

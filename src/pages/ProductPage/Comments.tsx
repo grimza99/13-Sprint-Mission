@@ -11,7 +11,6 @@ import { getProductComments } from "../../api/comment.api.jsx";
 import { Input } from "../../components/common/Input/Input.js";
 import Button from "../../components/common/Button/Button.js";
 import CommentCard from "../../components/CommentCard/CommentCard.jsx";
-import { Params } from "./Product.js";
 //
 
 interface Writer {

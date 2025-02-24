@@ -6,18 +6,10 @@ import Tag from "../../components/Tag/Tag";
 import { ChangeEvent, useState } from "react";
 
 //
-interface Form {
-  img: string | File;
-  name: string;
-  content: string;
-  price: number;
-  tags: string[];
-  [key: string]: string | File | number | string[];
-}
-const INITIAL_DATA: Form = {
-  img: "",
+const INITIAL_DATA: ProductInfo = {
+  images: "",
   name: "",
-  content: "",
+  description: "",
   price: 0,
   tags: [],
 };
@@ -33,7 +25,7 @@ function AddItem() {
   };
 
   const handleImgChange = (value: File | string) => {
-    setFormData({ ...formData, img: value });
+    setFormData({ ...formData, images: value });
   };
 
   const CreateTag = (e: React.KeyboardEvent<HTMLInputElement>) => {

@@ -4,9 +4,7 @@ import ProductInfo from "./ProductInfo";
 import Comments from "./Comments";
 import * as S from "./Product.style";
 //
-export interface Params {
-  productId: string;
-}
+
 export default function Product() {
   const navigate = useNavigate();
   const { productId } = useParams<Record<string, string>>();

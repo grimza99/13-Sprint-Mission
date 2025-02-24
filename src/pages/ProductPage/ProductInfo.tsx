@@ -8,10 +8,9 @@ import Tag from "../../components/Tag/Tag";
 import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
 import { EditSelect } from "../../components/common/Select/Select";
 import { useFormatDate, useFormatPrice } from "../../hooks/useFormatting";
-import { Params } from "./Product";
 //
 
-export default function ProductInfo({ productId }: Params) {
+export default function ProductInfo(productId: Params) {
   const [product, setProduct] = useState<ProductInfo>();
   const formattedDate = product
     ? useFormatDate(product.createdAt)
