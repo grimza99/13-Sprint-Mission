@@ -2,18 +2,24 @@ import { useState, useEffect } from "react";
 //
 import profile from "../../assets/icons/default.profile.icon.svg";
 //
-import { getProductInfo } from "../../api/product.api";
-import * as S from "./ProductInfo.style.tsx";
+import { getProductInfo, ProductInfo } from "../../api/product.api";
+import * as S from "./ProductInfo.style";
 import Tag from "../../components/Tag/Tag";
 import BtnHeart from "../../components/common/BtnHeart/BtnHeart";
 import { EditSelect } from "../../components/common/Select/Select";
 import { useFormatDate, useFormatPrice } from "../../hooks/useFormatting";
+import { Params } from "./Product";
 //
 
-export default function ProductInfo({ productId }) {
-  const [product, setProduct] = useState({});
-  const formattedDate = useFormatDate(product.createdAt);
-  const formattedPrice = useFormatPrice(product.price, "KRW");
+export default function ProductInfo({ productId }: Params) {
+  const [product, setProduct] = useState<ProductInfo>();
+  const formattedDate = product
+    ? useFormatDate(product.createdAt)
+    : "날짜 없음";
+  const formattedPrice = product
+    ? useFormatPrice(product.price, "KRW")
+    : "가격 없음";
+
   //
   const handleLoad = async () => {
     const info = await getProductInfo(productId);
@@ -28,7 +34,7 @@ export default function ProductInfo({ productId }) {
     <S.ProductInfoWrapper>
       {product?.images && product?.images?.length > 0 ? (
         <S.ImgDiv>
-          <S.ProductImg src={product?.images} alt="Product" />
+          <S.ProductImg src={product?.images[0]} alt="Product" />
         </S.ImgDiv>
       ) : (
         <S.ImgDiv>이미지가 없습니다.</S.ImgDiv>
@@ -37,7 +43,9 @@ export default function ProductInfo({ productId }) {
         <S.InfoTagWrapper>
           <S.TitleEditBtnWrapper>
             <S.TitlePriceWrapper>
-              <S.ProductTitle>{product.name}</S.ProductTitle>
+              <S.ProductTitle>
+                {product?.name ?? "상품 이름 없음"}
+              </S.ProductTitle>
               <S.ProductPrice>{formattedPrice}원</S.ProductPrice>
             </S.TitlePriceWrapper>
             <EditSelect onChange={handleOnChange} />
@@ -45,11 +53,13 @@ export default function ProductInfo({ productId }) {
           <div>
             <S.DesTitleContentWrapper>
               <S.DescriptionTitle>상품소개</S.DescriptionTitle>
-              <S.ProductContent>{product.description}</S.ProductContent>
+              <S.ProductContent>
+                {product?.description ?? "상품 설명 없음"}
+              </S.ProductContent>
             </S.DesTitleContentWrapper>
             <S.DesTitleContentWrapper>
               <S.DescriptionTitle>상품 태그</S.DescriptionTitle>
-              <Tag $product tags={product.tags} />
+              <Tag $product tags={product?.tags ?? []} />
             </S.DesTitleContentWrapper>
           </div>
         </S.InfoTagWrapper>
@@ -57,12 +67,12 @@ export default function ProductInfo({ productId }) {
           <S.ProfileWrapper>
             <S.ProfileImg src={profile} alt="프로필이미지" />
             <div>
-              <S.NickName>{product.ownerNickname}</S.NickName>
+              <S.NickName>{product?.ownerNickname ?? "닉네임"}</S.NickName>
               <S.CreatedAt>{formattedDate}</S.CreatedAt>
             </div>
           </S.ProfileWrapper>
           <S.BorderLeft>
-            <BtnHeart $small $border value={product.favoriteCount} />
+            <BtnHeart $small $border value={product?.favoriteCount ?? 0} />
           </S.BorderLeft>
         </S.ProfileFavorite>
       </S.InfoProfileWrapper>

@@ -18,7 +18,7 @@ export async function getProducts({
   return body;
 }
 
-export async function bestProducts({ device }) {
+export async function bestProducts(device: string) {
   const pageSize = device === "mobile" ? 1 : device === "tablet" ? 2 : 4;
   const response = await fetch(
     `${BASE_URL}/products?orderBy=favorite&pageSize=${pageSize}`
@@ -30,13 +30,26 @@ export async function bestProducts({ device }) {
   return body;
 }
 
-export async function getProductInfo(productId) {
+interface ProductInfo {
+  createdAt: string;
+  favoriteCount: number;
+  ownerNickname: string;
+  ownerId: Number;
+  images: [string];
+  tags: string[];
+  price: number;
+  description: string;
+  name: String;
+  id: number;
+  isFavorite: Boolean;
+}
+export async function getProductInfo(productId: string) {
   try {
     const response = await axios.get(`${BASE_URL}/products/${productId}`);
     if (!response) throw new Error("제품정보 get api 실패");
-    return response.data;
+    const data: ProductInfo = response.data;
+    return data;
   } catch (error) {
     console.error(error, "제품정보 api 실패");
-    return null;
   }
 }

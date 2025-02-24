@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import theme from "../../style/theme";
 //
+export interface Props {
+  src: string;
+}
 export const ProductInfoWrapper = styled.div`
   display: flex;
   gap: 24px;
@@ -22,7 +25,7 @@ export const ProductInfoWrapper = styled.div`
   }
 `;
 
-export const ProductImg = styled.img`
+export const ProductImg = styled.img<Props>`
   width: 100%;
   height: 100%;
   border-radius: 16px;
