@@ -5,6 +5,7 @@ export interface StyleProps {
   $comment?: boolean;
   $textArea?: boolean;
   $edit?: boolean;
+  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 export const InputWrapper = styled.div`
   width: 100%;

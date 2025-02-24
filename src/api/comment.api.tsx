@@ -1,7 +1,7 @@
 import axios from "axios";
 const BASE_URL = "https://panda-market-api.vercel.app";
 
-export async function getProductComments(productId: Params, limit = 3) {
+export async function getProductComments({ productId }: Params, limit = 3) {
   try {
     const res = await axios.get(
       `${BASE_URL}/products/${productId}/comments?limit=${limit}`

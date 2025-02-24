@@ -14,7 +14,7 @@ interface Props extends S.StyleProps {
   tag?: boolean;
   value?: string;
   onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  type?: "text" | "number" | "password" | "email";
+  type?: "text" | "number";
 }
 export function Input({ onChange, type = "text", ...props }: Props) {
   const { label, onKeyUp, ...rest } = props;
@@ -22,7 +22,12 @@ export function Input({ onChange, type = "text", ...props }: Props) {
   return (
     <S.InputWrapper>
       {!label && <S.Label {...rest}>{label}</S.Label>}
-      <S.Input onChange={onChange} {...rest}></S.Input>
+      <S.Input
+        type={type}
+        onChange={onChange}
+        onKeyUp={onKeyUp || undefined}
+        {...rest}
+      ></S.Input>
     </S.InputWrapper>
   );
 }

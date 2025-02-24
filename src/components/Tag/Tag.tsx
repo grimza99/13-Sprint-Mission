@@ -16,7 +16,12 @@ export default function Tag({ tags, ...props }: Props) {
               <S.FlexContents>
                 <S.Tag>#{tag}</S.Tag>
                 {!props.$product && (
-                  <S.DeleteButton tag={tag} src={DeleteButton} {...rest} />
+                  <S.DeleteButton
+                    tag={tag}
+                    src={DeleteButton}
+                    onClick={onClick ? () => onClick(tag) : undefined}
+                    {...rest}
+                  />
                 )}
               </S.FlexContents>
             </S.Container>

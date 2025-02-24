@@ -30,6 +30,7 @@ function AddItem() {
   };
 
   const CreateTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log("createTag 함수 들어옴");
     if (e.key === "Enter" && tag.trim() !== "") {
       const notDuplicate = formData.tags.includes(tag.trim());
       if (!notDuplicate) {
