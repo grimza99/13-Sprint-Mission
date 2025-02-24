@@ -3,21 +3,17 @@ import { useNavigate } from "react-router-dom";
 //
 import * as S from "./ItemsPage.style";
 import ItemsList from "../../components/ItemsList/ItemsList";
-import { getProducts, bestProducts, ResponseData } from "../../api/product.api";
+import * as A from "../../api/product.api";
 import PageCount from "../../components/PageNation/pageCount";
 import useWindowSize from "../../hooks/useWindowSize";
 import { SortSelect } from "../../components/common/Select/Select";
 import Button from "../../components/common/Button/Button";
 import { SearchInput } from "../../components/common/Input/Input";
 //
-
-type Item = Omit<ResponseData, "ownernickname" | "isFavorite">;
-//
-export const INITIAL_ITEM: Item[] = [];
 function HomePage() {
-  const [items, setItems] = useState<Item[]>(INITIAL_ITEM);
+  const [items, setItems] = useState<A.Items[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<string>("최신순");
-  const [bestItems, setBestItems] = useState<Item[]>(INITIAL_ITEM);
+  const [bestItems, setBestItems] = useState<A.Items[]>([]);
   const [page, setPage] = useState<number>(1);
   const device = useWindowSize(); // useWindow 타입 지정해주기
   const navigate = useNavigate();
@@ -31,10 +27,10 @@ function HomePage() {
     device: string;
     page: number;
   }) => {
-    const { list: bestItems } = await bestProducts(options);
-    const { list } = await getProducts(options);
-    setItems(list);
-    setBestItems(bestItems);
+    const bestItems = await A.bestProducts(options);
+    const list = await A.getProducts(options);
+    setItems(list ?? []);
+    setBestItems(bestItems ?? []);
   };
 
   const handleClickPageChange = (value: number) => {
