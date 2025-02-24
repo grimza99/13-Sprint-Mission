@@ -3,7 +3,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 //
 import * as S from "./ItemsList.style";
 import BtnHeart from "../common/BtnHeart/BtnHeart";
-import { Item } from "../../pages/ItemsPage/ItemsPage";
+import { Item } from "../../api/product.api";
 //
 
 interface Prop {

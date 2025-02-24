@@ -11,9 +11,9 @@ import Button from "../../components/common/Button/Button";
 import { SearchInput } from "../../components/common/Input/Input";
 //
 function HomePage() {
-  const [items, setItems] = useState<A.Items[]>([]);
+  const [items, setItems] = useState<A.Item[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<string>("최신순");
-  const [bestItems, setBestItems] = useState<A.Items[]>([]);
+  const [bestItems, setBestItems] = useState<A.Item[]>([]);
   const [page, setPage] = useState<number>(1);
   const device = useWindowSize(); // useWindow 타입 지정해주기
   const navigate = useNavigate();

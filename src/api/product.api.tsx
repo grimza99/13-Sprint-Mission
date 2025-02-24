@@ -10,7 +10,7 @@ export interface ResponseData extends Product {
   id: number;
   isFavorite: boolean;
 }
-export type Items = Omit<ResponseData, "ownernickname" | "isFavorite">;
+export type Item = Omit<ResponseData, "ownernickname" | "isFavorite">;
 
 export async function getProducts({
   device = "desktop",
@@ -24,7 +24,7 @@ export async function getProducts({
   try {
     const res = await axios.get(`${BASE_URL}/products${query}`);
     if (!res) throw new Error("상품 불러오기 실패");
-    const data: Items[] = res.data.list;
+    const data: Item[] = res.data.list;
     return data;
   } catch (error) {
     console.error(error, "상품 불러오기 실패");
@@ -38,7 +38,7 @@ export async function bestProducts({ device }: Device) {
       `${BASE_URL}/products?orderBy=favorite&pageSize=${pageSize}`
     );
     if (!res) throw new Error("베스트상품 api 실패");
-    const data: Items[] = res.data.list;
+    const data: Item[] = res.data.list;
     return data;
   } catch (error) {
     console.error(
