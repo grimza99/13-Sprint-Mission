@@ -8,7 +8,6 @@ export default function Board() {
       <div>인풋 최신순셀렉트</div>
       <div>게시글 제목 사진</div>
       <div>프로필사진 닉네임 날짜 하트 숫자 </div>
-
       <div></div>
     </div>
   );
