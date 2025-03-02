@@ -7,7 +7,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Nav />
       <S.ContentWrapper>
-        <Component {...pageProps} />
+        <S.Contents>
+          <Component {...pageProps} />
+        </S.Contents>
       </S.ContentWrapper>
     </>
   );
