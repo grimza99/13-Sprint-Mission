@@ -1,17 +1,13 @@
 import styled from "styled-components";
-import theme from "../../styles/theme";
+import theme from "../../../styles/theme";
 import Image from "next/image";
 //
 
-interface StyledProps {
-  isActive?: boolean;
-  $device?: string;
-}
 export const HeaderArea = styled.div`
   position: fixed;
   top: 0px;
   left: 0px;
-  width: 100%;
+  width: 100vw;
   height: 70px;
   background-color: ${theme.color.white};
   padding: 10px 200px;
@@ -26,6 +22,7 @@ export const HeaderArea = styled.div`
 
 export const ContentsWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 `;
@@ -39,7 +36,7 @@ export const NavContents = styled.div`
   display: flex;
   gap: 32px;
   align-items: center;
-
+  flex-direction: row;
   @media (max-width: 375px) {
     gap: 8px;
   }
@@ -71,19 +68,7 @@ export const NavLinkWrapper = styled.div`
     gap: 8px;
   }
 `;
-// export const activeLink = ({ isActive }: StyledProps) => ({
-//   color: isActive ? "#3692FF" : "#4b5563",
-//   width: `${({ $device }: StyledProps) =>
-//     $device === "mobile" ? "70px" : "108px"}`,
-//   padding: `${({ $device }: StyledProps) =>
-//     $device === "mobile" ? "7px 0px" : "11px 0px"}`,
-//   fontSize: `${({ $device }: StyledProps) =>
-//     $device === "mobile" ? "16px" : "18"}`,
-//   fontWeight: "700",
-//   lineHeight: "26px",
-//   textAlign: "center",
-//   justifyContent: "center",
-// });
+
 export const MyLogoButton = styled(Image)`
   width: 40px;
   height: 40px;

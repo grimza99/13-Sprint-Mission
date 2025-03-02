@@ -1,9 +1,9 @@
 import Link from "next/link";
-import pandaLogo from "../../public/assets/Logo/pandaLogo.svg";
-import textLogo from "../../public/assets/Logo/textLogo.svg";
-import myLogo from "../../public/assets/icons/default.profile.icon.svg";
+import pandaLogo from "../../../public/assets/Logo/pandaLogo.svg";
+import textLogo from "../../../public/assets/Logo/textLogo.svg";
+import myLogo from "../../../public/assets/icons/default.profile.icon.svg";
 import * as S from "./Nav.style";
-import useWindowSize from "../../hooks/useWindowSize";
+import useWindowSize from "../../../hooks/useWindowSize";
 export default function Nav() {
   const device: string = useWindowSize();
   return (
