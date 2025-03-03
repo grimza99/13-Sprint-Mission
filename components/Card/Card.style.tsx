@@ -1,12 +1,21 @@
 import styled from "styled-components";
 import theme from "@/styles/theme";
-import Image from "next/image";
 export const CardWrapper = styled.div`
+  width: 384px;
+  height: 169px;
   border: none;
   background-color: ${theme.color.gray50};
   border-radius: 8px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
-
-export const Img = styled(Image)`
-  width: 72px;
+export const ContentsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+export const ContentImgWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+  font: ${theme.font.H3Bold};
 `;
