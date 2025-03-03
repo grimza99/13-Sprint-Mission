@@ -16,9 +16,13 @@ export function BestCard({ article }: Props) {
           <p>{article.content}</p>
           <Image width={72} height={72} src={article.image} alt="상품이미지" />
         </S.ContentImgWrapper>
-        <div>{article.writer.nickname}</div>
-        <div>{article.likeCount}</div>
-        <div>{formattedDate}</div>
+        <S.ContentInfo>
+          <S.NicknameLike>
+            <div>{article.writer.nickname}</div>
+            <div>{article.likeCount}</div>
+          </S.NicknameLike>
+          <div>{formattedDate}</div>
+        </S.ContentInfo>
       </S.ContentsWrapper>
     </S.CardWrapper>
   );
