@@ -1,9 +1,7 @@
 import * as S from "./Button.style";
 import { ReactNode } from "react";
-
 //
-
-interface Props extends S.ButtonProps {
+interface Props {
   onClick: onClick;
   children: ReactNode;
   disabled?: boolean;

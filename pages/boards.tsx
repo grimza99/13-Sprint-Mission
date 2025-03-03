@@ -3,6 +3,8 @@ import * as S from "../styles/boards.style";
 import { Articles, BestArticle } from "@/components/Card/Card";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Input, SearchInput } from "@/components/Input/Input";
+import { SortSelect } from "@/components/Select/Select";
 const apiUrl = process.env.NEXT_PUBLIC_ARTICLE_API_URL;
 //
 export default function Board() {
@@ -23,10 +25,20 @@ export default function Board() {
     const articlesData = res.data.list;
     setArticles(articlesData);
   };
+  //
+  const handleSortChange = (option: string) => {
+    if (option === "최신순") {
+      setOrderBy("recent");
+    } else {
+      setOrderBy("like");
+    }
+  };
+  //
   useEffect(() => {
     handleLoad({ orderBy });
   }, [orderBy]);
 
+  const handleSearchChange = () => {};
   return (
     <S.Contents>
       <S.TitleContentWrapper>
@@ -45,6 +57,12 @@ export default function Board() {
             <Button onClick={handleClick}>글쓰기</Button>
           </S.ButtonWrapper>
         </S.SubBtnWrapper>
+        <SearchInput
+          placeholder="검색할 상품을 입력해주세요"
+          name="search"
+          onChange={handleSearchChange}
+        />
+        <SortSelect onChange={handleSortChange} />
         <S.ArticlesFlex>
           {articles.length > 0 &&
             articles.map((article) => (
