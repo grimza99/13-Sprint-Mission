@@ -1,6 +1,6 @@
 import Button from "@/components/Button/Button";
 import * as S from "../styles/boards.style";
-import { BestCard } from "@/components/Card/Card";
+import { Articles, BestArticle } from "@/components/Card/Card";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const apiUrl = process.env.NEXT_PUBLIC_ARTICLE_API_URL;
@@ -29,26 +29,29 @@ export default function Board() {
 
   return (
     <S.Contents>
-      <div>
+      <S.TitleContentWrapper>
         <S.SubTitle>베스트 게시글 </S.SubTitle>
-        {best.length > 0 &&
-          best.map((article) => (
-            <BestCard key={article.id} article={article} />
-          ))}
-      </div>
-      <div>
+        <S.BestCardFlex>
+          {best.length > 0 &&
+            best.map((article) => (
+              <BestArticle key={article.id} article={article} />
+            ))}
+        </S.BestCardFlex>
+      </S.TitleContentWrapper>
+      <S.TitleContentWrapper>
         <S.SubBtnWrapper>
           <S.SubTitle>게시글</S.SubTitle>
           <S.ButtonWrapper>
             <Button onClick={handleClick}>글쓰기</Button>
           </S.ButtonWrapper>
         </S.SubBtnWrapper>
-        <div>
-          <div>인풋 최신순셀렉트</div>
-          <div>게시글 제목 사진</div>
-          <div>프로필사진 닉네임 날짜 하트 숫자 </div>
-        </div>
-      </div>
+        <S.ArticlesFlex>
+          {articles.length > 0 &&
+            articles.map((article) => (
+              <Articles key={article.id} article={article} />
+            ))}
+        </S.ArticlesFlex>
+      </S.TitleContentWrapper>
     </S.Contents>
   );
 }
