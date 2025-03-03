@@ -1,9 +1,10 @@
 import activeHeart from "../../public/assets/icons/active.heart.icon.svg";
 import inactiveHeart from "../../public/assets/icons/inactive.heart.icon.svg";
-
 import * as S from "./BtnHeart.style";
+import Image from "next/image";
+
 //
-interface Props extends S.StyledProps {
+interface Props {
   value: number;
   active?: boolean;
 }
@@ -13,12 +14,24 @@ export default function BtnHeart({ value, ...props }: Props) {
     <>
       {active ? (
         <S.ActiveBtnHeart {...rest}>
-          <S.HeartImg src={activeHeart} {...rest} alt="좋아요" />
+          <Image
+            width={16}
+            height={16}
+            src={activeHeart}
+            {...rest}
+            alt="좋아요"
+          />
           {value}
         </S.ActiveBtnHeart>
       ) : (
         <S.InactiveBtnHeart {...rest}>
-          <S.HeartImg src={inactiveHeart} {...rest} alt="좋아요" />
+          <Image
+            width={16}
+            height={16}
+            src={inactiveHeart}
+            {...rest}
+            alt="좋아요"
+          />
           {value}
         </S.InactiveBtnHeart>
       )}
