@@ -9,6 +9,7 @@ export const DropDown = styled.div`
 `;
 
 export const Selected = styled.div`
+  width: 130px;
   background-color: ${theme.color.white};
   cursor: pointer;
   border: 1px solid ${theme.color.gray200};
@@ -57,10 +58,7 @@ export const SortImgWrapper = styled.div`
   border: 1px solid ${theme.color.gray200};
   border-radius: 12px;
 `;
-export const SortImg = styled.img`
-  width: 24px;
-  height: 24px;
-`;
+
 //editSelect
 export const EditDropDown = styled.div`
   position: relative;

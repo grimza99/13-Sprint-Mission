@@ -32,6 +32,11 @@ export const ButtonWrapper = styled.div`
   width: 88px;
 `;
 
+export const InputSelectWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 16px;
+`;
 export const ArticlesFlex = styled.div`
   width: 100%;
   display: flex;

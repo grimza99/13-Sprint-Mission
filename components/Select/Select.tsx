@@ -5,6 +5,7 @@ import kebabIcon from "../../public/assets/icons/kebab.icon.svg";
 import sortIcon from "../../public/assets/icons/sort.icon.svg";
 import { useAutoClose } from "../../hooks/useAutoClose";
 import useWindowSize from "../../hooks/useWindowSize";
+import Image from "next/image";
 //
 interface Props {
   onChange: (option: string) => void;
@@ -28,12 +29,12 @@ export function SortSelect({ onChange, ...props }: Props) {
       <S.DropDown ref={ref} {...props}>
         {device === "mobile" ? (
           <S.SortImgWrapper onClick={() => setIsOpen(!isOpen)}>
-            <S.SortImg src={sortIcon} alt="정렬" />
+            <Image src={sortIcon} alt="정렬" width={24} height={24} />
           </S.SortImgWrapper>
         ) : (
           <S.Selected onClick={() => setIsOpen(!isOpen)}>
             {selected}
-            <img src={selectIcon} alt="정렬" />
+            <Image src={selectIcon} alt="정렬" width={16} height={7} />
           </S.Selected>
         )}
 

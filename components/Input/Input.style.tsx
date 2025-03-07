@@ -166,7 +166,6 @@ export const SearchInput = styled.input`
   border-radius: 12px;
   border: none;
   color: ${theme.color.gray800};
-  height: 56px;
   padding: 16px 44px;
   width: 100%;
   height: 42px;
@@ -179,6 +178,7 @@ export const SearchInput = styled.input`
 `;
 
 export const SearchInputWrapper = styled.div`
+  width: 100%;
   position: relative;
 `;
 export const SearchIcon = styled(Image)`

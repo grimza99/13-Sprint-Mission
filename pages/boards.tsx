@@ -1,7 +1,7 @@
 import Button from "@/components/Button/Button";
 import * as S from "../styles/boards.style";
 import { Articles, BestArticle } from "@/components/Card/Card";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { Input, SearchInput } from "@/components/Input/Input";
 import { SortSelect } from "@/components/Select/Select";
@@ -10,6 +10,7 @@ const apiUrl = process.env.NEXT_PUBLIC_ARTICLE_API_URL;
 export default function Board() {
   const [best, setBest] = useState<Article[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
+  const [filteredArticles, setFilteredArticles] = useState<Article[]>([]);
   const [orderBy, setOrderBy] = useState("recent");
   const handleClick = () => {};
 
@@ -38,7 +39,19 @@ export default function Board() {
     handleLoad({ orderBy });
   }, [orderBy]);
 
-  const handleSearchChange = () => {};
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const searchValue = e.target.value.toLowerCase();
+    // 검색어가 없을 때 원본 데이터 유지
+    if (!searchValue) {
+      setFilteredArticles(articles);
+      return;
+    }
+    const searchedArticle = articles.filter((article) =>
+      article.content.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+
+    setFilteredArticles(searchedArticle);
+  };
   return (
     <S.Contents>
       <S.TitleContentWrapper>
@@ -57,15 +70,17 @@ export default function Board() {
             <Button onClick={handleClick}>글쓰기</Button>
           </S.ButtonWrapper>
         </S.SubBtnWrapper>
-        <SearchInput
-          placeholder="검색할 상품을 입력해주세요"
-          name="search"
-          onChange={handleSearchChange}
-        />
-        <SortSelect onChange={handleSortChange} />
+        <S.InputSelectWrapper>
+          <SearchInput
+            placeholder="검색할 상품을 입력해주세요"
+            name="search"
+            onChange={handleSearchChange}
+          />
+          <SortSelect onChange={handleSortChange} />
+        </S.InputSelectWrapper>
         <S.ArticlesFlex>
-          {articles.length > 0 &&
-            articles.map((article) => (
+          {filteredArticles.length > 0 &&
+            filteredArticles.map((article) => (
               <Articles key={article.id} article={article} />
             ))}
         </S.ArticlesFlex>
