@@ -1,9 +1,9 @@
-import BestImage from "../../public/assets/icons/best.icon.svg";
+import BestImage from "@/public/assets/icons/best.icon.svg";
 import Image from "next/image";
-import ProfileImg from "../../public/assets/icons/default.profile.icon.svg";
-import { useFormatDate } from "../../hooks/useFormatting";
+import ProfileImg from "@/public/assets/icons/default.profile.icon.svg";
+import { useFormatDate } from "@/hooks/useFormatting";
 
-import BtnHeart from "../BtnHeart/BtnHeart";
+import BtnHeart from "./BtnHeart";
 //
 interface Props {
   article: Article;

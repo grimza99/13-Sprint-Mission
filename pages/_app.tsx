@@ -1,4 +1,4 @@
-import Nav from "../components/Layout/Nav/Nav";
+import Nav from "../components/Nav";
 import type { AppProps } from "next/app";
 import "../styles/global.css";
 export default function App({ Component, pageProps }: AppProps) {

@@ -1,5 +1,5 @@
-import activeHeart from "../../public/assets/icons/active.heart.icon.svg";
-import inactiveHeart from "../../public/assets/icons/inactive.heart.icon.svg";
+import activeHeart from "@/public/assets/icons/active.heart.icon.svg";
+import inactiveHeart from "@/public/assets/icons/inactive.heart.icon.svg";
 import Image from "next/image";
 
 //

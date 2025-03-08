@@ -1,9 +1,9 @@
-import Button from "@/components/Button/Button";
-import { Articles, BestArticle } from "@/components/Card/Card";
+import Button from "@/components/Button";
+import { Articles, BestArticle } from "@/components/Card";
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { SearchInput } from "@/components/Input/Input";
-import { SortSelect } from "@/components/Select/Select";
+import { SortSelect } from "@/components/Select";
 import useWindowSize from "@/hooks/useWindowSize";
 const apiUrl = process.env.NEXT_PUBLIC_ARTICLE_API_URL;
 //
