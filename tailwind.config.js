@@ -18,8 +18,8 @@ module.exports = {
         gray50: "#f9fafb",
         blue: "#3692ff",
         white: "#ffffff",
-        backgroundLightBlue: "#cfe5ff",
-        backgroundLightGray: "#fcfcfc",
+        lightBlue: "#cfe5ff",
+        lightGray: "#fcfcfc",
         inputRed: "#f74747",
       },
       fontSize: {

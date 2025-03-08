@@ -1,6 +1,5 @@
 import activeHeart from "../../public/assets/icons/active.heart.icon.svg";
 import inactiveHeart from "../../public/assets/icons/inactive.heart.icon.svg";
-import * as S from "./BtnHeart.style";
 import Image from "next/image";
 
 //
@@ -13,7 +12,7 @@ export default function BtnHeart({ value, ...props }: Props) {
   return (
     <>
       {active ? (
-        <S.ActiveBtnHeart {...rest}>
+        <div className="flex items-center justify-center gap-[6px] w-16 h-6 border-none font-Pretendard text-H7Regular bg-gray-50 text-gray-500 ">
           <Image
             width={16}
             height={16}
@@ -22,9 +21,9 @@ export default function BtnHeart({ value, ...props }: Props) {
             alt="좋아요"
           />
           {value}
-        </S.ActiveBtnHeart>
+        </div>
       ) : (
-        <S.InactiveBtnHeart {...rest}>
+        <div className="flex items-center justify-center gap-[6px] w-16 h-6 border-none font-Pretendard text-H7Regular bg-gray-50 text-gray-500 ">
           <Image
             width={16}
             height={16}
@@ -33,7 +32,7 @@ export default function BtnHeart({ value, ...props }: Props) {
             alt="좋아요"
           />
           {value}
-        </S.InactiveBtnHeart>
+        </div>
       )}
     </>
   );

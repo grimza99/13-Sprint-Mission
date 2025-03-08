@@ -2,7 +2,6 @@ import BestImage from "../../public/assets/icons/best.icon.svg";
 import Image from "next/image";
 import ProfileImg from "../../public/assets/icons/default.profile.icon.svg";
 import { useFormatDate } from "../../hooks/useFormatting";
-import * as S from "./Card.style";
 
 import BtnHeart from "../BtnHeart/BtnHeart";
 //
@@ -13,23 +12,32 @@ export function BestArticle({ article }: Props) {
   const formattedDate = useFormatDate(article.createdAt);
   const articleImg = article.image || "";
   return (
-    <S.BestCardWrapper>
-      <S.BestContentsWrapper>
-        <Image src={BestImage} width={102} height={30} alt="베스트" />
-
-        <S.ContentImgWrapper>
-          <p>{article.content}</p>
-          <Image width={72} height={72} src={articleImg} alt="상품이미지" />
-        </S.ContentImgWrapper>
-        <S.ContentInfo>
-          <S.NicknameLike>
-            {article.writer.nickname}
-            <BtnHeart value={article.likeCount} />
-          </S.NicknameLike>
-          <div>{formattedDate}</div>
-        </S.ContentInfo>
-      </S.BestContentsWrapper>
-    </S.BestCardWrapper>
+    <div className=" flex flex-col gap-4 w-96 h-[169px] border-none bg-gray-50 px-6 rounded-lg">
+      <Image
+        className="w-[102px] h-[30px] "
+        src={BestImage}
+        width={102}
+        height={30}
+        alt="베스트"
+      />
+      <div className="flex justify-between font-Pretendard text-H3Bold">
+        <p>{article.content}</p>
+        <Image
+          className="w-[72px] h-[72px] "
+          width={72}
+          height={72}
+          src={articleImg}
+          alt="상품이미지"
+        />
+      </div>
+      <div className="flex justify-between text-gray-500 font-Pretendard text-H7Regular ">
+        <div className="flex gap-2">
+          {article.writer.nickname}
+          <BtnHeart value={article.likeCount} />
+        </div>
+        <div>{formattedDate}</div>
+      </div>
+    </div>
   );
 }
 
@@ -38,22 +46,20 @@ export function Articles({ article }: Props) {
   const articleImg = article.image || ProfileImg;
 
   return (
-    <S.ArticleCardWrapper>
-      <S.ContentsWrapper>
-        <S.ContentImgWrapper>
-          <p>{article.content}</p>
-          <Image width={72} height={72} src={articleImg} alt="상품이미지" />
-        </S.ContentImgWrapper>
-        <S.ContentInfo>
-          <S.NicknameLike>
-            <Image src={ProfileImg} width={24} height={24} alt="프로필" />
+    <div className=" flex flex-col gap-4 w-screen h-[138px] bg-light-gray px-6 border-b border-gray-200">
+      <div className="flex justify-between font-Pretendard text-H3Bold">
+        <p>{article.content}</p>
+        <Image width={72} height={72} src={articleImg} alt="상품이미지" />
+      </div>
+      <div className="flex justify-between text-gray-500 font-Pretendard text-H7Regular ">
+        <div className="flex gap-2">
+          <Image src={ProfileImg} width={24} height={24} alt="프로필" />
 
-            <div>{article.writer.nickname}</div>
-            {formattedDate}
-          </S.NicknameLike>
-          <BtnHeart value={article.likeCount} />
-        </S.ContentInfo>
-      </S.ContentsWrapper>
-    </S.ArticleCardWrapper>
+          <div>{article.writer.nickname}</div>
+          {formattedDate}
+        </div>{" "}
+        <BtnHeart value={article.likeCount} />
+      </div>
+    </div>
   );
 }
