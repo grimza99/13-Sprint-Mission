@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import selectIcon from "../../public/assets/icons/select.icon.svg";
-import kebabIcon from "../../public/assets/icons/kebab.icon.svg";
-import sortIcon from "../../public/assets/icons/sort.icon.svg";
-import { useAutoClose } from "../hooks/useAutoClose";
-import useWindowSize from "../hooks/useWindowSize";
+import selectIcon from "@/public/assets/icons/select.icon.svg";
+import kebabIcon from "@/public/assets/icons/kebab.icon.svg";
+import sortIcon from "@/public/assets/icons/sort.icon.svg";
+import { useAutoClose } from "@/hooks/useAutoClose";
+import useWindowSize from "@/hooks/useWindowSize";
 import Image from "next/image";
 //
 interface Props {

@@ -2,11 +2,12 @@ import Button from "@/components/Button";
 import { Articles, BestArticle } from "@/components/Card";
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
-import { SearchInput } from "@/components/Input/Input";
+import { SearchInput } from "@/components/Input";
 import { SortSelect } from "@/components/Select";
 import useWindowSize from "@/hooks/useWindowSize";
 const apiUrl = process.env.NEXT_PUBLIC_ARTICLE_API_URL;
 //
+
 export default function Board() {
   const [best, setBest] = useState<Article[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
