@@ -6,11 +6,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Nav />
-      <S.ContentWrapper>
-        <S.Contents>
+      <div className="w-full mx-auto h-screen">
+        <div className="max-w-[1200px] mx-auto h-screen mt-[70px]">
           <Component {...pageProps} />
-        </S.Contents>
-      </S.ContentWrapper>
+        </div>
+      </div>
     </>
   );
 }
