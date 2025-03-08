@@ -12,7 +12,7 @@ export function BestArticle({ article }: Props) {
   const formattedDate = useFormatDate(article.createdAt);
   const articleImg = article.image || "";
   return (
-    <div className=" flex flex-col gap-4 w-96 h-[169px] border-none bg-gray-50 px-6 rounded-lg">
+    <div className=" flex flex-col gap-4 w-[384px] md:w-full mobile:w-full h-[169px] md:h-[198px] border-none bg-gray-50 px-6 rounded-lg">
       <Image
         className="w-[102px] h-[30px] "
         src={BestImage}
@@ -46,7 +46,7 @@ export function Articles({ article }: Props) {
   const articleImg = article.image || ProfileImg;
 
   return (
-    <div className=" flex flex-col gap-4 w-screen h-[138px] bg-light-gray px-6 border-b border-gray-200">
+    <div className=" flex flex-col gap-4 w-full h-[138px] bg-light-gray px-6 border-b border-gray-200">
       <div className="flex justify-between font-Pretendard text-H3Bold">
         <p>{article.content}</p>
         <Image width={72} height={72} src={articleImg} alt="상품이미지" />

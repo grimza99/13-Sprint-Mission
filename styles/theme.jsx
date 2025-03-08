@@ -33,5 +33,8 @@ const theme = {
     H7Regular: "400 14px/24px 'Pretendard', sans-serif",
     H8: "400 12px/18px 'Pretendard', sans-serif",
   },
+  screens: {
+    mobile: "375px",
+  },
 };
 export default theme;
