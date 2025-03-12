@@ -1,60 +1,91 @@
 import Button from "@/components/Button";
 import { Articles, BestArticle } from "@/components/Card";
 import { ChangeEvent, useEffect, useState } from "react";
-import axios from "axios";
 import { SearchInput } from "@/components/Input";
 import { SortSelect } from "@/components/Select";
 import useWindowSize from "@/hooks/useWindowSize";
-const apiUrl = process.env.NEXT_PUBLIC_ARTICLE_API_URL;
-//
+import { getArticles, getBestArticles } from "@/lib/Articles";
+import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 
-export default function Board() {
-  const [best, setBest] = useState<Article[]>([]);
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [filteredArticles, setFilteredArticles] = useState<Article[]>([]);
-  const [orderBy, setOrderBy] = useState("recent");
+//
+const BEST_PAGE_SIZE: number = 3;
+const PAGE_SIZE: number = 10;
+
+interface Props {
+  bestArticles: Article[];
+  sortedArticles: Article[];
+}
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { orderBy = "recent", keyword = "" } = context.query as {
+    orderBy: string;
+    keyword?: string;
+  };
+
+  const bestArticles = await getBestArticles({ pageSize: BEST_PAGE_SIZE });
+  const sortedArticles = await getArticles({
+    pageSize: PAGE_SIZE,
+    orderBy,
+    keyword,
+  });
+  return { props: { bestArticles, sortedArticles } };
+};
+//
+export default function Board({ bestArticles, sortedArticles }: Props) {
+  const [best, setBest] = useState(bestArticles);
+  const [filteredArticles, setFilteredArticles] = useState(sortedArticles);
   const device: string = useWindowSize();
+  const router = useRouter();
+
   const handleClick = () => {};
 
-  const handleLoad = async (orderBy: string, device: string) => {
-    const bestPageSize = device === "mobile" ? 1 : device === "tablet" ? 2 : 3;
-    const bestRes = await axios.get(
-      `${apiUrl}?page=1&pageSize=${bestPageSize}&orderBy=like`
-    );
-    const bestArticle = bestRes.data.list;
-    setBest(bestArticle);
-    const res = await axios.get(
-      `${apiUrl}?page=1&pageSize=10&orderBy=${orderBy}`
-    );
-    const articlesData = res.data.list;
-    setArticles(articlesData);
-    setFilteredArticles(articlesData);
-  };
-  //
   const handleSortChange = (option: string) => {
-    if (option === "최신순") {
-      setOrderBy("recent");
-    } else {
-      setOrderBy("like");
-    }
+    const newOrderBy = option === "최신순" ? "recent" : "like";
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, orderBy: newOrderBy },
+    });
   };
   //
   useEffect(() => {
-    handleLoad(orderBy, device);
-  }, [orderBy, device]);
+    if (router.query.keyword) {
+      const newQuery = { ...router.query };
+      delete newQuery.keyword;
+
+      router.replace(
+        { pathname: router.pathname, query: newQuery },
+        undefined,
+        { shallow: true }
+      );
+    }
+  }, []);
+  useEffect(() => {
+    setBest([...bestArticles]);
+    setFilteredArticles([...sortedArticles]);
+    if (device === "mobile") {
+      setBest(bestArticles.slice(0, 1));
+    } else if (device === "tablet") {
+      setBest(bestArticles.slice(0, 2));
+    } else {
+      setBest(bestArticles);
+    }
+  }, [device, sortedArticles]);
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchValue = e.target.value.toLowerCase();
-    // 검색어가 없을 때 원본 데이터 유지
-    if (!searchValue) {
-      setFilteredArticles(articles);
-      return;
-    }
-    const searchedArticle = articles.filter((article) =>
-      article.content.toLowerCase().includes(e.target.value.toLowerCase())
-    );
 
-    setFilteredArticles(searchedArticle);
+    const newQuery = { ...router.query };
+
+    if (!searchValue) {
+      delete newQuery.keyword;
+    } else {
+      newQuery.keyword = searchValue;
+    }
+
+    router.push({
+      pathname: router.pathname,
+      query: newQuery,
+    });
   };
   return (
     <div className="flex flex-col w-full h-screen gap-10 ">
