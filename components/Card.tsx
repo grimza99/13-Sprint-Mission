@@ -12,7 +12,7 @@ export function BestArticle({ article }: Props) {
   const formattedDate = useFormatDate(article.createdAt);
   const articleImg = article.image || "";
   return (
-    <div className=" flex flex-col gap-4 w-[384px] md:w-full mobile:w-full h-[169px] md:h-[198px] border-none bg-gray-50 px-6 rounded-lg">
+    <div className=" flex flex-col gap-4 w-[384px]tablet:w-full mobile:w-full h-[169px] tablet:h-[198px] border-none bg-gray-50 px-6 rounded-lg">
       <Image
         className="w-[102px] h-[30px] "
         src={BestImage}

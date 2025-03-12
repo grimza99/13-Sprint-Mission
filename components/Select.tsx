@@ -28,13 +28,13 @@ export function SortSelect({ onChange, ...props }: Props) {
       <div className="relative " ref={ref}>
         <Image
           onClick={() => setIsOpen(!isOpen)}
-          className="block md:hidden w-[42px] h-[42px] left-[302px] px-[9px] py-[9px] border-solid border-gray-200 rounded-xl"
+          className="hidden mobile:block w-[42px] h-[42px] left-[302px] px-[9px] py-[9px] border-solid border-gray-200 rounded-xl"
           src={sortIcon}
           alt="정렬"
           width={24}
           height={24}
         />
-        <div className="md:block mobile:hidden">
+        <div className="block mobile:hidden">
           <div
             onClick={() => setIsOpen(!isOpen)}
             className=" w-[130px] bg-white cursor-pointer rounded-[8px] py-4 px-3 font-Pretendard text-gray-400 flex h-[42px] items-center justify-between z-[100px]"

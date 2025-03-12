@@ -12,7 +12,7 @@ export default function BtnHeart({ value, ...props }: Props) {
   return (
     <>
       {active ? (
-        <div className="flex items-center justify-center gap-[6px] w-16 h-6 border-none font-Pretendard text-H7Regular bg-gray-50 text-gray-500 ">
+        <div className="flex items-center justify-between gap-[6px] w-16 h-6 border-none font-Pretendard text-H7Regular bg-gray-50 text-gray-500 ">
           <Image
             width={16}
             height={16}
@@ -23,7 +23,7 @@ export default function BtnHeart({ value, ...props }: Props) {
           {value}
         </div>
       ) : (
-        <div className="flex items-center justify-center gap-[6px] w-16 h-6 border-none font-Pretendard text-H7Regular bg-gray-50 text-gray-500 ">
+        <div className="flex items-center justify-between gap-[6px] w-16 h-6 border-none font-Pretendard text-H7Regular bg-white text-gray-500 ">
           <Image
             width={16}
             height={16}

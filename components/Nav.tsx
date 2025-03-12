@@ -7,12 +7,12 @@ import useWindowSize from "@/hooks/useWindowSize";
 export default function Nav() {
   const device: string = useWindowSize();
   return (
-    <div className="fixed top-0 left-0 w-screen h-[70px] bg-white py-[10px] px-[200px] md:px-[24px] md:py-[10px]  mobile:px-[15px] mobile:py-[15px] z-50">
+    <div className="fixed top-0 left-0 w-screen h-[70px] bg-white py-[10px] px-[200px] NavPadding:px-[24px] NavPadding:py-[10px]  mobile:px-[15px] mobile:py-[15px] z-50">
       <div className="flex justify-between w-screen max-w-full ">
         <div className="flex items-center w-screen gap-8 mobile:gap-2">
           <div className="flex w-auto gap-2">
             <Image
-              className="w-10 h-10 mobile:hidden"
+              className="block w-10 h-10 mobile:hidden"
               src={pandaLogo}
               alt="판다로고"
               width={40}

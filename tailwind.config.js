@@ -1,3 +1,5 @@
+const { table } = require("console");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -43,7 +45,10 @@ module.exports = {
         Pretendard: ["Pretendard", "sans-serif"],
       },
       screens: {
-        mobile: "375px",
+        mobile: { max: "767px" },
+        tablet: { max: "1024px" },
+
+        NavPadding: { max: "1920px" },
       },
     },
   },
