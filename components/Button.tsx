@@ -10,7 +10,7 @@ export default function Button({ onClick, children, ...props }: Props) {
     <>
       <button
         onClick={onClick}
-        className="flex  disabled:bg-gray-400 justify-center items-center w-full h-full rounded-[8px] border-none font-Pretendard text-H5Bold text-gray-100 bg-light-blue cursor-pointer"
+        className="flex  bg-blue-500 justify-center items-center w-full h-full rounded-[8px] border-none font-Pretendard text-H5Bold text-gray-100 bg-light-blue cursor-pointer"
       >
         {children}
       </button>

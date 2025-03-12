@@ -20,7 +20,7 @@ export function BestArticle({ article }: Props) {
         height={30}
         alt="베스트"
       />
-      <div className="flex justify-between font-Pretendard text-H3Bold">
+      <div className="flex justify-between gap-2 tablet:gap-10 font-Pretendard text-H3Bold">
         <p>{article.content}</p>
         <Image
           className="w-[72px] h-[72px] "

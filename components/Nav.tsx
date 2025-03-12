@@ -26,7 +26,7 @@ export default function Nav() {
               height={51}
             />
           </div>
-          <div className="flex w-auto gap-7 mobile:gap-2">
+          <div className="flex w-auto gap-7 mobile:gap-2 font-Pretendard text-H4Bold">
             <Link href="/docs">자유게시판</Link>
             <Link href="/items">중고마켓</Link>
           </div>
