@@ -49,7 +49,11 @@ export function Articles({ article }: Props) {
     <div className=" flex flex-col gap-4 w-full h-[138px] bg-light-gray px-6 border-b border-gray-200">
       <div className="flex justify-between font-Pretendard text-H3Bold">
         <p>{article.content}</p>
-        <Image width={72} height={72} src={articleImg} alt="상품이미지" />
+        <img
+          className="w-[72px] h-[72px] text-H8"
+          src={articleImg}
+          alt="상품이미지"
+        />
       </div>
       <div className="flex justify-between text-gray-500 font-Pretendard text-H7Regular ">
         <div className="flex gap-2">
@@ -57,7 +61,7 @@ export function Articles({ article }: Props) {
 
           <div>{article.writer.nickname}</div>
           {formattedDate}
-        </div>{" "}
+        </div>
         <BtnHeart value={article.likeCount} />
       </div>
     </div>

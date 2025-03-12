@@ -11,16 +11,17 @@ import { useRouter } from "next/router";
 //
 const BEST_PAGE_SIZE: number = 3;
 const PAGE_SIZE: number = 10;
-
 interface Props {
   bestArticles: Article[];
   sortedArticles: Article[];
+  decodedKeyword: string;
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { orderBy = "recent", keyword = "" } = context.query as {
+  const { orderBy = "recent", keyword } = context.query as {
     orderBy: string;
     keyword?: string;
   };
+  const decodedKeyword = keyword ? decodeURIComponent(keyword as string) : "";
 
   const bestArticles = await getBestArticles({ pageSize: BEST_PAGE_SIZE });
   const sortedArticles = await getArticles({
@@ -28,12 +29,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     orderBy,
     keyword,
   });
-  return { props: { bestArticles, sortedArticles } };
+  return {
+    props: { bestArticles, sortedArticles, decodedKeyword },
+  };
 };
 //
-export default function Board({ bestArticles, sortedArticles }: Props) {
+export default function Board({
+  bestArticles,
+  sortedArticles,
+  decodedKeyword,
+}: Props) {
   const [best, setBest] = useState(bestArticles);
-  const [filteredArticles, setFilteredArticles] = useState(sortedArticles);
+  const [articles, setArticles] = useState(sortedArticles);
+  const [keywordValue, setKeywordValue] = useState("");
   const device: string = useWindowSize();
   const router = useRouter();
 
@@ -41,27 +49,32 @@ export default function Board({ bestArticles, sortedArticles }: Props) {
 
   const handleSortChange = (option: string) => {
     const newOrderBy = option === "최신순" ? "recent" : "like";
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, orderBy: newOrderBy },
-    });
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: { ...router.query, orderBy: newOrderBy },
+      },
+      undefined
+    );
   };
   //
+
   useEffect(() => {
-    if (router.query.keyword) {
+    if (decodedKeyword !== keywordValue) {
       const newQuery = { ...router.query };
       delete newQuery.keyword;
 
       router.replace(
-        { pathname: router.pathname, query: newQuery },
-        undefined,
-        { shallow: true }
+        {
+          pathname: router.pathname,
+          query: newQuery,
+        },
+        undefined
       );
     }
-  }, []);
-  useEffect(() => {
     setBest([...bestArticles]);
-    setFilteredArticles([...sortedArticles]);
+    setArticles([...sortedArticles]);
+
     if (device === "mobile") {
       setBest(bestArticles.slice(0, 1));
     } else if (device === "tablet") {
@@ -73,19 +86,22 @@ export default function Board({ bestArticles, sortedArticles }: Props) {
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchValue = e.target.value.toLowerCase();
-
     const newQuery = { ...router.query };
-
     if (!searchValue) {
       delete newQuery.keyword;
+      setKeywordValue("");
     } else {
       newQuery.keyword = searchValue;
+      setKeywordValue(searchValue);
     }
 
-    router.push({
-      pathname: router.pathname,
-      query: newQuery,
-    });
+    router.replace(
+      {
+        pathname: router.pathname,
+        query: newQuery,
+      },
+      undefined
+    );
   };
   return (
     <div className="flex flex-col w-full h-screen gap-10 ">
@@ -118,8 +134,8 @@ export default function Board({ bestArticles, sortedArticles }: Props) {
           <SortSelect onChange={handleSortChange} />
         </div>
         <div className="flex flex-col w-full gap-6">
-          {filteredArticles.length > 0 &&
-            filteredArticles.map((article) => (
+          {articles.length > 0 &&
+            articles.map((article) => (
               <Articles key={article.id} article={article} />
             ))}
         </div>
