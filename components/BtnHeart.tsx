@@ -9,6 +9,7 @@ interface Props {
 }
 export default function BtnHeart({ value, ...props }: Props) {
   const { active, ...rest } = props;
+  const count = value > 9999 ? "9999+" : value;
   return (
     <>
       {active ? (
@@ -31,7 +32,7 @@ export default function BtnHeart({ value, ...props }: Props) {
             {...rest}
             alt="좋아요"
           />
-          {value}
+          {count}
         </div>
       )}
     </>
