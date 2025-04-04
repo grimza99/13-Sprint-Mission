@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ChangeEvent, useRef, useState } from "react";
 //
 
-interface Props {
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   placeholder?: string;
@@ -18,7 +18,13 @@ interface Props {
   onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   type?: "text" | "number";
 }
-export function Input({ onChange, type = "text", ...props }: Props) {
+
+export function Input({
+  onChange,
+  placeholder,
+  type = "text",
+  ...props
+}: Props) {
   const { label, onKeyUp, $edit, $textArea, $comment } = props;
 
   return (
@@ -28,6 +34,7 @@ export function Input({ onChange, type = "text", ...props }: Props) {
           $comment && "text-H5Bold"
         } w-full h-[26px] font-Pretendard text-gray-800 text-H4Bold`}
       >
+        <span>*</span>
         {label}
       </div>
       <input
@@ -39,15 +46,17 @@ export function Input({ onChange, type = "text", ...props }: Props) {
         type={type}
         onChange={onChange}
         onKeyUp={onKeyUp || undefined}
+        placeholder={placeholder}
       />
     </div>
   );
 }
+
 //
 interface ImgProps extends Omit<Props, "onChange"> {
   onChange: (value: File | string) => void;
 }
-export function ImgInput({ onChange, ...props }: ImgProps) {
+export function ImgInput({ onChange, label, ...props }: ImgProps) {
   const imgRef = useRef<HTMLInputElement>(null);
   const [imgPreview, setImgPreview] = useState<string>("");
 
@@ -63,16 +72,19 @@ export function ImgInput({ onChange, ...props }: ImgProps) {
       }
     };
   };
+
   //
   const handleClickImgDelete = () => {
     setImgPreview("");
     onChange("");
   };
+
   return (
-    <div className="flex gap-6 mobile:gap-[10px] ">
-      <div className="mobile:w-[168px]  w-[282px] h-[282px] bg-gray-100 rounded-xl  border-none text-gray-800">
+    <div className="flex flex-col gap-6 mobile:gap-[10px] ">
+      <p className="text-[18px] font-Pretendard text-H4Bold">{label}</p>
+      <div className="relative  w-[282px] mobile:w-[168px] mobile:h-[168px] h-[282px] bg-gray-100 rounded-xl  border-none text-gray-800">
         <input
-          className="relative w-full h-full bg-gray-100 font-Pretendard text-H6Regular border-none rounded-xl text-gray-800 px-4 py-6 
+          className="hidden w-full h-full bg-gray-100 font-Pretendard text-H6Regular border-none rounded-xl text-gray-800 px-4 py-6 
           placeholder-gray-400 placeholder:text-H5Regular placeholder:top-[10px] placeholder:text-left placeholder:absolute focus:outline-none"
           type="file"
           id="fileUpload"
@@ -83,17 +95,17 @@ export function ImgInput({ onChange, ...props }: ImgProps) {
         />
         <label
           htmlFor="fileUpload"
-          className="absolute text-center text-gray-400 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-H5Regular"
+          className="absolute flex flex-col items-center justify-center text-gray-400 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-H5Regular"
         >
           <Image width={48} height={48} src={PlusIcon} alt="추가" />
-          <p>{props.placeholder}</p>
+          <p className="text-center">{props.placeholder}</p>
         </label>
       </div>
 
       {imgPreview && (
         <div className="relative">
           <Image
-            className=" aspect-square w-[282px] h-[282px] mobile:w-[168px] "
+            className="aspect-square laptop:w-[282px] h-[168px] laptop:h-[282px] w-[168px] "
             src={imgPreview}
             width={282}
             height={282}

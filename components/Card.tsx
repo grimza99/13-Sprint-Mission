@@ -7,6 +7,7 @@ import BtnHeart from "./BtnHeart";
 //
 interface Props {
   article: Article;
+  isDetailArticle?: boolean;
 }
 export function BestArticle({ article }: Props) {
   const formattedDate = useFormatDate(article.createdAt);
@@ -41,7 +42,7 @@ export function BestArticle({ article }: Props) {
   );
 }
 
-export function Articles({ article }: Props) {
+export function Articles({ article, isDetailArticle }: Props) {
   const formattedDate = useFormatDate(article.createdAt);
   const articleImg = article.image || ProfileImg;
 
@@ -49,17 +50,19 @@ export function Articles({ article }: Props) {
     <div className=" flex flex-col gap-4 w-full h-[138px] bg-light-gray px-6 border-b border-gray-200">
       <div className="flex justify-between font-Pretendard text-H3Bold">
         <p>{article.content}</p>
-        <img
-          className="w-[72px] h-[72px] text-H8"
-          src={articleImg}
-          alt="상품이미지"
-        />
+        {isDetailArticle && (
+          <img
+            className="w-[72px] h-[72px] text-H8"
+            src={articleImg}
+            alt="상품이미지"
+          />
+        )}
       </div>
       <div className="flex justify-between text-gray-500 font-Pretendard text-H7Regular ">
         <div className="flex gap-2">
           <Image src={ProfileImg} width={24} height={24} alt="프로필" />
 
-          <div>{article.writer.nickname}</div>
+          <div>{article.writer?.nickname}</div>
           {formattedDate}
         </div>
         <BtnHeart value={article.likeCount} />

@@ -31,3 +31,8 @@ export async function getArticles({
     throw new Error(" 게시글 불러오기 실패");
   }
 }
+
+export async function getArticleDetail(articleId: number) {
+  const res = await instance.get(`/articles`, { params: { articleId } });
+  return res.data;
+}
