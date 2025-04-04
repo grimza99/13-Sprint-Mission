@@ -64,7 +64,7 @@ export default function DetailArticle({ detailArticle, comments }: Props) {
           </Button>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col w-full gap-6">
         {comments.map((comment) => {
           return <Comment comment={comment} />;
         })}

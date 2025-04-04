@@ -10,3 +10,8 @@ export async function getArticleComment(
   });
   return res.data;
 }
+
+export async function editArticleComment(commentId: number) {
+  const res = await instance.patch(`/comments/${commentId}`, {});
+  return res.data.content;
+}

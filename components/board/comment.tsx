@@ -1,20 +1,54 @@
+import { KeyboardEvent, useState } from "react";
 import Profile from "../common/Profile";
 import { EditSelect } from "../Select";
+import { editArticleComment } from "@/lib/comments.api";
 
 interface Props {
   comment: Comment;
 }
 export default function Comment({ comment }: Props) {
-  const handleSelect = () => {};
+  const [isEdit, setIsEdit] = useState(false);
+  const [currentValue, setCurrentValue] = useState(comment.content);
+  const handleSelect = (option: string) => {
+    switch (option) {
+      case "수정하기": {
+        setIsEdit(true);
+        break;
+      }
+      case "삭제하기": {
+        break;
+      }
+    }
+  };
+  const handleChange = async (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      const { content } = await editArticleComment(comment.id);
+      setCurrentValue(content);
+    }
+  };
   return (
-    <div>
-      <div>
-        {comment.content}
-        <EditSelect onChange={handleSelect} />
+    <>
+      <div className="flex flex-col w-full gap-6 mb-3 h-fit">
+        <div className="flex justify-between w-full">
+          {isEdit ? (
+            <input
+              className="w-full"
+              value={currentValue}
+              onChange={(e) => {
+                setCurrentValue(e.currentTarget.value);
+              }}
+              onKeyDown={(e) => handleChange(e)}
+            />
+          ) : (
+            <p>{currentValue}</p>
+          )}
+          <EditSelect onChange={(option) => handleSelect(option)} />
+        </div>
+        <div>
+          <Profile isComment value={comment} />
+        </div>
       </div>
-      <div>
-        <Profile value={comment} />
-      </div>
-    </div>
+      <div className="w-full h-px bg-gray-300" />
+    </>
   );
 }
