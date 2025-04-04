@@ -4,6 +4,7 @@ import ProfileImg from "@/public/assets/icons/default.profile.icon.svg";
 import { useFormatDate } from "@/hooks/useFormatting";
 
 import BtnHeart from "./BtnHeart";
+import Profile from "./common/Profile";
 //
 interface Props {
   article: Article;
@@ -43,7 +44,6 @@ export function BestArticle({ article }: Props) {
 }
 
 export function Articles({ article, isDetailArticle }: Props) {
-  const formattedDate = useFormatDate(article.createdAt);
   const articleImg = article.image || ProfileImg;
 
   return (
@@ -59,12 +59,7 @@ export function Articles({ article, isDetailArticle }: Props) {
         )}
       </div>
       <div className="flex justify-between text-gray-500 font-Pretendard text-H7Regular ">
-        <div className="flex gap-2">
-          <Image src={ProfileImg} width={24} height={24} alt="프로필" />
-
-          <div>{article.writer?.nickname}</div>
-          {formattedDate}
-        </div>
+        <Profile value={article} />
         <BtnHeart value={article.likeCount} />
       </div>
     </div>
