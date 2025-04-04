@@ -15,3 +15,8 @@ export async function editArticleComment(commentId: number) {
   const res = await instance.patch(`/comments/${commentId}`, {});
   return res.data.content;
 }
+
+export async function deleteArticleComment(commentId: number) {
+  const res = await instance.delete(`/comments/${commentId}`, {});
+  return res.data.content;
+}

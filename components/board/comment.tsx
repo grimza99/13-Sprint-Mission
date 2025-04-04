@@ -1,7 +1,7 @@
 import { KeyboardEvent, useState } from "react";
 import Profile from "../common/Profile";
 import { EditSelect } from "../Select";
-import { editArticleComment } from "@/lib/comments.api";
+import { deleteArticleComment, editArticleComment } from "@/lib/comments.api";
 
 interface Props {
   comment: Comment;
@@ -9,13 +9,14 @@ interface Props {
 export default function Comment({ comment }: Props) {
   const [isEdit, setIsEdit] = useState(false);
   const [currentValue, setCurrentValue] = useState(comment.content);
-  const handleSelect = (option: string) => {
+  const handleSelect = async (option: string) => {
     switch (option) {
       case "수정하기": {
         setIsEdit(true);
         break;
       }
       case "삭제하기": {
+        await deleteArticleComment(comment.id);
         break;
       }
     }
