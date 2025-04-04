@@ -33,6 +33,6 @@ export async function getArticles({
 }
 
 export async function getArticleDetail(articleId: number) {
-  const res = await instance.get(`/articles`, { params: { articleId } });
+  const res = await instance.get(`/articles/${articleId}`);
   return res.data;
 }

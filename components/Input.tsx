@@ -17,12 +17,14 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   $edit?: boolean;
   onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   type?: "text" | "number";
+  isAsterisk?: boolean;
 }
 
 export function Input({
   onChange,
   placeholder,
   type = "text",
+  isAsterisk,
   ...props
 }: Props) {
   const { label, onKeyUp, $edit, $textArea, $comment } = props;
@@ -34,7 +36,7 @@ export function Input({
           $comment && "text-H5Bold"
         } w-full h-[26px] font-Pretendard text-gray-800 text-H4Bold`}
       >
-        <span>*</span>
+        {isAsterisk && <span>*</span>}
         {label}
       </div>
       <input

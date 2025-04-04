@@ -50,7 +50,7 @@ export function Articles({ article, isDetailArticle }: Props) {
     <div className=" flex flex-col gap-4 w-full h-[138px] bg-light-gray px-6 border-b border-gray-200">
       <div className="flex justify-between font-Pretendard text-H3Bold">
         <p>{article.content}</p>
-        {isDetailArticle && (
+        {!isDetailArticle && (
           <img
             className="w-[72px] h-[72px] text-H8"
             src={articleImg}
