@@ -5,11 +5,12 @@ import Link from "next/link";
 import { EditSelect } from "@/components/Select";
 import { Articles } from "@/components/Card";
 import { GetServerSideProps } from "next";
-import { getArticleDetail } from "@/lib/Articles";
+import { deleteArticle, editArticle, getArticleDetail } from "@/lib/Articles";
 import { Input } from "@/components/Input";
 import { ChangeEvent, useState } from "react";
 import { getArticleComment, postArticleComment } from "@/lib/comments.api";
 import Comment from "@/components/board/comment";
+import { signIn } from "@/lib/auth";
 
 //
 interface Props {
@@ -38,25 +39,43 @@ export default function DetailArticle({
 }: Props) {
   const [commentValue, setCommentValue] = useState("");
   const [currentComments, setCurrentComments] = useState(comments);
+  const [isEditArticle, setIsEditArticle] = useState(false);
+  const [currentArticle, setCurrentArticle] = useState({
+    title: detailArticle.title,
+    content: detailArticle.content,
+    image: detailArticle.image,
+  });
 
-  const handleSelect = (option: string) => {
+  const handleLogin = async () => {
+    await signIn();
+  };
+
+  const handleSelect = async (option: string) => {
     switch (option) {
       case "수정하기": {
+        setIsEditArticle(true);
+        // await editArticle({ articleId, articleData: currentArticle });
       }
       case "삭제하기": {
+        await deleteArticle(articleId);
       }
     }
   };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCommentValue(e.target.value);
   };
+
   const handleSubmit = async () => {
     const newComment = await postArticleComment(articleId, commentValue);
-    setCurrentComments((prev) => [...prev, newComment]);
+
+    setCurrentComments((prev) => [newComment, ...prev]);
+    setCommentValue("");
   };
 
   return (
     <div className="flex flex-col items-center w-full gap-8">
+      <button onClick={handleLogin}>로그인 버튼</button>
       <div className="flex flex-col w-full gap-6">
         <div className="relative">
           <Articles article={detailArticle} isDetailArticle />
@@ -83,7 +102,7 @@ export default function DetailArticle({
       </div>
       <div className="flex flex-col w-full gap-6">
         {currentComments.map((comment) => {
-          return <Comment comment={comment} />;
+          return <Comment key={comment.id} comment={comment} />;
         })}
       </div>
       <div className="w-[240px] h-[48px] ">

@@ -36,3 +36,18 @@ export async function getArticleDetail(articleId: number) {
   const res = await instance.get(`/articles/${articleId}`);
   return res.data;
 }
+
+export async function deleteArticle(articleId: number) {
+  await instance.delete(`/articles/${articleId}`);
+}
+
+interface articleEditedRequestParams {
+  articleId: number;
+  articleData: ArticleData;
+}
+export async function editArticle({
+  articleId,
+  articleData,
+}: articleEditedRequestParams) {
+  await instance.delete(`/articles/${articleId}`);
+}
