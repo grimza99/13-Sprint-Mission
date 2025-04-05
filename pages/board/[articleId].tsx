@@ -11,7 +11,7 @@ import { ChangeEvent, useState } from "react";
 import { getArticleComment, postArticleComment } from "@/lib/comments.api";
 import Comment from "@/components/board/comment";
 import { signIn } from "@/lib/auth";
-
+import noCommentImg from "@/public/assets/noComment.svg";
 //
 interface Props {
   articleId: number;
@@ -101,9 +101,25 @@ export default function DetailArticle({
         </div>
       </div>
       <div className="flex flex-col w-full gap-6">
-        {currentComments.map((comment) => {
-          return <Comment key={comment.id} comment={comment} />;
-        })}
+        {currentComments.length < 1 ? (
+          <div className="flex flex-col justify-center w-full gap-4">
+            <Image
+              src={noCommentImg}
+              width={140}
+              height={140}
+              alt="코멘트 없음 "
+            />
+            <p className="text-gray-400 text-lg-regular">
+              아직 댓글이 없어요,
+              <br />
+              지금 댓글을 달아보세요!
+            </p>
+          </div>
+        ) : (
+          currentComments.map((comment) => {
+            return <Comment key={comment.id} comment={comment} />;
+          })
+        )}
       </div>
       <div className="w-[240px] h-[48px] ">
         <Link href={"/board"}>

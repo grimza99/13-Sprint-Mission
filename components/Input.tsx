@@ -75,7 +75,6 @@ export function ImgInput({ onChange, label, ...props }: ImgProps) {
     };
   };
 
-  //
   const handleClickImgDelete = () => {
     setImgPreview("");
     onChange("");
@@ -84,45 +83,45 @@ export function ImgInput({ onChange, label, ...props }: ImgProps) {
   return (
     <div className="flex flex-col gap-6 mobile:gap-[10px] ">
       <p className="text-[18px] font-Pretendard text-H4Bold">{label}</p>
-      <div className="relative  w-[282px] mobile:w-[168px] mobile:h-[168px] h-[282px] bg-gray-100 rounded-xl  border-none text-gray-800">
-        <input
-          className="hidden w-full h-full bg-gray-100 font-Pretendard text-H6Regular border-none rounded-xl text-gray-800 px-4 py-6 
+      <div className="relative overflow-hidden gap-6 w-[282px] mobile:w-[168px] mobile:h-[168px] h-[282px] bg-gray-100 rounded-xl  border-none text-gray-800">
+        {!imgPreview ? (
+          <>
+            <input
+              className="hidden w-full h-full  font-Pretendard text-H6Regular border-none rounded-xl text-gray-800 px-4 py-6 
           placeholder-gray-400 placeholder:text-H5Regular placeholder:top-[10px] placeholder:text-left placeholder:absolute focus:outline-none"
-          type="file"
-          id="fileUpload"
-          accept="image/*"
-          ref={imgRef}
-          onChange={handlePreviewImg}
-          {...props}
-        />
-        <label
-          htmlFor="fileUpload"
-          className="absolute flex flex-col items-center justify-center text-gray-400 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-H5Regular"
-        >
-          <Image width={48} height={48} src={PlusIcon} alt="추가" />
-          <p className="text-center">{props.placeholder}</p>
-        </label>
+              type="file"
+              id="fileUpload"
+              accept="image/*"
+              ref={imgRef}
+              onChange={handlePreviewImg}
+              {...props}
+            />
+            <label
+              htmlFor="fileUpload"
+              className="absolute flex flex-col items-center justify-center text-gray-400 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-H5Regular"
+            >
+              <Image width={48} height={48} src={PlusIcon} alt="추가" />
+              <p className="text-center">{props.placeholder}</p>
+            </label>
+          </>
+        ) : (
+          <div className="relative">
+            <img
+              className="z-10 w-full rounded-[6px] object-fill aspect-square"
+              src={imgPreview}
+              alt="이미지 미리보기"
+            />
+            <Image
+              className="absolute top-[15px] right-[15px]"
+              src={DeleteIcon}
+              width={22}
+              height={24}
+              alt="x"
+              onClick={handleClickImgDelete}
+            />
+          </div>
+        )}
       </div>
-
-      {imgPreview && (
-        <div className="relative">
-          <Image
-            className="aspect-square laptop:w-[282px] h-[168px] laptop:h-[282px] w-[168px] "
-            src={imgPreview}
-            width={282}
-            height={282}
-            alt="이미지 미리보기"
-          />
-          <Image
-            className="absolute top-[15px] right-[15px]"
-            src={DeleteIcon}
-            width={22}
-            height={24}
-            alt="x"
-            onClick={handleClickImgDelete}
-          />
-        </div>
-      )}
     </div>
   );
 }

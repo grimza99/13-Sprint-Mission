@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { ReactNode } from "react";
 //
 interface Props {
-  onClick: onClick;
+  onClick?: onClick;
   children: ReactNode;
   disabled?: boolean;
   className?: string;
