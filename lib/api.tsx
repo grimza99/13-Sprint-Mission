@@ -14,8 +14,9 @@ export default instance;
 
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (typeof window !== "undefined" && accessToken) {
+    if (typeof window !== "undefined") {
+      const accessToken = localStorage.getItem("accessToken");
+      if (!accessToken) return config;
       config.headers.set("Authorization", `Bearer ${accessToken}`);
     }
     return config;
@@ -26,6 +27,7 @@ instance.interceptors.response.use((response: AxiosResponse) => {
   const accessToken = response.data.accessToken;
   if (typeof window !== "undefined" && accessToken) {
     localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("refreshToken", response.data.refreshToken);
   }
   return response;
 });
