@@ -8,11 +8,12 @@ import { GetServerSideProps } from "next";
 import { getArticleDetail } from "@/lib/Articles";
 import { Input } from "@/components/Input";
 import { ChangeEvent, useState } from "react";
-import { getArticleComment } from "@/lib/comments.api";
+import { getArticleComment, postArticleComment } from "@/lib/comments.api";
 import Comment from "@/components/board/comment";
 
 //
 interface Props {
+  articleId: number;
   detailArticle: Article;
   comments: Comment[];
 }
@@ -26,17 +27,33 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const data = await getArticleComment(Number(articleId), LIMIT, cursor);
   cursor = data.cursor;
   return {
-    props: { detailArticle, comments: data.list },
+    props: { articleId, detailArticle, comments: data.list },
   };
 };
 
-export default function DetailArticle({ detailArticle, comments }: Props) {
+export default function DetailArticle({
+  articleId,
+  detailArticle,
+  comments,
+}: Props) {
   const [commentValue, setCommentValue] = useState("");
-  const handleSelect = () => {};
+  const [currentComments, setCurrentComments] = useState(comments);
+
+  const handleSelect = (option: string) => {
+    switch (option) {
+      case "수정하기": {
+      }
+      case "삭제하기": {
+      }
+    }
+  };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCommentValue(e.target.value);
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    const newComment = await postArticleComment(articleId, commentValue);
+    setCurrentComments((prev) => [...prev, newComment]);
+  };
 
   return (
     <div className="flex flex-col items-center w-full gap-8">
@@ -44,7 +61,7 @@ export default function DetailArticle({ detailArticle, comments }: Props) {
         <div className="relative">
           <Articles article={detailArticle} isDetailArticle />
           <div className="absolute top-0 right-0">
-            <EditSelect onChange={handleSelect} />
+            <EditSelect onChange={(option) => handleSelect(option)} />
           </div>
         </div>
         <p>{detailArticle.content}</p>
@@ -65,7 +82,7 @@ export default function DetailArticle({ detailArticle, comments }: Props) {
         </div>
       </div>
       <div className="flex flex-col w-full gap-6">
-        {comments.map((comment) => {
+        {currentComments.map((comment) => {
           return <Comment comment={comment} />;
         })}
       </div>
