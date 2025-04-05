@@ -51,7 +51,7 @@ export function Articles({ article, isDetailArticle }: Props) {
       <div className="flex justify-between font-Pretendard text-H3Bold">
         <p>{article.content}</p>
         {!isDetailArticle && (
-          <img
+          <Image
             className="w-[72px] h-[72px] text-H8"
             src={articleImg}
             alt="상품이미지"
