@@ -51,3 +51,8 @@ export async function editArticle({
 }: articleEditedRequestParams) {
   await instance.delete(`/articles/${articleId}`);
 }
+
+export async function createArticle(articleData: ArticleData) {
+  console.log(articleData);
+  const res = await instance.post(`/articles`, { ...articleData });
+}

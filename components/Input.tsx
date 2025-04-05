@@ -3,10 +3,11 @@ import DeleteIcon from "@/public/assets/icons/DeleteIcon.svg";
 import SearchIcon from "@/public/assets/icons/search.icon.svg";
 import Image from "next/image";
 import { ChangeEvent, useRef, useState } from "react";
+import { uploadImage } from "@/lib/image";
 //
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+interface Props {
+  onChange: (value: string) => void;
   label?: string;
   placeholder?: string;
   name: string;
@@ -46,7 +47,9 @@ export function Input({
           $edit && "text-H7Regular h-[80px]"
         }relative w-full h-[56px] bg-gray-100 font-Pretendard text-H6Regular border-none rounded-xl text-gray-800 px-4 py-6 placeholder-gray-400 placeholder:text-H5Regular placeholder:absolute focus:outline-none`}
         type={type}
-        onChange={onChange}
+        onChange={(e) => {
+          if (e.nativeEvent.composed) return onChange(e.target.value);
+        }}
         onKeyUp={onKeyUp || undefined}
         placeholder={placeholder}
       />
@@ -56,7 +59,7 @@ export function Input({
 
 //
 interface ImgProps extends Omit<Props, "onChange"> {
-  onChange: (value: File | string) => void;
+  onChange: (value: null | string) => void;
 }
 export function ImgInput({ onChange, label, ...props }: ImgProps) {
   const imgRef = useRef<HTMLInputElement>(null);
@@ -67,17 +70,18 @@ export function ImgInput({ onChange, label, ...props }: ImgProps) {
     const file = imgRef.current.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onloadend = () => {
+    reader.onloadend = async () => {
       if (typeof reader.result === "string") {
         setImgPreview(reader.result);
-        onChange(file);
+        const formattedImage = await uploadImage(file);
+        onChange(formattedImage);
       }
     };
   };
 
   const handleClickImgDelete = () => {
     setImgPreview("");
-    onChange("");
+    onChange(null);
   };
 
   return (
@@ -130,7 +134,9 @@ export function SearchInput({ onChange, ...props }: Props) {
   return (
     <div className="relative w-full">
       <input
-        onChange={onChange}
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
         className=" 
       rounded-xl border-none px-[44px] py-[16px] w-full h-[42px] bg-gray-100 
       font-Pretendard text-gray-800 text-H5Regular

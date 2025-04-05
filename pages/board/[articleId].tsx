@@ -62,8 +62,8 @@ export default function DetailArticle({
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setCommentValue(e.target.value);
+  const handleChange = (value: string) => {
+    setCommentValue(value);
   };
 
   const handleSubmit = async () => {
@@ -92,7 +92,7 @@ export default function DetailArticle({
           name="comment"
           placeholder="댓글을 입력해주세요."
           value={commentValue}
-          onChange={handleChange}
+          onChange={(value) => handleChange(value)}
         />
         <div className="w-[74px] h-[42px]">
           <Button disabled={Boolean(!commentValue)} onClick={handleSubmit}>

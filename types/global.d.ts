@@ -47,7 +47,7 @@ declare global {
   type onClick = (e: MouseEvent<HTMLButtonElement>) => void;
 
   interface ArticleData {
-    image: string;
+    image: string | null;
     content: string;
     title: string;
   }

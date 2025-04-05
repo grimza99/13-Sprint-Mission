@@ -83,8 +83,8 @@ export default function Board({
     }
   }, [device, sortedArticles]);
 
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const searchValue = e.target.value.toLowerCase();
+  const handleSearchChange = (value: string) => {
+    const searchValue = value.toLowerCase();
     const newQuery = { ...router.query };
     if (!searchValue) {
       delete newQuery.keyword;
@@ -132,7 +132,7 @@ export default function Board({
           <SearchInput
             placeholder="검색할 상품을 입력해주세요"
             name="search"
-            onChange={handleSearchChange}
+            onChange={(value) => handleSearchChange(value)}
           />
           <SortSelect onChange={handleSortChange} />
         </div>
