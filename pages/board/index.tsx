@@ -111,8 +111,8 @@ export default function Board({
         <div className="flex gap-6 mx-auto">
           {best.length > 0 &&
             best.map((article) => (
-              <Link href={`board/${article.id}`}>
-                <BestArticle key={article.id} article={article} />
+              <Link key={article.id} href={`board/${article.id}`}>
+                <BestArticle article={article} />
               </Link>
             ))}
         </div>

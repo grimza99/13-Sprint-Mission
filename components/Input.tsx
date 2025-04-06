@@ -2,8 +2,9 @@ import PlusIcon from "@/public/assets/icons/plusIcon.svg";
 import DeleteIcon from "@/public/assets/icons/DeleteIcon.svg";
 import SearchIcon from "@/public/assets/icons/search.icon.svg";
 import Image from "next/image";
-import { ChangeEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { uploadImage } from "@/lib/image";
+import { renameFile } from "@/hooks/useRenameFile";
 //
 
 interface Props {
@@ -68,12 +69,16 @@ export function ImgInput({ onChange, label, ...props }: ImgProps) {
   const handlePreviewImg = () => {
     if (!imgRef.current || !imgRef.current.files?.length) return;
     const file = imgRef.current.files[0];
+
+    const renamedFile = renameFile(file);
+
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(renamedFile);
+
     reader.onloadend = async () => {
       if (typeof reader.result === "string") {
         setImgPreview(reader.result);
-        const formattedImage = await uploadImage(file);
+        const formattedImage = await uploadImage(renamedFile);
         onChange(formattedImage);
       }
     };

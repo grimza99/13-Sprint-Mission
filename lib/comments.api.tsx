@@ -18,8 +18,8 @@ export async function postArticleComment(articleId: number, content: string) {
   return res.data;
 }
 
-export async function editArticleComment(commentId: number) {
-  const res = await instance.patch(`/comments/${commentId}`, {});
+export async function editArticleComment(commentId: number, content: string) {
+  const res = await instance.patch(`/comments/${commentId}`, { content });
   return res.data.content;
 }
 

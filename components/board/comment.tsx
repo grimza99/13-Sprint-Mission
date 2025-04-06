@@ -23,8 +23,8 @@ export default function Comment({ comment }: Props) {
   };
   const handleChange = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      const { content } = await editArticleComment(comment.id);
-      setCurrentValue(content);
+      await editArticleComment(comment.id, currentValue);
+      setCurrentValue(currentValue);
     }
   };
   return (

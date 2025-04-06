@@ -14,11 +14,12 @@ import { signIn } from "@/lib/auth";
 import noCommentImg from "@/public/assets/noComment.svg";
 //
 interface Props {
-  articleId: number;
+  articleId: string;
   detailArticle: Article;
   comments: Comment[];
 }
 const LIMIT = 5;
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { articleId } = context.query as {
     articleId: string;
@@ -46,18 +47,16 @@ export default function DetailArticle({
     image: detailArticle.image,
   });
 
-  const handleLogin = async () => {
-    await signIn();
-  };
-
   const handleSelect = async (option: string) => {
     switch (option) {
       case "수정하기": {
         setIsEditArticle(true);
+        break;
         // await editArticle({ articleId, articleData: currentArticle });
       }
       case "삭제하기": {
-        await deleteArticle(articleId);
+        await deleteArticle(Number(articleId));
+        break;
       }
     }
   };
@@ -67,7 +66,10 @@ export default function DetailArticle({
   };
 
   const handleSubmit = async () => {
-    const newComment = await postArticleComment(articleId, commentValue);
+    const newComment = await postArticleComment(
+      Number(articleId),
+      commentValue
+    );
 
     setCurrentComments((prev) => [newComment, ...prev]);
     setCommentValue("");
@@ -75,7 +77,6 @@ export default function DetailArticle({
 
   return (
     <div className="flex flex-col items-center w-full gap-8">
-      <button onClick={handleLogin}>로그인 버튼</button>
       <div className="flex flex-col w-full gap-6">
         <div className="relative">
           <Articles article={detailArticle} isDetailArticle />
@@ -102,7 +103,7 @@ export default function DetailArticle({
       </div>
       <div className="flex flex-col w-full gap-6">
         {currentComments.length < 1 ? (
-          <div className="flex flex-col justify-center w-full gap-4">
+          <div className="flex flex-col items-center justify-center w-full gap-4">
             <Image
               src={noCommentImg}
               width={140}
